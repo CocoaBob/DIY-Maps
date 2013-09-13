@@ -1,0 +1,21 @@
+[submodule "Submodules/CBDoubleTapAndPanGestureRecognizer"]
+	path = Submodules/CBDoubleTapAndPanGestureRecognizer
+	url = git@github.com:CocoaBob/CBDoubleTapAndPanGestureRecognizer.git
+[submodule "Submodules/Base64"]
+	path = Submodules/Base64
+	url = https://github.com/nicklockwood/Base64.git
+[submodule "Submodules/BVReorderTableView"]
+	path = Submodules/BVReorderTableView
+	url = https://github.com/bvogelzang/BVReorderTableView.git
+[submodule "Submodules/KissXML"]
+	path = Submodules/KissXML
+	url = https://github.com/robbiehanson/KissXML.git
+[submodule "Submodules/MHWDirectoryWatcher"]
+	path = Submodules/MHWDirectoryWatcher
+	url = https://github.com/hwaxxer/MHWDirectoryWatcher.git
+[submodule "Submodules/ZKRevealingTableViewCell"]
+	path = Submodules/ZKRevealingTableViewCell
+	url = https://github.com/alexzielenski/ZKRevealingTableViewCell.git
+[submodule "Submodules/minizip"]
+	path = Submodules/minizip
+	url = https://github.com/nmoinvaz/minizip.git

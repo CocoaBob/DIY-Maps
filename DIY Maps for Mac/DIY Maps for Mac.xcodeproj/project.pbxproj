@@ -1,0 +1,468 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
+		4505E33617C7FC99005C56C6 /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4505E2E517C7FC98005C56C6 /* DDXMLElementAdditions.m */; };
+		4505E33717C7FC99005C56C6 /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 4505E2E817C7FC98005C56C6 /* NSString+DDXML.m */; };
+		4505E33817C7FC99005C56C6 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 4505E2EB17C7FC98005C56C6 /* DDXMLDocument.m */; };
+		4505E33917C7FC99005C56C6 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4505E2ED17C7FC98005C56C6 /* DDXMLElement.m */; };
+		4505E33A17C7FC99005C56C6 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4505E2EF17C7FC98005C56C6 /* DDXMLNode.m */; };
+		4505E36817C7FD18005C56C6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4505E36717C7FD18005C56C6 /* libz.dylib */; };
+		455639FD17C028840094876F /* AddTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 455639F817C028840094876F /* AddTemplate.pdf */; };
+		455639FE17C028840094876F /* DeleteTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 455639F917C028840094876F /* DeleteTemplate.pdf */; };
+		455639FF17C028840094876F /* PauseTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 455639FA17C028840094876F /* PauseTemplate.pdf */; };
+		45563A0017C028840094876F /* PlayTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 455639FB17C028840094876F /* PlayTemplate.pdf */; };
+		45563A0117C028840094876F /* StopTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 455639FC17C028840094876F /* StopTemplate.pdf */; };
+		45577E4C17C1762C008151DB /* DMMTaskListRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45577E4B17C1762C008151DB /* DMMTaskListRowView.m */; };
+		45577E4F17C17662008151DB /* DMMTaskListCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45577E4E17C17662008151DB /* DMMTaskListCellView.m */; };
+		45B3741217C51E1F0098BBDC /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45B3741117C51E1F0098BBDC /* libxml2.dylib */; };
+		45CA605717E3C1B800E6F835 /* DMProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA605617E3C1B800E6F835 /* DMProfile.m */; };
+		45CA606017E3C41100E6F835 /* DMTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA605D17E3C41100E6F835 /* DMTask.m */; };
+		45CA607417E3C73400E6F835 /* DMImageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA607317E3C73400E6F835 /* DMImageProcessor.m */; };
+		45CA607B17E3C83800E6F835 /* DMMTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA607A17E3C83800E6F835 /* DMMTaskManager.m */; };
+		5BD3A15C17BE5C3700AE0C2F /* DMMSingleTaskWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD3A15A17BE5C3700AE0C2F /* DMMSingleTaskWindowController.m */; };
+		5BD3A15D17BE5C3700AE0C2F /* DMMSingleTaskWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BD3A15B17BE5C3700AE0C2F /* DMMSingleTaskWindowController.xib */; };
+		5BD3A16117BE5C4A00AE0C2F /* DMMTaskListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD3A15F17BE5C4A00AE0C2F /* DMMTaskListWindowController.m */; };
+		5BD3A16217BE5C4A00AE0C2F /* DMMTaskListWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BD3A16017BE5C4A00AE0C2F /* DMMTaskListWindowController.xib */; };
+		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
+		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		E0DEF6880FB2198C003218A8 /* DMMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DEF6870FB2198C003218A8 /* DMMAppDelegate.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* DIY Maps for Mac-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DIY Maps for Mac-Prefix.pch"; sourceTree = "<group>"; };
+		4505E2E417C7FC98005C56C6 /* DDXMLElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElementAdditions.h; sourceTree = "<group>"; };
+		4505E2E517C7FC98005C56C6 /* DDXMLElementAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElementAdditions.m; sourceTree = "<group>"; };
+		4505E2E717C7FC98005C56C6 /* NSString+DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DDXML.h"; sourceTree = "<group>"; };
+		4505E2E817C7FC98005C56C6 /* NSString+DDXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DDXML.m"; sourceTree = "<group>"; };
+		4505E2E917C7FC98005C56C6 /* DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXML.h; sourceTree = "<group>"; };
+		4505E2EA17C7FC98005C56C6 /* DDXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLDocument.h; sourceTree = "<group>"; };
+		4505E2EB17C7FC98005C56C6 /* DDXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLDocument.m; sourceTree = "<group>"; };
+		4505E2EC17C7FC98005C56C6 /* DDXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElement.h; sourceTree = "<group>"; };
+		4505E2ED17C7FC98005C56C6 /* DDXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElement.m; sourceTree = "<group>"; };
+		4505E2EE17C7FC98005C56C6 /* DDXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLNode.h; sourceTree = "<group>"; };
+		4505E2EF17C7FC98005C56C6 /* DDXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLNode.m; sourceTree = "<group>"; };
+		4505E2F117C7FC98005C56C6 /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLPrivate.h; sourceTree = "<group>"; };
+		4505E36717C7FD18005C56C6 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		45184ECA17E3A4A800AC69C0 /* DMPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPConstants.h; sourceTree = "<group>"; };
+		455639F817C028840094876F /* AddTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = AddTemplate.pdf; path = Resources/AddTemplate.pdf; sourceTree = "<group>"; };
+		455639F917C028840094876F /* DeleteTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = DeleteTemplate.pdf; path = Resources/DeleteTemplate.pdf; sourceTree = "<group>"; };
+		455639FA17C028840094876F /* PauseTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = PauseTemplate.pdf; path = Resources/PauseTemplate.pdf; sourceTree = "<group>"; };
+		455639FB17C028840094876F /* PlayTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = PlayTemplate.pdf; path = Resources/PlayTemplate.pdf; sourceTree = "<group>"; };
+		455639FC17C028840094876F /* StopTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = StopTemplate.pdf; path = Resources/StopTemplate.pdf; sourceTree = "<group>"; };
+		45577E4A17C1762C008151DB /* DMMTaskListRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMTaskListRowView.h; sourceTree = "<group>"; };
+		45577E4B17C1762C008151DB /* DMMTaskListRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMTaskListRowView.m; sourceTree = "<group>"; };
+		45577E4D17C17662008151DB /* DMMTaskListCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMTaskListCellView.h; sourceTree = "<group>"; };
+		45577E4E17C17662008151DB /* DMMTaskListCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMTaskListCellView.m; sourceTree = "<group>"; };
+		45B3741117C51E1F0098BBDC /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		45CA605517E3C1B800E6F835 /* DMProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMProfile.h; sourceTree = "<group>"; };
+		45CA605617E3C1B800E6F835 /* DMProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMProfile.m; sourceTree = "<group>"; };
+		45CA605C17E3C41100E6F835 /* DMTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTask.h; sourceTree = "<group>"; };
+		45CA605D17E3C41100E6F835 /* DMTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTask.m; sourceTree = "<group>"; };
+		45CA607217E3C73400E6F835 /* DMImageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMImageProcessor.h; sourceTree = "<group>"; };
+		45CA607317E3C73400E6F835 /* DMImageProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMImageProcessor.m; sourceTree = "<group>"; };
+		45CA607917E3C83800E6F835 /* DMMTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMTaskManager.h; sourceTree = "<group>"; };
+		45CA607A17E3C83800E6F835 /* DMMTaskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMTaskManager.m; sourceTree = "<group>"; };
+		5BD3A15917BE5C3700AE0C2F /* DMMSingleTaskWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMSingleTaskWindowController.h; sourceTree = "<group>"; };
+		5BD3A15A17BE5C3700AE0C2F /* DMMSingleTaskWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMSingleTaskWindowController.m; sourceTree = "<group>"; };
+		5BD3A15B17BE5C3700AE0C2F /* DMMSingleTaskWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMMSingleTaskWindowController.xib; sourceTree = "<group>"; };
+		5BD3A15E17BE5C4A00AE0C2F /* DMMTaskListWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMTaskListWindowController.h; sourceTree = "<group>"; };
+		5BD3A15F17BE5C4A00AE0C2F /* DMMTaskListWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMTaskListWindowController.m; sourceTree = "<group>"; };
+		5BD3A16017BE5C4A00AE0C2F /* DMMTaskListWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMMTaskListWindowController.xib; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* DIY Maps for Mac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DIY Maps for Mac-Info.plist"; sourceTree = "<group>"; };
+		8D1107320486CEB800E47090 /* DIY Maps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DIY Maps.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0DEF6860FB2198C003218A8 /* DMMAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMAppDelegate.h; sourceTree = "<group>"; };
+		E0DEF6870FB2198C003218A8 /* DMMAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMAppDelegate.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D11072E0486CEB800E47090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4505E36817C7FD18005C56C6 /* libz.dylib in Frameworks */,
+				45B3741217C51E1F0098BBDC /* libxml2.dylib in Frameworks */,
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				45184ECA17E3A4A800AC69C0 /* DMPConstants.h */,
+				E0DEF6860FB2198C003218A8 /* DMMAppDelegate.h */,
+				E0DEF6870FB2198C003218A8 /* DMMAppDelegate.m */,
+				45CA607817E3C83200E6F835 /* Services */,
+				45577E5117C178B6008151DB /* SingleTaskWindowController */,
+				45577E5017C178AB008151DB /* TaskListWindowController */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107320486CEB800E47090 /* DIY Maps.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* DIYMapsPacker */ = {
+			isa = PBXGroup;
+			children = (
+				45CA605417E3C1B800E6F835 /* DIY Maps Shared */,
+				4505E2DE17C7FC98005C56C6 /* Submodules */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				45CA605317E3C05C00E6F835 /* Supporting Files */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = DIYMapsPacker;
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				455639F817C028840094876F /* AddTemplate.pdf */,
+				455639F917C028840094876F /* DeleteTemplate.pdf */,
+				455639FA17C028840094876F /* PauseTemplate.pdf */,
+				455639FB17C028840094876F /* PlayTemplate.pdf */,
+				455639FC17C028840094876F /* StopTemplate.pdf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+				45B3741117C51E1F0098BBDC /* libxml2.dylib */,
+				4505E36717C7FD18005C56C6 /* libz.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4505E2DE17C7FC98005C56C6 /* Submodules */ = {
+			isa = PBXGroup;
+			children = (
+				4505E2E217C7FC98005C56C6 /* KissXML */,
+			);
+			name = Submodules;
+			path = ../Submodules;
+			sourceTree = "<group>";
+		};
+		4505E2E217C7FC98005C56C6 /* KissXML */ = {
+			isa = PBXGroup;
+			children = (
+				4505E2E317C7FC98005C56C6 /* Additions */,
+				4505E2E617C7FC98005C56C6 /* Categories */,
+				4505E2E917C7FC98005C56C6 /* DDXML.h */,
+				4505E2EA17C7FC98005C56C6 /* DDXMLDocument.h */,
+				4505E2EB17C7FC98005C56C6 /* DDXMLDocument.m */,
+				4505E2EC17C7FC98005C56C6 /* DDXMLElement.h */,
+				4505E2ED17C7FC98005C56C6 /* DDXMLElement.m */,
+				4505E2EE17C7FC98005C56C6 /* DDXMLNode.h */,
+				4505E2EF17C7FC98005C56C6 /* DDXMLNode.m */,
+				4505E2F017C7FC98005C56C6 /* Private */,
+			);
+			name = KissXML;
+			path = KissXML/KissXML;
+			sourceTree = "<group>";
+		};
+		4505E2E317C7FC98005C56C6 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				4505E2E417C7FC98005C56C6 /* DDXMLElementAdditions.h */,
+				4505E2E517C7FC98005C56C6 /* DDXMLElementAdditions.m */,
+			);
+			path = Additions;
+			sourceTree = "<group>";
+		};
+		4505E2E617C7FC98005C56C6 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				4505E2E717C7FC98005C56C6 /* NSString+DDXML.h */,
+				4505E2E817C7FC98005C56C6 /* NSString+DDXML.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		4505E2F017C7FC98005C56C6 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				4505E2F117C7FC98005C56C6 /* DDXMLPrivate.h */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		45577E5017C178AB008151DB /* TaskListWindowController */ = {
+			isa = PBXGroup;
+			children = (
+				45577E4A17C1762C008151DB /* DMMTaskListRowView.h */,
+				45577E4B17C1762C008151DB /* DMMTaskListRowView.m */,
+				45577E4D17C17662008151DB /* DMMTaskListCellView.h */,
+				45577E4E17C17662008151DB /* DMMTaskListCellView.m */,
+				5BD3A15E17BE5C4A00AE0C2F /* DMMTaskListWindowController.h */,
+				5BD3A15F17BE5C4A00AE0C2F /* DMMTaskListWindowController.m */,
+				5BD3A16017BE5C4A00AE0C2F /* DMMTaskListWindowController.xib */,
+			);
+			name = TaskListWindowController;
+			sourceTree = "<group>";
+		};
+		45577E5117C178B6008151DB /* SingleTaskWindowController */ = {
+			isa = PBXGroup;
+			children = (
+				5BD3A15917BE5C3700AE0C2F /* DMMSingleTaskWindowController.h */,
+				5BD3A15A17BE5C3700AE0C2F /* DMMSingleTaskWindowController.m */,
+				5BD3A15B17BE5C3700AE0C2F /* DMMSingleTaskWindowController.xib */,
+			);
+			name = SingleTaskWindowController;
+			sourceTree = "<group>";
+		};
+		45CA605317E3C05C00E6F835 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				29B97316FDCFA39411CA2CEA /* main.m */,
+				8D1107310486CEB800E47090 /* DIY Maps for Mac-Info.plist */,
+				32CA4F630368D1EE00C91783 /* DIY Maps for Mac-Prefix.pch */,
+				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		45CA605417E3C1B800E6F835 /* DIY Maps Shared */ = {
+			isa = PBXGroup;
+			children = (
+				45CA607217E3C73400E6F835 /* DMImageProcessor.h */,
+				45CA607317E3C73400E6F835 /* DMImageProcessor.m */,
+				45CA605517E3C1B800E6F835 /* DMProfile.h */,
+				45CA605617E3C1B800E6F835 /* DMProfile.m */,
+				45CA605C17E3C41100E6F835 /* DMTask.h */,
+				45CA605D17E3C41100E6F835 /* DMTask.m */,
+			);
+			name = "DIY Maps Shared";
+			path = "../DIY Maps Shared";
+			sourceTree = "<group>";
+		};
+		45CA607817E3C83200E6F835 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				45CA607917E3C83800E6F835 /* DMMTaskManager.h */,
+				45CA607A17E3C83800E6F835 /* DMMTaskManager.m */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D1107260486CEB800E47090 /* DIY Maps for Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "DIY Maps for Mac" */;
+			buildPhases = (
+				8D1107290486CEB800E47090 /* Resources */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DIY Maps for Mac";
+			productInstallPath = "$(HOME)/Applications";
+			productName = DIYMapsPacker;
+			productReference = 8D1107320486CEB800E47090 /* DIY Maps.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+			};
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "DIY Maps for Mac" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+				English,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* DIYMapsPacker */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D1107260486CEB800E47090 /* DIY Maps for Mac */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D1107290486CEB800E47090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BD3A16217BE5C4A00AE0C2F /* DMMTaskListWindowController.xib in Resources */,
+				5BD3A15D17BE5C3700AE0C2F /* DMMSingleTaskWindowController.xib in Resources */,
+				45563A0017C028840094876F /* PlayTemplate.pdf in Resources */,
+				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
+				455639FD17C028840094876F /* AddTemplate.pdf in Resources */,
+				45563A0117C028840094876F /* StopTemplate.pdf in Resources */,
+				455639FE17C028840094876F /* DeleteTemplate.pdf in Resources */,
+				455639FF17C028840094876F /* PauseTemplate.pdf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D11072C0486CEB800E47090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4505E33917C7FC99005C56C6 /* DDXMLElement.m in Sources */,
+				5BD3A15C17BE5C3700AE0C2F /* DMMSingleTaskWindowController.m in Sources */,
+				45577E4C17C1762C008151DB /* DMMTaskListRowView.m in Sources */,
+				4505E33617C7FC99005C56C6 /* DDXMLElementAdditions.m in Sources */,
+				8D11072D0486CEB800E47090 /* main.m in Sources */,
+				4505E33A17C7FC99005C56C6 /* DDXMLNode.m in Sources */,
+				45CA607417E3C73400E6F835 /* DMImageProcessor.m in Sources */,
+				45CA606017E3C41100E6F835 /* DMTask.m in Sources */,
+				45CA605717E3C1B800E6F835 /* DMProfile.m in Sources */,
+				5BD3A16117BE5C4A00AE0C2F /* DMMTaskListWindowController.m in Sources */,
+				4505E33717C7FC99005C56C6 /* NSString+DDXML.m in Sources */,
+				E0DEF6880FB2198C003218A8 /* DMMAppDelegate.m in Sources */,
+				45CA607B17E3C83800E6F835 /* DMMTaskManager.m in Sources */,
+				4505E33817C7FC99005C56C6 /* DDXMLDocument.m in Sources */,
+				45577E4F17C17662008151DB /* DMMTaskListCellView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C165DFE840E0CC02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1DDD58140DA1D0A300B32029 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1DDD58150DA1D0A300B32029 /* English */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C01FCF4B08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DIY Maps for Mac-Prefix.pch";
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				INFOPLIST_FILE = "DIY Maps for Mac-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = "-lxml2";
+				PRODUCT_NAME = "DIY Maps";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C01FCF4C08A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DIY Maps for Mac-Prefix.pch";
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				INFOPLIST_FILE = "DIY Maps for Mac-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = "-lxml2";
+				PRODUCT_NAME = "DIY Maps";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "DIY Maps for Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4B08A954540054247B /* Debug */,
+				C01FCF4C08A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "DIY Maps for Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

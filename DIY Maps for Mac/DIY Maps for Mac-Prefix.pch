@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'DIY Maps for Mac' target in the 'DIY Maps for Mac' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+    #import "DMPConstants.h"
+#endif

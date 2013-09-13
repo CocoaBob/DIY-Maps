@@ -1,4 +1,6 @@
 # Xcode
+.*
+!/.gitignore
 .DS_Store
 build/
 *.pbxuser
