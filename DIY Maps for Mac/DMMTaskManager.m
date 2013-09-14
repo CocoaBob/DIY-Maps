@@ -208,6 +208,11 @@ static DMMTaskManager *sharedInstance = nil;
 }
 
 - (void)stopProcessing {
+    if ([self.processQueue isSuspended]) {
+        [self.processQueue willChangeValueForKey:@"isSuspended"];
+        [self.processQueue setSuspended:NO];
+        [self.processQueue didChangeValueForKey:@"isSuspended"];
+    }
     [self.processQueue cancelAllOperations];
 }
 

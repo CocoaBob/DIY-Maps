@@ -217,7 +217,11 @@
         // Check if all images are processed
         NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:self.task.outputFolderPath
                                                                                 error:&error];
-        if ([contents count] != numberOfTiles + 1) {
+        if (error) {
+            NSLog(@"%s %@ %@",__func__,[error localizedDescription],[error localizedFailureReason]);
+            resultStatus = DMPTaskStateError;
+        }
+        else if ([contents count] != numberOfTiles + 1) {
             resultStatus = DMPTaskStateError;
         }
         else {
@@ -230,7 +234,7 @@
             if (result == zkSucceeded) {
                 [[NSFileManager defaultManager] removeItemAtPath:self.task.outputFolderPath error:&error];
                 if (error) {
-                    NSLog(@"%@",[error localizedDescription]);
+                    NSLog(@"%s %@ %@",__func__,[error localizedDescription],[error localizedFailureReason]);
                     resultStatus = DMPTaskStateError;
                 }
             }
