@@ -90,7 +90,6 @@ static DMMapViewController *sharedInstance = nil;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:(IS_PAD?UIStatusBarStyleBlackOpaque:UIStatusBarStyleBlackTranslucent) animated:animated];
     [self.navigationController.navigationBar setTranslucent:YES];
 }
 

@@ -100,7 +100,6 @@ static DMMapPickerViewController *sharedInstance = nil;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (!IS_PAD) {
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:animated];
         [self.navigationController.navigationBar setTranslucent:YES];
     }
     

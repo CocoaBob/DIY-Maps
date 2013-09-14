@@ -129,16 +129,15 @@
     // Write profile
     NSString *profilePath = [self.task.outputFolderPath stringByAppendingPathComponent:@"profile.xml"];
     NSData *profileData = [[self.task mapProfile] xmlData];
-    if (profileData) {
-        NSError *error = nil;
-        [profileData writeToFile:profilePath options:NSDataWritingAtomic error:&error];
-        if (error) {
-            [self handleError:error];
-            return;
-        }
-    }
-    else {
+    if (!profileData) {
         [self handleError:[NSError errorWithDomain:@"" code:0 userInfo:@{NSLocalizedDescriptionKey:@"No profile xml data."}]];
+        return;
+    }
+    NSError *error = nil;
+    if (![profileData writeToFile:profilePath options:NSDataWritingAtomic error:&error]) {
+        if (!error)
+            error = [NSError errorWithDomain:@"" code:0 userInfo:@{NSLocalizedDescriptionKey:@"Failed to write profile.xml!"}];
+        [self handleError:error];
         return;
     }
     
