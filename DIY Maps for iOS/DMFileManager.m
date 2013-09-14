@@ -88,7 +88,7 @@ static DMFileManager *sharedInstance = nil;
         [newFileNames removeObjectsInArray:existentSortedFileNames];
         allFileNames = [newFileNames arrayByAddingObjectsFromArray:existentSortedFileNames];
     }
-    self.sortedFileNames = [[allFileNames pathsMatchingExtensions:@[@"zip"]] mutableCopy];
+    self.sortedFileNames = [[allFileNames pathsMatchingExtensions:@[@"map"]] mutableCopy];
     [self saveSortedFileNames];
 }
 

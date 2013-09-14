@@ -26,6 +26,7 @@
 		45CA606017E3C41100E6F835 /* DMTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA605D17E3C41100E6F835 /* DMTask.m */; };
 		45CA607417E3C73400E6F835 /* DMImageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA607317E3C73400E6F835 /* DMImageProcessor.m */; };
 		45CA607B17E3C83800E6F835 /* DMMTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA607A17E3C83800E6F835 /* DMMTaskManager.m */; };
+		45CA608B17E4675B00E6F835 /* ZipKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45CA608517E463D700E6F835 /* ZipKit.framework */; };
 		5BD3A15C17BE5C3700AE0C2F /* DMMSingleTaskWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD3A15A17BE5C3700AE0C2F /* DMMSingleTaskWindowController.m */; };
 		5BD3A15D17BE5C3700AE0C2F /* DMMSingleTaskWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BD3A15B17BE5C3700AE0C2F /* DMMSingleTaskWindowController.xib */; };
 		5BD3A16117BE5C4A00AE0C2F /* DMMTaskListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD3A15F17BE5C4A00AE0C2F /* DMMTaskListWindowController.m */; };
@@ -35,6 +36,37 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		E0DEF6880FB2198C003218A8 /* DMMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DEF6870FB2198C003218A8 /* DMMAppDelegate.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		45CA608417E463D700E6F835 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 45CA607E17E463D700E6F835 /* ZipKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CB6F09CE174838FC00F91524;
+			remoteInfo = ZipKit;
+		};
+		45CA608617E463D700E6F835 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 45CA607E17E463D700E6F835 /* ZipKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CB6F0A4617483E5000F91524;
+			remoteInfo = zipkit;
+		};
+		45CA608817E463D700E6F835 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 45CA607E17E463D700E6F835 /* ZipKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CB6F0A9817484BDE00F91524;
+			remoteInfo = touchzipkit;
+		};
+		45CA608C17E4675F00E6F835 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 45CA607E17E463D700E6F835 /* ZipKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = CB6F09CD174838FC00F91524;
+			remoteInfo = ZipKit;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -65,6 +97,8 @@
 		45577E4B17C1762C008151DB /* DMMTaskListRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMTaskListRowView.m; sourceTree = "<group>"; };
 		45577E4D17C17662008151DB /* DMMTaskListCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMTaskListCellView.h; sourceTree = "<group>"; };
 		45577E4E17C17662008151DB /* DMMTaskListCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMTaskListCellView.m; sourceTree = "<group>"; };
+		456D016C17E482CF000C26E3 /* DMMTaskOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMTaskOperation.h; sourceTree = "<group>"; };
+		456D016D17E482CF000C26E3 /* DMMTaskOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMTaskOperation.m; sourceTree = "<group>"; };
 		45B3741117C51E1F0098BBDC /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		45CA605517E3C1B800E6F835 /* DMProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMProfile.h; sourceTree = "<group>"; };
 		45CA605617E3C1B800E6F835 /* DMProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMProfile.m; sourceTree = "<group>"; };
@@ -74,6 +108,7 @@
 		45CA607317E3C73400E6F835 /* DMImageProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMImageProcessor.m; sourceTree = "<group>"; };
 		45CA607917E3C83800E6F835 /* DMMTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMTaskManager.h; sourceTree = "<group>"; };
 		45CA607A17E3C83800E6F835 /* DMMTaskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMTaskManager.m; sourceTree = "<group>"; };
+		45CA607E17E463D700E6F835 /* ZipKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZipKit.xcodeproj; path = ZipKit/ZipKit.xcodeproj; sourceTree = "<group>"; };
 		5BD3A15917BE5C3700AE0C2F /* DMMSingleTaskWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMSingleTaskWindowController.h; sourceTree = "<group>"; };
 		5BD3A15A17BE5C3700AE0C2F /* DMMSingleTaskWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMSingleTaskWindowController.m; sourceTree = "<group>"; };
 		5BD3A15B17BE5C3700AE0C2F /* DMMSingleTaskWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMMSingleTaskWindowController.xib; sourceTree = "<group>"; };
@@ -91,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45CA608B17E4675B00E6F835 /* ZipKit.framework in Frameworks */,
 				4505E36817C7FD18005C56C6 /* libz.dylib in Frameworks */,
 				45B3741217C51E1F0098BBDC /* libxml2.dylib in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
@@ -160,6 +196,7 @@
 		4505E2DE17C7FC98005C56C6 /* Submodules */ = {
 			isa = PBXGroup;
 			children = (
+				45CA607E17E463D700E6F835 /* ZipKit.xcodeproj */,
 				4505E2E217C7FC98005C56C6 /* KissXML */,
 			);
 			name = Submodules;
@@ -265,8 +302,20 @@
 			children = (
 				45CA607917E3C83800E6F835 /* DMMTaskManager.h */,
 				45CA607A17E3C83800E6F835 /* DMMTaskManager.m */,
+				456D016C17E482CF000C26E3 /* DMMTaskOperation.h */,
+				456D016D17E482CF000C26E3 /* DMMTaskOperation.m */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		45CA607F17E463D700E6F835 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				45CA608517E463D700E6F835 /* ZipKit.framework */,
+				45CA608717E463D700E6F835 /* libzipkit.a */,
+				45CA608917E463D700E6F835 /* libtouchzipkit.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,6 +332,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				45CA608D17E4675F00E6F835 /* PBXTargetDependency */,
 			);
 			name = "DIY Maps for Mac";
 			productInstallPath = "$(HOME)/Applications";
@@ -308,12 +358,42 @@
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* DIYMapsPacker */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 45CA607F17E463D700E6F835 /* Products */;
+					ProjectRef = 45CA607E17E463D700E6F835 /* ZipKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* DIY Maps for Mac */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		45CA608517E463D700E6F835 /* ZipKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ZipKit.framework;
+			remoteRef = 45CA608417E463D700E6F835 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		45CA608717E463D700E6F835 /* libzipkit.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libzipkit.a;
+			remoteRef = 45CA608617E463D700E6F835 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		45CA608917E463D700E6F835 /* libtouchzipkit.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libtouchzipkit.a;
+			remoteRef = 45CA608817E463D700E6F835 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8D1107290486CEB800E47090 /* Resources */ = {
@@ -359,6 +439,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		45CA608D17E4675F00E6F835 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ZipKit;
+			targetProxy = 45CA608C17E4675F00E6F835 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -382,7 +470,6 @@
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
@@ -391,7 +478,11 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DIY Maps for Mac-Prefix.pch";
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/include/libxml2,
+					"$(SRCROOT)/../Submodules/**",
+				);
 				INFOPLIST_FILE = "DIY Maps for Mac-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
@@ -404,14 +495,17 @@
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DIY Maps for Mac-Prefix.pch";
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/include/libxml2,
+					"$(SRCROOT)/../Submodules/**",
+				);
 				INFOPLIST_FILE = "DIY Maps for Mac-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;

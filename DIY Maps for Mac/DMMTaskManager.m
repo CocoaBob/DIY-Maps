@@ -13,6 +13,9 @@
 #import "DMTask.h"
 #import "DMProfile.h"
 
+#import <ZipKit/ZKFileArchive.h>
+#import <ZipKit/ZKDefs.h>
+
 @interface DMMTaskManager ()
 
 @property (nonatomic, strong) NSMutableArray *tasks;
@@ -137,7 +140,7 @@ static DMMTaskManager *sharedInstance = nil;
         DMTask *aTask = (DMTask *)obj;
         if (aTask.state == DMPTaskStateSuccessful ||
             aTask.state == DMPTaskStateRunning) {
-            if (![[NSFileManager defaultManager] fileExistsAtPath:aTask.outputFolderPath]) {
+            if (![[NSFileManager defaultManager] fileExistsAtPath:[aTask.outputFolderPath stringByAppendingPathExtension:@"map"]]) {
                 aTask.state = DMPTaskStateReady;
             }
         }
@@ -207,9 +210,9 @@ static DMMTaskManager *sharedInstance = nil;
     }
 }
 
-- (void)currentTaskDidComplete {
+- (void)currentTaskDidCompleteWithStatus:(DMPTaskState)status {
     self.isProcessing = NO;
-    self.currentTask.state = DMPTaskStateSuccessful;
+    self.currentTask.state = status;
     self.currentTask.progress = 0;
     [[NSNotificationCenter defaultCenter] postNotificationName:DMPTaskDidUpdateNotification object:self.currentTask];
     [self saveTaskList];
@@ -268,7 +271,24 @@ static DMMTaskManager *sharedInstance = nil;
         }
         
         if (numberOfTilesCompleted == numberOfTiles) {
-            [self currentTaskDidComplete];
+            NSString *zipFilePath = [self.currentTask.outputFolderPath stringByAppendingPathExtension:@"map"];
+            ZKFileArchive *archive = [ZKFileArchive archiveWithArchivePath:zipFilePath];
+            NSInteger result = [archive deflateDirectory:self.currentTask.outputFolderPath
+                                          relativeToPath:[self.currentTask.outputFolderPath stringByDeletingLastPathComponent]
+                                       usingResourceFork:NO];
+            DMPTaskState resultStatus = DMPTaskStateSuccessful;
+            if (result == zkSucceeded) {
+                NSError *error;
+                [[NSFileManager defaultManager] removeItemAtPath:self.currentTask.outputFolderPath error:&error];
+                if (error) {
+                    NSLog(@"%@",[error localizedDescription]);
+                    resultStatus = DMPTaskStateError;
+                }
+            }
+            else {
+                resultStatus = DMPTaskStateError;
+            }
+            [self currentTaskDidCompleteWithStatus:resultStatus];
         }
     }
 }

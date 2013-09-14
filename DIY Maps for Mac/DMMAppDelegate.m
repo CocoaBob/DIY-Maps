@@ -35,7 +35,7 @@
     [self.taskListWindowController.window makeMainWindow];
     [self.taskListWindowController.window makeKeyAndOrderFront:nil];
 
-    self.singleTaskWindowController = [[DMMSingleTaskWindowController alloc] initWithWindowNibName:@"DMPSingleTaskWindowController"];
+    self.singleTaskWindowController = [[DMMSingleTaskWindowController alloc] initWithWindowNibName:@"DMMSingleTaskWindowController"];
 }
 
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename {

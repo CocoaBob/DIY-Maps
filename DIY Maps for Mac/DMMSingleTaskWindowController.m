@@ -1,5 +1,5 @@
 //
-//  DMPSingleTaskWindowController.m
+//  DMMSingleTaskWindowController.m
 //  DIY Maps for Mac
 //
 //  Created by CocoaBob on 16/08/13.

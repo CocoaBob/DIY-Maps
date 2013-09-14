@@ -35,6 +35,7 @@
 		45CA605B17E3C1BB00E6F835 /* DMProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA605A17E3C1BB00E6F835 /* DMProfile.m */; };
 		45CA606617E3C41800E6F835 /* DMTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA606317E3C41800E6F835 /* DMTask.m */; };
 		45CA607717E3C73800E6F835 /* DMImageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA607617E3C73800E6F835 /* DMImageProcessor.m */; };
+		45F9814817E4684500842EB1 /* libtouchzipkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45CA609A17E4680F00E6F835 /* libtouchzipkit.a */; };
 		5B4CB8EC1797ED8C00F0CC19 /* img-cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B4CB8DD1797ED8C00F0CC19 /* img-cancel@2x.png */; };
 		5B4CB8ED1797ED8C00F0CC19 /* img-check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B4CB8DE1797ED8C00F0CC19 /* img-check@2x.png */; };
 		5B4CB8EE1797ED8C00F0CC19 /* img-check2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B4CB8DF1797ED8C00F0CC19 /* img-check2@2x.png */; };
@@ -58,6 +59,37 @@
 		5BFC1B651795826200BB407D /* BVReorderTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC1B641795826200BB407D /* BVReorderTableView.m */; };
 		5BFC1D851795976700BB407D /* DMFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC1D841795976700BB407D /* DMFileManager.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		456D015817E46853000C26E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 45CA608F17E4680F00E6F835 /* ZipKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = CB6F0A9717484BDE00F91524;
+			remoteInfo = touchzipkit;
+		};
+		45CA609517E4680F00E6F835 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 45CA608F17E4680F00E6F835 /* ZipKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CB6F09CE174838FC00F91524;
+			remoteInfo = ZipKit;
+		};
+		45CA609717E4680F00E6F835 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 45CA608F17E4680F00E6F835 /* ZipKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CB6F0A4617483E5000F91524;
+			remoteInfo = zipkit;
+		};
+		45CA609917E4680F00E6F835 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 45CA608F17E4680F00E6F835 /* ZipKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CB6F0A9817484BDE00F91524;
+			remoteInfo = touchzipkit;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		45184EDE17E3B37800AC69C0 /* DDXMLElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElementAdditions.h; sourceTree = "<group>"; };
@@ -116,6 +148,7 @@
 		45CA606317E3C41800E6F835 /* DMTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTask.m; sourceTree = "<group>"; };
 		45CA607517E3C73800E6F835 /* DMImageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMImageProcessor.h; sourceTree = "<group>"; };
 		45CA607617E3C73800E6F835 /* DMImageProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMImageProcessor.m; sourceTree = "<group>"; };
+		45CA608F17E4680F00E6F835 /* ZipKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZipKit.xcodeproj; path = ZipKit/ZipKit.xcodeproj; sourceTree = "<group>"; };
 		5B121CDE17B25EC8007EB6EB /* DMConfigs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMConfigs.h; sourceTree = "<group>"; };
 		5B4CB8DD1797ED8C00F0CC19 /* img-cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img-cancel@2x.png"; sourceTree = "<group>"; };
 		5B4CB8DE1797ED8C00F0CC19 /* img-check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img-check@2x.png"; sourceTree = "<group>"; };
@@ -154,6 +187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45F9814817E4684500842EB1 /* libtouchzipkit.a in Frameworks */,
 				5B6E2E77164D274E00A91687 /* CoreGraphics.framework in Frameworks */,
 				5B6E2E75164D274E00A91687 /* Foundation.framework in Frameworks */,
 				5B6E2EFB164D5B7E00A91687 /* QuartzCore.framework in Frameworks */,
@@ -225,6 +259,7 @@
 				45CA600417E3BA1300E6F835 /* MHWDirectoryWatcher */,
 				45CA604517E3BB2B00E6F835 /* minizip */,
 				459A176E17948FC6009CDE06 /* ZipFile */,
+				45CA608F17E4680F00E6F835 /* ZipKit.xcodeproj */,
 				45CA602617E3BA3000E6F835 /* ZKRevealingTableViewCell */,
 			);
 			name = Submodules;
@@ -338,6 +373,16 @@
 			);
 			name = "DIY Maps Shared";
 			path = "../DIY Maps Shared";
+			sourceTree = "<group>";
+		};
+		45CA609017E4680F00E6F835 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				45CA609617E4680F00E6F835 /* ZipKit.framework */,
+				45CA609817E4680F00E6F835 /* libzipkit.a */,
+				45CA609A17E4680F00E6F835 /* libtouchzipkit.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		5B0BAFE31796928A00FCA9A6 /* Services */ = {
@@ -482,6 +527,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				456D015917E46853000C26E3 /* PBXTargetDependency */,
 			);
 			name = "DIY Maps for iOS";
 			productName = DIYMaps;
@@ -508,12 +554,42 @@
 			mainGroup = 5B6E2E63164D274E00A91687;
 			productRefGroup = 5B6E2E6F164D274E00A91687 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 45CA609017E4680F00E6F835 /* Products */;
+					ProjectRef = 45CA608F17E4680F00E6F835 /* ZipKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				5B6E2E6D164D274E00A91687 /* DIY Maps for iOS */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		45CA609617E4680F00E6F835 /* ZipKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ZipKit.framework;
+			remoteRef = 45CA609517E4680F00E6F835 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		45CA609817E4680F00E6F835 /* libzipkit.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libzipkit.a;
+			remoteRef = 45CA609717E4680F00E6F835 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		45CA609A17E4680F00E6F835 /* libtouchzipkit.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libtouchzipkit.a;
+			remoteRef = 45CA609917E4680F00E6F835 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		5B6E2E6C164D274E00A91687 /* Resources */ = {
@@ -579,11 +655,18 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		456D015917E46853000C26E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = touchzipkit;
+			targetProxy = 456D015817E46853000C26E3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
 		5B6E2E90164D274E00A91687 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -610,7 +693,6 @@
 		5B6E2E91164D274E00A91687 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -631,14 +713,17 @@
 		5B6E2E93164D274E00A91687 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DIY Maps for iOS-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/include/libxml2,
+					"$(SRCROOT)/../Submodules/**",
+				);
 				INFOPLIST_FILE = "DIY Maps for iOS-Info.plist";
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "DIY Maps";
-				USER_HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -646,14 +731,17 @@
 		5B6E2E94164D274E00A91687 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DIY Maps for iOS-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/include/libxml2,
+					"$(SRCROOT)/../Submodules/**",
+				);
 				INFOPLIST_FILE = "DIY Maps for iOS-Info.plist";
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "DIY Maps";
-				USER_HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
