@@ -21,6 +21,7 @@
 		45563A0117C028840094876F /* StopTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 455639FC17C028840094876F /* StopTemplate.pdf */; };
 		45577E4C17C1762C008151DB /* DMMTaskListRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45577E4B17C1762C008151DB /* DMMTaskListRowView.m */; };
 		45577E4F17C17662008151DB /* DMMTaskListCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45577E4E17C17662008151DB /* DMMTaskListCellView.m */; };
+		456D017217E48DE5000C26E3 /* DMMTaskOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 456D016D17E482CF000C26E3 /* DMMTaskOperation.m */; };
 		45B3741217C51E1F0098BBDC /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45B3741117C51E1F0098BBDC /* libxml2.dylib */; };
 		45CA605717E3C1B800E6F835 /* DMProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA605617E3C1B800E6F835 /* DMProfile.m */; };
 		45CA606017E3C41100E6F835 /* DMTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA605D17E3C41100E6F835 /* DMTask.m */; };
@@ -300,10 +301,10 @@
 		45CA607817E3C83200E6F835 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				45CA607917E3C83800E6F835 /* DMMTaskManager.h */,
-				45CA607A17E3C83800E6F835 /* DMMTaskManager.m */,
 				456D016C17E482CF000C26E3 /* DMMTaskOperation.h */,
 				456D016D17E482CF000C26E3 /* DMMTaskOperation.m */,
+				45CA607917E3C83800E6F835 /* DMMTaskManager.h */,
+				45CA607A17E3C83800E6F835 /* DMMTaskManager.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -434,6 +435,7 @@
 				45CA607B17E3C83800E6F835 /* DMMTaskManager.m in Sources */,
 				4505E33817C7FC99005C56C6 /* DDXMLDocument.m in Sources */,
 				45577E4F17C17662008151DB /* DMMTaskListCellView.m in Sources */,
+				456D017217E48DE5000C26E3 /* DMMTaskOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

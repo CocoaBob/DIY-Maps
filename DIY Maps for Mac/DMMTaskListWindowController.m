@@ -193,7 +193,8 @@
 }
 
 - (void)showResultOfTask:(DMTask *)task {
-    [[NSWorkspace sharedWorkspace] selectFile:task.outputFolderPath inFileViewerRootedAtPath:nil];
+    [[NSWorkspace sharedWorkspace] selectFile:[task.outputFolderPath stringByAppendingPathExtension:@"map"]
+                     inFileViewerRootedAtPath:nil];
 }
 
 - (void)removeSelectedTasks {
@@ -239,10 +240,7 @@
             task.state = DMPTaskStateReady;
             [[NSNotificationCenter defaultCenter] postNotificationName:DMPTaskDidUpdateNotification object:task];
             [[DMMTaskManager shared] saveTaskList];
-            if ([DMMTaskManager shared].isProcessing) {
-                [[DMMTaskManager shared] stopProcessing];
-                [[DMMTaskManager shared] runTaskAtIndex:taskIndex+1];
-            }
+            [[DMMTaskManager shared] skipCurrent];
         }
             break;
         case DMPTaskStateSuccessful:
@@ -262,9 +260,7 @@
             [[DMMTaskManager shared] pauseProcessing];
         }
         else {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                [[DMMTaskManager shared] runTaskAtIndex:0];
-            });
+            [[DMMTaskManager shared] startProcessing];
         }
     }
 }
