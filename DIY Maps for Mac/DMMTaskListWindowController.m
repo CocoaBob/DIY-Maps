@@ -87,7 +87,8 @@
     }
     else if ([keyPath isEqualToString:@"isProcessing"] ||
              [keyPath isEqualToString:@"isSuspended"]) {
-        BOOL isProcessing = [DMMTaskManager shared].isProcessing,isSuspended = [DMMTaskManager shared].isSuspended;
+        BOOL isProcessing = [DMMTaskManager shared].isProcessing;
+        BOOL isSuspended = [DMMTaskManager shared].isSuspended;
         if (isProcessing && !isSuspended) {
             [playPauseButtonItem setImage:[NSImage imageNamed:@"PauseTemplate"]];
             [self.progressIndicator startAnimation:nil];
@@ -260,7 +261,9 @@
             [[DMMTaskManager shared] pauseProcessing];
         }
         else {
-            [[DMMTaskManager shared] startProcessing];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[DMMTaskManager shared] startProcessing];
+            });
         }
     }
 }

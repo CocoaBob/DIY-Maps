@@ -12,4 +12,7 @@
 
 @property (nonatomic, strong) DMTask *task;
 
+- (void)pauseImageProcessing;
+- (void)continueImageProcessing;
+
 @end

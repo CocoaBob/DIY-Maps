@@ -43,12 +43,16 @@ static DMMTaskManager *sharedInstance = nil;
         [self loadTaskList];
         self.processQueue = [NSOperationQueue new];
         self.processQueue.maxConcurrentOperationCount = 1;
+        [self.processQueue addObserver:self forKeyPath:@"operationCount" options:0 context:NULL];
+        [self.processQueue addObserver:self forKeyPath:@"isSuspended" options:0 context:NULL];
     }
     return self;
 }
 
 - (void)dealloc {
     [self removeObserver:self forKeyPath:@"tasks"];
+    [self.processQueue removeObserver:self forKeyPath:@"operationCount"];
+    [self.processQueue removeObserver:self forKeyPath:@"isSuspended"];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -57,6 +61,20 @@ static DMMTaskManager *sharedInstance = nil;
         [self didChangeValueForKey:@"tasksCount"];
         [[NSNotificationCenter defaultCenter] postNotificationName:DMPTaskListDidUpdateNotification object:nil];
         [self saveTaskList];
+    }
+    else if ([keyPath isEqualToString:@"operationCount"] ||
+             [keyPath isEqualToString:@"isSuspended"]) {
+        if (self.isSuspended != [self.processQueue isSuspended]) {
+            self.isSuspended = [self.processQueue isSuspended];
+            DMMTaskOperation *operation = [self currentRunningOperation];
+            if (operation) {
+                if (self.isSuspended)
+                    [operation pauseImageProcessing];
+                else
+                    [operation continueImageProcessing];
+            }
+        }
+        self.isProcessing = self.isSuspended?YES:([self.processQueue operationCount] > 0);
     }
 }
 
@@ -145,6 +163,17 @@ static DMMTaskManager *sharedInstance = nil;
     [[NSNotificationCenter defaultCenter] postNotificationName:DMPTaskListDidUpdateNotification object:nil];
 }
 
+- (DMMTaskOperation *)currentRunningOperation {
+    __block DMMTaskOperation *operation = nil;
+    [[self.processQueue operations] enumerateObjectsUsingBlock:^(DMMTaskOperation *obj, NSUInteger idx, BOOL *stop) {
+        if ([obj isExecuting]) {
+            operation = obj;
+            *stop = YES;
+        }
+    }];
+    return operation;
+}
+
 #pragma mark Run Tasks
 
 - (void)startProcessing {
@@ -164,12 +193,16 @@ static DMMTaskManager *sharedInstance = nil;
     [self.processQueue setSuspended:NO];
 }
 
-- (void)stopProcessing {
-    [self.processQueue cancelAllOperations];
+- (void)skipCurrent {
+    DMMTaskOperation *operation = [self currentRunningOperation];
+    if (operation) {
+        [operation cancel];
+    }
 }
 
-- (void)skipCurrent {
-    
+- (void)stopProcessing {
+    [self.processQueue cancelAllOperations];
+//    self.isProcessing = NO;
 }
 
 @end
