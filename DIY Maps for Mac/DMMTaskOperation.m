@@ -110,8 +110,7 @@
     
     // Calculate tiles count
     NSUInteger tileSize = [DMTask tileSizeFromSizeIndex:self.task.tileSizeIndex];
-    numberOfTiles = 0;
-    numberOfTilesCompleted = 0;
+    numberOfTiles = numberOfTilesCompleted = 0;
     for (CGFloat scale = self.task.minScalePower; scale <= self.task.maxScalePower; ++scale) {
         CGFloat zoomScale = pow(2,scale);
         CGFloat adjustedZoom = zoomScale * self.task.sourcePixelSize.width / self.task.sourceImageSize.width;
@@ -123,19 +122,24 @@
         numberOfTiles += ceil (scaledImageHeight / tileSize) * ceil (scaledImageWidth / tileSize) ;
     }
     
-    // Verify output folder path
+    // Prepare output folder
     if (![[NSFileManager defaultManager] fileExistsAtPath:self.task.outputFolderPath])
         [[NSFileManager defaultManager] createDirectoryAtPath:self.task.outputFolderPath withIntermediateDirectories:YES attributes:nil error:NULL];
     
-    // Write map profile
+    // Write profile
     NSString *profilePath = [self.task.outputFolderPath stringByAppendingPathComponent:@"profile.xml"];
     NSData *profileData = [[self.task mapProfile] xmlData];
     if (profileData) {
         NSError *error = nil;
         [profileData writeToFile:profilePath options:NSDataWritingAtomic error:&error];
         if (error) {
-            NSLog(@"%@\n%@",[error localizedDescription],[NSThread callStackSymbols]);
+            [self handleError:error];
+            return;
         }
+    }
+    else {
+        [self handleError:[NSError errorWithDomain:@"" code:0 userInfo:@{NSLocalizedDescriptionKey:@"No profile xml data."}]];
+        return;
     }
     
     // Generate slices for each scale level
@@ -212,17 +216,15 @@
     
     if (numberOfTilesCompleted == numberOfTiles) {
         NSError *error;
-        DMPTaskState resultStatus = DMPTaskStateSuccessful;
         
         // Check if all images are processed
         NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:self.task.outputFolderPath
                                                                                 error:&error];
         if (error) {
-            NSLog(@"%s %@ %@",__func__,[error localizedDescription],[error localizedFailureReason]);
-            resultStatus = DMPTaskStateError;
+            [self handleError:error];
         }
         else if ([contents count] != numberOfTiles + 1) {
-            resultStatus = DMPTaskStateError;
+            [self handleError:[NSError errorWithDomain:@"" code:0 userInfo:@{NSLocalizedDescriptionKey:@"Some output images are missing!"}]];
         }
         else {
             // Generate final package
@@ -234,16 +236,15 @@
             if (result == zkSucceeded) {
                 [[NSFileManager defaultManager] removeItemAtPath:self.task.outputFolderPath error:&error];
                 if (error) {
-                    NSLog(@"%s %@ %@",__func__,[error localizedDescription],[error localizedFailureReason]);
-                    resultStatus = DMPTaskStateError;
+                    [self handleError:error];
                 }
             }
             else {
-                resultStatus = DMPTaskStateError;
+                [self handleError:[NSError errorWithDomain:@"" code:0 userInfo:@{NSLocalizedDescriptionKey:@"Failed to create package!"}]];
             }
         }
         
-        [self taskDidCompleteWithStatus:resultStatus];
+        [self taskDidCompleteWithStatus:DMPTaskStateSuccessful];
     }
 }
 
@@ -252,6 +253,13 @@
     self.task.progress = 0;
     [[NSNotificationCenter defaultCenter] postNotificationName:DMPTaskDidUpdateNotification object:self.task];
     [self doFinish];
+}
+
+- (void)handleError:(NSError *)error {
+    if (error) {
+        NSLog(@"%@ %@\n%@",[error localizedDescription],[error localizedFailureReason],[NSThread callStackSymbols]);
+    }
+    [self taskDidCompleteWithStatus:DMPTaskStateError];
 }
 
 @end
