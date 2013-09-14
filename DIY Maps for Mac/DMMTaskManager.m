@@ -152,8 +152,7 @@ static DMMTaskManager *sharedInstance = nil;
 - (void)verifyAllTasks {
     [self.tasks enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         DMTask *aTask = (DMTask *)obj;
-        if (aTask.state == DMPTaskStateSuccessful ||
-            aTask.state == DMPTaskStateRunning) {
+        if (aTask.state != DMPTaskStateRunning) {
             if (![[NSFileManager defaultManager] fileExistsAtPath:[aTask.outputFolderPath stringByAppendingPathExtension:@"map"]]) {
                 aTask.state = DMPTaskStateReady;
             }
@@ -186,11 +185,19 @@ static DMMTaskManager *sharedInstance = nil;
 }
 
 - (void)pauseProcessing {
+    [self.processQueue willChangeValueForKey:@"isSuspended"];
     [self.processQueue setSuspended:YES];
+    [self.processQueue didChangeValueForKey:@"isSuspended"];
+    DMMTaskOperation *operation = [self currentRunningOperation];
+    [operation pauseImageProcessing];
 }
 
 - (void)continueProcessing {
+    [self.processQueue willChangeValueForKey:@"isSuspended"];
     [self.processQueue setSuspended:NO];
+    [self.processQueue didChangeValueForKey:@"isSuspended"];
+    DMMTaskOperation *operation = [self currentRunningOperation];
+    [operation continueImageProcessing];
 }
 
 - (void)skipCurrent {
@@ -202,7 +209,6 @@ static DMMTaskManager *sharedInstance = nil;
 
 - (void)stopProcessing {
     [self.processQueue cancelAllOperations];
-//    self.isProcessing = NO;
 }
 
 @end
