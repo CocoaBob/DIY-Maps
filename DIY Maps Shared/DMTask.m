@@ -48,22 +48,22 @@
 - (id)initWithCoder:(NSCoder *)coder {
     self = [super init];
     if (self) {
-        self.jpgQuality = [coder decodeFloatForKey:@"jpgQuality"];
-        self.minScalePower = [coder decodeIntForKey:@"minScalePower"];
-        self.maxScalePower = [coder decodeIntForKey:@"maxScalePower"];
+        _jpgQuality = [coder decodeFloatForKey:@"jpgQuality"];
+        _minScalePower = [coder decodeIntForKey:@"minScalePower"];
+        _maxScalePower = [coder decodeIntForKey:@"maxScalePower"];
 #if TARGET_OS_IPHONE
         _sourcePixelSize = [coder decodeCGSizeForKey:@"sourcePixelSize"];
-        self.sourceImageSize = [coder decodeCGSizeForKey:@"sourceImageSize"];
+        _sourceImageSize = [coder decodeCGSizeForKey:@"sourceImageSize"];
 #elif TARGET_OS_MAC
         _sourcePixelSize = [coder decodeSizeForKey:@"sourcePixelSize"];
-        self.sourceImageSize = [coder decodeSizeForKey:@"sourceImageSize"];
+        _sourceImageSize = [coder decodeSizeForKey:@"sourceImageSize"];
 #endif
-        self.tileSizeIndex = [coder decodeIntForKey:@"tileSizeIndex"];
-        self.outputFormatIndex = [coder decodeIntForKey:@"outputFormatIndex"];
-        self.inputFilePath = [coder decodeObjectForKey:@"inputFilePath"];
-        self.outputFolderPath = [coder decodeObjectForKey:@"outputFolderPath"];
-        self.state = [coder decodeIntForKey:@"state"];
-        self.logs = [coder decodeObjectForKey:@"logs"];
+        _tileSizeIndex = [coder decodeIntForKey:@"tileSizeIndex"];
+        _outputFormatIndex = [coder decodeIntForKey:@"outputFormatIndex"];
+        _inputFilePath = [coder decodeObjectForKey:@"inputFilePath"];
+        _outputFolderPath = [coder decodeObjectForKey:@"outputFolderPath"];
+        _state = [coder decodeIntForKey:@"state"];
+        _logs = [coder decodeObjectForKey:@"logs"];
     }
     return self;
 }

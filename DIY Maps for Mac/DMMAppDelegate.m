@@ -36,6 +36,7 @@
     [self.taskListWindowController.window makeKeyAndOrderFront:nil];
 
     self.singleTaskWindowController = [[DMMSingleTaskWindowController alloc] initWithWindowNibName:@"DMMSingleTaskWindowController"];
+    [self.singleTaskWindowController window];// Load the nib
 }
 
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename {

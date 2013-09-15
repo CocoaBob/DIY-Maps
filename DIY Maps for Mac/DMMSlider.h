@@ -17,5 +17,8 @@
 @interface DMMSlider : NSSlider
 
 @property (nonatomic, assign) IBOutlet id<DMMSliderDelegate> delegate;
+@property (nonatomic, assign) BOOL shouldShowPopover;
+
+- (void)updatePopoverContentView;
 
 @end

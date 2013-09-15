@@ -50,7 +50,7 @@
 #pragma mark Mouse
 
 - (void)mouseDown:(NSEvent *)theEvent {
-    [self showPopover:YES];// Mouse Down
+    [self showPopover:NO];// Mouse Down
     [super mouseDown:theEvent];
     [self hidePopover:YES];// Mouse Up
 }
@@ -71,6 +71,7 @@
 #pragma mark Popover
 
 - (void)showPopover:(BOOL)animated {
+    self.shouldShowPopover = YES;
     if (![self.delegate respondsToSelector:@selector(contentViewForSlider:)]) {
         return;
     }
@@ -118,9 +119,16 @@
 }
 
 - (void)hidePopover:(BOOL)animated {
+    self.shouldShowPopover = NO;
     if (self.popover.isShown) {
         self.popover.animates = animated;
         [self.popover close];
+    }
+}
+
+- (void)updatePopoverContentView {
+    if (self.shouldShowPopover && !self.popover.isShown) {
+        [self showPopover:NO];
     }
 }
 
