@@ -23,6 +23,7 @@
 		45577E4F17C17662008151DB /* DMMTaskListCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45577E4E17C17662008151DB /* DMMTaskListCellView.m */; };
 		456D017217E48DE5000C26E3 /* DMMTaskOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 456D016D17E482CF000C26E3 /* DMMTaskOperation.m */; };
 		456D017517E4A417000C26E3 /* DMMImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 456D017417E4A417000C26E3 /* DMMImageOperation.m */; };
+		456D017F17E51888000C26E3 /* DMMSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 456D017E17E51888000C26E3 /* DMMSlider.m */; };
 		45B3741217C51E1F0098BBDC /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45B3741117C51E1F0098BBDC /* libxml2.dylib */; };
 		45CA605717E3C1B800E6F835 /* DMProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA605617E3C1B800E6F835 /* DMProfile.m */; };
 		45CA606017E3C41100E6F835 /* DMTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA605D17E3C41100E6F835 /* DMTask.m */; };
@@ -103,6 +104,8 @@
 		456D016D17E482CF000C26E3 /* DMMTaskOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMTaskOperation.m; sourceTree = "<group>"; };
 		456D017317E4A417000C26E3 /* DMMImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMImageOperation.h; sourceTree = "<group>"; };
 		456D017417E4A417000C26E3 /* DMMImageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMImageOperation.m; sourceTree = "<group>"; };
+		456D017D17E51888000C26E3 /* DMMSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMSlider.h; sourceTree = "<group>"; };
+		456D017E17E51888000C26E3 /* DMMSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMSlider.m; sourceTree = "<group>"; };
 		45B3741117C51E1F0098BBDC /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		45CA605517E3C1B800E6F835 /* DMProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMProfile.h; sourceTree = "<group>"; };
 		45CA605617E3C1B800E6F835 /* DMProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMProfile.m; sourceTree = "<group>"; };
@@ -268,6 +271,8 @@
 		45577E5117C178B6008151DB /* SingleTaskWindowController */ = {
 			isa = PBXGroup;
 			children = (
+				456D017D17E51888000C26E3 /* DMMSlider.h */,
+				456D017E17E51888000C26E3 /* DMMSlider.m */,
 				5BD3A15917BE5C3700AE0C2F /* DMMSingleTaskWindowController.h */,
 				5BD3A15A17BE5C3700AE0C2F /* DMMSingleTaskWindowController.m */,
 				5BD3A15B17BE5C3700AE0C2F /* DMMSingleTaskWindowController.xib */,
@@ -428,6 +433,7 @@
 				4505E33917C7FC99005C56C6 /* DDXMLElement.m in Sources */,
 				5BD3A15C17BE5C3700AE0C2F /* DMMSingleTaskWindowController.m in Sources */,
 				45577E4C17C1762C008151DB /* DMMTaskListRowView.m in Sources */,
+				456D017F17E51888000C26E3 /* DMMSlider.m in Sources */,
 				4505E33617C7FC99005C56C6 /* DDXMLElementAdditions.m in Sources */,
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				4505E33A17C7FC99005C56C6 /* DDXMLNode.m in Sources */,

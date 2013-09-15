@@ -12,10 +12,13 @@
 #import "DMTask.h"
 #import "DMMTaskManager.h"
 #import "DMImageProcessor.h"
+#import "DMMSlider.h"
 
-@interface DMMSingleTaskWindowController () {
-    IBOutlet NSSlider *minScaleSlider,*maxScaleSlider;
+@interface DMMSingleTaskWindowController () <DMMSliderDelegate> {
+    IBOutlet DMMSlider *minScaleSlider,*maxScaleSlider;
 }
+
+@property (nonatomic, strong) NSImage *srcImage;
 
 @end
 
@@ -89,6 +92,34 @@
                                                              scale:pow(2, self.maxScalePower)];
         }
     }
+}
+
+#pragma mark DMMSliderDelegate
+
+- (NSView *)contentViewForSlider:(DMMSlider *)slider {
+    if (!self.srcImage) {
+        self.srcImage = [[NSImage alloc] initWithContentsOfFile:self.task.inputFilePath];
+    }
+    CGFloat zoomScalePower = (slider == minScaleSlider)?self.minScalePower:self.maxScalePower;
+    
+    static const CGFloat previewSize = 150;
+    CGFloat zoomScale = pow(2, zoomScalePower);
+	CGFloat adjustedZoom = zoomScale * self.task.sourcePixelSize.width / self.task.sourceImageSize.width;
+	int outputWidth = MIN(floor (self.task.sourcePixelSize.width * zoomScale), previewSize);
+	int outputHeight = MIN(floor (self.task.sourcePixelSize.height * zoomScale), previewSize);
+	NSRect sourceRect = NSMakeRect(0, 0, self.task.sourceImageSize.width, self.task.sourceImageSize.height);
+    sourceRect.origin.x = (outputWidth - previewSize)/2.0 / adjustedZoom;
+    sourceRect.origin.y = (outputHeight - previewSize)/2.0 / adjustedZoom;
+    sourceRect.size.width = outputWidth / adjustedZoom;
+    sourceRect.size.height = outputHeight / adjustedZoom;
+    
+    NSImage *previewImage = [DMImageProcessor thumbnailWithImage:self.srcImage srcRect:sourceRect destSize:CGSizeMake(outputWidth, outputHeight)];
+    
+    NSImageView *imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, outputWidth, outputHeight)];
+    imageView.image = previewImage;
+    imageView.imageFrameStyle = NSImageFrameGroove;
+    
+    return imageView;
 }
 
 #pragma mark Load/Save tasks

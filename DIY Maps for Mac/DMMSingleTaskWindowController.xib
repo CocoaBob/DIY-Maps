@@ -49,13 +49,14 @@
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Os-iH-soo">
+                                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Os-iH-soo" customClass="DMMSlider">
                                     <rect key="frame" x="127" y="69" width="145" height="16"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <sliderCell key="cell" controlSize="mini" continuous="YES" state="on" alignment="left" minValue="-10" maxValue="10" tickMarkPosition="above" numberOfTickMarks="21" allowsTickMarkValuesOnly="YES" sliderType="linear" id="u2q-54-8LW"/>
                                     <connections>
                                         <action selector="takeIntValueFrom:" target="AYJ-6U-Ldb" id="MFK-T4-kHZ"/>
                                         <binding destination="-2" name="value" keyPath="minScalePower" id="kSr-sN-Qat"/>
+                                        <outlet property="delegate" destination="-2" id="6ts-fE-CJz"/>
                                     </connections>
                                 </slider>
                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iqX-Wl-bTa">
@@ -86,13 +87,14 @@
                                         <outlet property="formatter" destination="gxX-ov-M6h" id="HJc-gt-93d"/>
                                     </connections>
                                 </textField>
-                                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tuw-oW-ZGi">
+                                <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tuw-oW-ZGi" customClass="DMMSlider">
                                     <rect key="frame" x="127" y="30" width="145" height="16"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <sliderCell key="cell" controlSize="mini" continuous="YES" state="on" alignment="left" minValue="-10" maxValue="10" tickMarkPosition="above" numberOfTickMarks="21" allowsTickMarkValuesOnly="YES" sliderType="linear" id="nKo-BH-8Pr"/>
                                     <connections>
                                         <action selector="takeIntValueFrom:" target="0iM-Z0-Cvq" id="JE0-vF-b7s"/>
                                         <binding destination="-2" name="value" keyPath="maxScalePower" id="NBK-4J-CiR"/>
+                                        <outlet property="delegate" destination="-2" id="ut0-hp-qnG"/>
                                     </connections>
                                 </slider>
                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0iM-Z0-Cvq">

@@ -142,8 +142,8 @@
     }
     
     // Generate slices for each scale level
-    for (double currentScale = [self.task minScalePower]; currentScale <= [self.task maxScalePower]; ++currentScale) {
-        [self sliceImageForZoomScale:pow(2, currentScale)];
+    for (double currentScalePower = [self.task minScalePower]; currentScalePower <= [self.task maxScalePower]; ++currentScalePower) {
+        [self sliceImageForZoomScale:pow(2, currentScalePower)];
     }
 }
 
@@ -172,8 +172,8 @@
                 [self doFinish];
                 return;
             }
-			tileWidth = ((outputWidth - tileX) < tileSize)? (outputWidth - tileX) : tileSize;
-			tileHeight = ((tileY - 0) < tileSize)? (tileY - 0) : tileSize;
+			tileWidth = MIN((outputWidth - tileX), tileSize);
+			tileHeight = MIN((tileY - 0), tileSize);
             
 			sourceRect.origin.x = tileX / adjustedZoom;
 			sourceRect.origin.y = (tileY - tileHeight) / adjustedZoom;
