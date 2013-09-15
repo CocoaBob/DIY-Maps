@@ -76,7 +76,11 @@
     }
     
     [[self.popover.contentViewController.view subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
     NSView *contentView = [self.delegate contentViewForSlider:self];
+    if (!contentView)
+        return;
+    
     self.popover.contentSize = contentView.frame.size;
     [self.popover.contentViewController.view addSubview:contentView];
     self.popover.animates = animated;

@@ -54,8 +54,10 @@
                                                       usingBlock:^(NSNotification *note) {
                                                           DMTask *updatedTask = [note object];
                                                           NSUInteger taskIndex = [[DMMTaskManager shared] indexOfTask:updatedTask];
-                                                          [taskListTableView reloadDataForRowIndexes:[NSIndexSet indexSetWithIndex:taskIndex]
-                                                                                       columnIndexes:[NSIndexSet indexSetWithIndex:0]];
+                                                          if (taskIndex < [[DMMTaskManager shared] tasksCount]) {
+                                                              [taskListTableView reloadDataForRowIndexes:[NSIndexSet indexSetWithIndex:taskIndex]
+                                                                                           columnIndexes:[NSIndexSet indexSetWithIndex:0]];
+                                                          }
                                                       }];
     }
     return self;

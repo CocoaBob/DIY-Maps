@@ -16,6 +16,19 @@
 
 @implementation DMTask
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"<%@ %p> %@",
+            NSStringFromClass([self class]), self,
+            @{@"inputFilePath":self.inputFilePath,
+              @"outputFolderPath":self.outputFolderPath,
+              @"sourcePixelSize":NSStringFromSize(self.sourcePixelSize),
+              @"sourceImageSize":NSStringFromSize(self.sourceImageSize),
+              @"minScalePower":@(self.minScalePower),
+              @"maxScalePower":@(self.maxScalePower),
+              @"outputFormat":[DMTask fileExtensionFromFormat:self.outputFormatIndex],
+              @"jpgQuality":@(self.jpgQuality)}];
+}
+
 - (id)init {
     self = [super init];
     if (self) {

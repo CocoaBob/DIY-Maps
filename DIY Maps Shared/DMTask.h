@@ -33,7 +33,11 @@ typedef NS_ENUM(NSUInteger, DMPOutputFormat) {
 
 @property (nonatomic, assign) int minScalePower,maxScalePower;
 @property (nonatomic, assign) double jpgQuality;
+#if TARGET_OS_IPHONE
 @property (nonatomic, assign) CGSize sourcePixelSize, sourceImageSize;
+#elif TARGET_OS_MAC
+@property (nonatomic, assign) NSSize sourcePixelSize, sourceImageSize;
+#endif
 @property (nonatomic, strong) NSString *inputFilePath,*outputFolderPath;
 @property (nonatomic, assign) DMPTileSize tileSizeIndex;
 @property (nonatomic, assign) DMPOutputFormat outputFormatIndex;

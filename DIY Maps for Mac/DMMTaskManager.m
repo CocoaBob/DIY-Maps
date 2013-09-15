@@ -114,6 +114,10 @@ static DMMTaskManager *sharedInstance = nil;
     return [self.tasks count];
 }
 
+- (NSUInteger)indexOfTask:(DMTask *)task {
+    return [self.tasks indexOfObject:task];
+}
+
 - (DMTask *)taskAtIndex:(NSUInteger)index {
     if ((index + 1) > [self tasksCount]) {
         return nil;
@@ -121,8 +125,15 @@ static DMMTaskManager *sharedInstance = nil;
     return [self.tasks objectAtIndex:index];
 }
 
-- (NSUInteger)indexOfTask:(DMTask *)task {
-    return [self.tasks indexOfObject:task];
+- (DMTask *)taskWithInputPath:(NSString *)intputPath {
+    __block DMTask *returnValue = nil;
+    [self.tasks enumerateObjectsUsingBlock:^(DMTask *obj, NSUInteger idx, BOOL *stop) {
+        if ([intputPath isEqualToString:obj.inputFilePath]) {
+            returnValue = obj;
+            *stop = YES;
+        }
+    }];
+    return returnValue;
 }
 
 - (void)addTask:(DMTask *)newTask {
@@ -146,20 +157,27 @@ static DMMTaskManager *sharedInstance = nil;
 
 - (void)loadTaskList {
     NSData *savedData = DefaultsGet(object, @"TaskList");
-    self.tasks = (savedData)?[[NSKeyedUnarchiver unarchiveObjectWithData:savedData] mutableCopy]:[@[] mutableCopy];
+    _tasks = (savedData)?[[NSKeyedUnarchiver unarchiveObjectWithData:savedData] mutableCopy]:[@[] mutableCopy];
 }
 
 - (void)verifyAllTasks {
+    __block BOOL updated = NO;
     [self.tasks enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         DMTask *aTask = (DMTask *)obj;
         if (aTask.state != DMPTaskStateRunning) {
             if (![[NSFileManager defaultManager] fileExistsAtPath:[aTask.outputFolderPath stringByAppendingPathExtension:@"map"]]) {
-                aTask.state = DMPTaskStateReady;
+                if (aTask.state != DMPTaskStateReady) {
+                    updated = YES;
+                    aTask.state = DMPTaskStateReady;
+                }
             }
         }
     }];
-    [self saveTaskList];
-    [[NSNotificationCenter defaultCenter] postNotificationName:DMPTaskListDidUpdateNotification object:nil];
+    
+    if (updated) {
+        [self saveTaskList];
+        [[NSNotificationCenter defaultCenter] postNotificationName:DMPTaskListDidUpdateNotification object:nil];
+    }
 }
 
 - (DMMTaskOperation *)currentRunningOperation {

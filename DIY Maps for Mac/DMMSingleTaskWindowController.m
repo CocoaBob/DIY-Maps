@@ -76,6 +76,11 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"task"]) {
         [self loadTask];
+        self.srcImage = nil;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSImage *newImage = [[NSImage alloc] initWithContentsOfFile:self.task.inputFilePath];
+            self.srcImage = newImage;
+        });
     }
     else {
         if ([keyPath isEqualToString:@"minScalePower"]) {
@@ -98,11 +103,10 @@
 #pragma mark DMMSliderDelegate
 
 - (NSView *)contentViewForSlider:(DMMSlider *)slider {
-    if (!self.srcImage) {
-        self.srcImage = [[NSImage alloc] initWithContentsOfFile:self.task.inputFilePath];
-    }
+    if (!self.srcImage)
+        return nil;
     
-    static const CGFloat previewPointSize = 150;
+    static const CGFloat previewPointSize = 256;
     
     CGFloat zoomScale = pow(2, (slider == minScaleSlider)?self.minScalePower:self.maxScalePower);
     int outputWidth = MIN(floor(self.task.sourceImageSize.width * zoomScale), previewPointSize);
