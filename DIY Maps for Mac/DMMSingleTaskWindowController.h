@@ -18,7 +18,7 @@
 @property (nonatomic, assign) NSUInteger tileSizeIndex;
 @property (nonatomic, assign) NSUInteger outputFormatIndex;
 @property (nonatomic, assign) CGFloat jpgQuality;
-@property (nonatomic, assign) CGFloat minScalePower,maxScalePower;
+@property (nonatomic, assign) int minScalePower,maxScalePower;
 @property (nonatomic, strong) NSString *minScaleLabel,*maxScaleLabel;
 
 - (IBAction)finishSetting:(id)sender;

@@ -22,7 +22,7 @@ static NSString* const DMProfilePackUserID = @"uid";
 
 @property (nonatomic, strong) NSString *imgExt;
 @property (nonatomic, assign) CGFloat mapWidth,mapHeight,tileSize;
-@property (nonatomic, assign) CGFloat minScalePower,maxScalePower;
+@property (nonatomic, assign) int minScalePower,maxScalePower;
 
 + (DMProfile *)profileWithXMLData:(NSData *)xmlData;
 - (NSData *)xmlData;

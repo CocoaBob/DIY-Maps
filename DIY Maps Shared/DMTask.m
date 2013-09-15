@@ -45,8 +45,8 @@
     self = [super init];
     if (self) {
         self.jpgQuality = [coder decodeFloatForKey:@"jpgQuality"];
-        self.minScalePower = [coder decodeIntForKey:@"minScaleIndex"];
-        self.maxScalePower = [coder decodeIntForKey:@"maxScaleIndex"];
+        self.minScalePower = [coder decodeIntForKey:@"minScalePower"];
+        self.maxScalePower = [coder decodeIntForKey:@"maxScalePower"];
 #if TARGET_OS_IPHONE
         self.sourcePixelSize = [coder decodeCGSizeForKey:@"sourcePixelSize"];
         self.sourceImageSize = [coder decodeCGSizeForKey:@"sourceImageSize"];
@@ -67,8 +67,8 @@
 - (void)encodeWithCoder:(NSCoder *)coder {
     if ([coder isKindOfClass:[NSKeyedArchiver class]]) {
         [coder encodeFloat:self.jpgQuality forKey:@"jpgQuality"];
-        [coder encodeInt:self.minScalePower forKey:@"minScaleIndex"];
-        [coder encodeInt:self.maxScalePower forKey:@"maxScaleIndex"];
+        [coder encodeInt:self.minScalePower forKey:@"minScalePower"];
+        [coder encodeInt:self.maxScalePower forKey:@"maxScalePower"];
 #if TARGET_OS_IPHONE
         [coder encodeCGSize:self.sourcePixelSize forKey:@"sourcePixelSize"];
         [coder encodeCGSize:self.sourceImageSize forKey:@"sourceImageSize"];

@@ -13,7 +13,7 @@
 @implementation DMProfile
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"<%@ %p> {\nimgExt\t\t\t: %@\nmapWidth\t\t: %f\nmapHeight\t\t: %f\ntileSize\t\t: %f\nminScalePower\t: %f\nmaxScalePower\t: %f\n}",
+    return [NSString stringWithFormat:@"<%@ %p> {\nimgExt\t\t\t: %@\nmapWidth\t\t: %f\nmapHeight\t\t: %f\ntileSize\t\t: %f\nminScalePower\t: %d\nmaxScalePower\t: %d\n}",
             NSStringFromClass([self class]), self,
             self.imgExt,
             self.mapWidth,
@@ -41,8 +41,8 @@
         profile.mapWidth = [[[mapInfo attributeForName:DMProfileMapWidth] stringValue] doubleValue];
         profile.mapHeight= [[[mapInfo attributeForName:DMProfileMapHeight] stringValue] doubleValue];
         profile.tileSize = [[[mapInfo attributeForName:DMProfileMapTileSize] stringValue] doubleValue];
-        profile.minScalePower = [[[mapInfo attributeForName:DMProfileMapMinScalePower] stringValue] doubleValue];
-        profile.maxScalePower = [[[mapInfo attributeForName:DMProfileMapMaxScalePower] stringValue] doubleValue];
+        profile.minScalePower = [[[mapInfo attributeForName:DMProfileMapMinScalePower] stringValue] intValue];
+        profile.maxScalePower = [[[mapInfo attributeForName:DMProfileMapMaxScalePower] stringValue] intValue];
         return profile;
     }
 }

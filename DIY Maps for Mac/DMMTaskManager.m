@@ -119,7 +119,7 @@ static DMMTaskManager *sharedInstance = nil;
 }
 
 - (DMTask *)taskAtIndex:(NSUInteger)index {
-    if ((index + 1) > [self tasksCount]) {
+    if (index >= [self tasksCount]) {
         return nil;
     }
     return [self.tasks objectAtIndex:index];
