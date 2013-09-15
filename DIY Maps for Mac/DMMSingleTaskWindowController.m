@@ -95,7 +95,7 @@
                 self.minScalePower = self.maxScalePower;
             }
             self.maxScaleLabel = [DMImageProcessor stringFromSize:self.task.sourcePixelSize
-                                                             scale:pow(2, self.maxScalePower)];
+                                                            scale:pow(2, self.maxScalePower)];
         }
     }
 }

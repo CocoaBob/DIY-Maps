@@ -36,7 +36,6 @@
         self.maxScalePower = 0;
         self.jpgQuality = 0.7;
         self.tileSizeIndex = 2;
-        
     }
     return self;
 }
@@ -48,10 +47,10 @@
         self.minScalePower = [coder decodeIntForKey:@"minScalePower"];
         self.maxScalePower = [coder decodeIntForKey:@"maxScalePower"];
 #if TARGET_OS_IPHONE
-        self.sourcePixelSize = [coder decodeCGSizeForKey:@"sourcePixelSize"];
+        _sourcePixelSize = [coder decodeCGSizeForKey:@"sourcePixelSize"];
         self.sourceImageSize = [coder decodeCGSizeForKey:@"sourceImageSize"];
 #elif TARGET_OS_MAC
-        self.sourcePixelSize = [coder decodeSizeForKey:@"sourcePixelSize"];
+        _sourcePixelSize = [coder decodeSizeForKey:@"sourcePixelSize"];
         self.sourceImageSize = [coder decodeSizeForKey:@"sourceImageSize"];
 #endif
         self.tileSizeIndex = [coder decodeIntForKey:@"tileSizeIndex"];

@@ -162,13 +162,12 @@ static DMMTaskManager *sharedInstance = nil;
 
 - (void)verifyAllTasks {
     __block BOOL updated = NO;
-    [self.tasks enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        DMTask *aTask = (DMTask *)obj;
-        if (aTask.state != DMPTaskStateRunning) {
-            if (![[NSFileManager defaultManager] fileExistsAtPath:[aTask.outputFolderPath stringByAppendingPathExtension:@"map"]]) {
-                if (aTask.state != DMPTaskStateReady) {
+    [self.tasks enumerateObjectsUsingBlock:^(DMTask *obj, NSUInteger idx, BOOL *stop) {
+        if (obj.state != DMPTaskStateRunning) {
+            if (![[NSFileManager defaultManager] fileExistsAtPath:[obj.outputFolderPath stringByAppendingPathExtension:@"map"]]) {
+                if (obj.state != DMPTaskStateReady) {
                     updated = YES;
-                    aTask.state = DMPTaskStateReady;
+                    obj.state = DMPTaskStateReady;
                 }
             }
         }

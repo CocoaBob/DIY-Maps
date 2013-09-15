@@ -142,7 +142,7 @@
     }
     
     // Generate slices for each scale level
-    for (double currentScalePower = [self.task minScalePower]; currentScalePower <= [self.task maxScalePower]; ++currentScalePower) {
+    for (double currentScalePower = self.task.minScalePower; currentScalePower <= self.task.maxScalePower; ++currentScalePower) {
         [self sliceImageForZoomScale:pow(2, currentScalePower)];
     }
 }
