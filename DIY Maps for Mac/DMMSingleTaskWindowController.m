@@ -16,9 +16,9 @@
 
 #define MIN_SCALE_POWER -4
 #define MAX_SCALE_POWER 4
-#define PREVIEW_IMAGE_SIZE 2048
-#define POPOVER_MIN_SIZE 256
-#define POPOVER_MAX_SIZE 256
+#define PREVIEW_IMAGE_SIZE 1024
+#define POPOVER_MIN_SIZE 128
+#define POPOVER_MAX_SIZE 128
 
 @interface DMMSingleTaskWindowController () <DMMSliderDelegate> {
     IBOutlet DMMSlider *minScaleSlider,*maxScaleSlider;
@@ -106,6 +106,8 @@
 #pragma mark Preview Image
 
 - (void)preparePreviewImages {
+    if (!self.task) return;// Cancel if panel is closed
+    
     NSImage *srcImage = [[NSImage alloc] initWithContentsOfFile:self.task.inputFilePath];
     
     // Prepare large preview image
@@ -121,6 +123,7 @@
     sourceImageRect.origin.x = (self.task.sourceImageSize.width - sourceImageRect.size.width) / 2.0f;
     sourceImageRect.origin.y = (self.task.sourceImageSize.height - sourceImageRect.size.height) / 2.0f;
     
+    if (!self.task) return;// Cancel if panel is closed
     self.previewImageLarge = [DMImageProcessor thumbnailWithImage:srcImage
                                                           srcRect:sourceImageRect
                                                          destSize:CGSizeMake(outputWidth, outputHeight)];
@@ -141,6 +144,7 @@
         sourceImageRect.origin.x = (self.task.sourceImageSize.width - outputWidth) / 2.0f;
         sourceImageRect.origin.y = (self.task.sourceImageSize.height - outputHeight) / 2.0f;
         
+        if (!self.task) return;// Cancel if panel is closed
         self.previewImageSmall = [DMImageProcessor thumbnailWithImage:srcImage
                                                               srcRect:sourceImageRect
                                                              destSize:CGSizeMake(outputWidth, outputHeight)];
@@ -191,8 +195,12 @@
         zoomScale = pow(2, currentScalePower);
     }
     NSSize previewImageSize = previewImage.size;
-    int outputWidth = MIN(floor(previewImageSize.width * zoomScale), POPOVER_MAX_SIZE);
-	int outputHeight = MIN(floor(previewImageSize.height * zoomScale), POPOVER_MAX_SIZE);
+    
+    int scaleOffset = maxScalePower - currentScalePower;
+    int outputWidth = (scaleOffset < 4)?POPOVER_MAX_SIZE * pow(2, (4 - scaleOffset)):POPOVER_MAX_SIZE;
+	int outputHeight = outputWidth;
+    outputWidth = MIN(floor(previewImageSize.width * zoomScale), outputWidth);
+	outputHeight = MIN(floor(previewImageSize.height * zoomScale), outputWidth);
     
 	NSRect sourceImageRect;
     sourceImageRect.size.width = outputWidth / zoomScale;
@@ -256,8 +264,10 @@
 #pragma mark Actions
 
 - (IBAction)finishSetting:(id)sender {
-    if (((NSButton *)sender).tag == 1)
+    if (((NSButton *)sender).tag == 1) {
         [self saveTask];
+    }
+    self.task = nil;
     [NSApp endSheet:self.window];
     [self.window orderOut:nil];
 }
