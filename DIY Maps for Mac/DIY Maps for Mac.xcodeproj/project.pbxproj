@@ -21,6 +21,7 @@
 		45563A0117C028840094876F /* StopTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 455639FC17C028840094876F /* StopTemplate.pdf */; };
 		45577E4C17C1762C008151DB /* DMMTaskListRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45577E4B17C1762C008151DB /* DMMTaskListRowView.m */; };
 		45577E4F17C17662008151DB /* DMMTaskListCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45577E4E17C17662008151DB /* DMMTaskListCellView.m */; };
+		4562FF1517E635B400BDB9D4 /* ZipKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 45CA608517E463D700E6F835 /* ZipKit.framework */; };
 		456D017217E48DE5000C26E3 /* DMMTaskOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 456D016D17E482CF000C26E3 /* DMMTaskOperation.m */; };
 		456D017517E4A417000C26E3 /* DMMImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 456D017417E4A417000C26E3 /* DMMImageOperation.m */; };
 		456D017F17E51888000C26E3 /* DMMSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 456D017E17E51888000C26E3 /* DMMSlider.m */; };
@@ -70,6 +71,20 @@
 			remoteInfo = ZipKit;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4562FF1217E635A400BDB9D4 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4562FF1517E635B400BDB9D4 /* ZipKit.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -339,6 +354,7 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
+				4562FF1217E635A400BDB9D4 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -536,6 +552,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks/";
 				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
@@ -546,6 +563,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks/";
 			};
 			name = Release;
 		};
