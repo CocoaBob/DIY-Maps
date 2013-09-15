@@ -48,7 +48,7 @@ typedef NS_ENUM(NSUInteger, DMPOutputFormat) {
 
 + (NSString *)fileExtensionFromFormat:(DMPOutputFormat)inValue;
 + (int)tileSizeFromSizeIndex:(DMPTileSize)inValue;
-+ (int)defaultMinScaleSizeIndexWithTileSizeIndex:(int)tileSizeIndex originalPixelSize:(CGSize)originalPixelSize;
++ (int)defaultMinScalePowerWithTileSizeIndex:(int)tileSizeIndex originalPixelSize:(CGSize)originalPixelSize;
 
 - (DMProfile *)mapProfile;
 

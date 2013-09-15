@@ -134,25 +134,23 @@
 
 - (void)loadTask {
     // Update Min/Max sliders
+    static const float minImageSize = 48;
+    int sliderMinValue = -5;
+    while ((self.task.sourcePixelSize.width * pow(2, sliderMinValue)) < minImageSize ||
+           (self.task.sourcePixelSize.height * pow(2, sliderMinValue)) < minImageSize) {
+        ++sliderMinValue;
+    }
     static NSSet *vectorTypes = nil;
     if (!vectorTypes) vectorTypes = [NSSet setWithObjects:@"pdf", @"eps", @"pict", nil];
-    if ([vectorTypes containsObject:[[self.task.inputFilePath pathExtension] lowercaseString]]) {
-        [minScaleSlider setNumberOfTickMarks:21];
-        [minScaleSlider setMinValue:-10];
-        [minScaleSlider setMaxValue:10];
-        [maxScaleSlider setNumberOfTickMarks:21];
-        [maxScaleSlider setMinValue:-10];
-        [maxScaleSlider setMaxValue:10];
-    }
-    else {
-        [minScaleSlider setNumberOfTickMarks:11];
-        [minScaleSlider setMinValue:-10];
-        [minScaleSlider setMaxValue:0];
-        [maxScaleSlider setNumberOfTickMarks:11];
-        [maxScaleSlider setMinValue:-10];
-        [maxScaleSlider setMaxValue:0];
-    }
-
+    int sliderMaxValue = [vectorTypes containsObject:[[self.task.inputFilePath pathExtension] lowercaseString]]?5:0;
+    
+    [minScaleSlider setNumberOfTickMarks:sliderMaxValue - sliderMinValue + 1];
+    [minScaleSlider setMinValue:sliderMinValue];
+    [minScaleSlider setMaxValue:sliderMaxValue];
+    [maxScaleSlider setNumberOfTickMarks:sliderMaxValue - sliderMinValue + 1];
+    [maxScaleSlider setMinValue:sliderMinValue];
+    [maxScaleSlider setMaxValue:sliderMaxValue];
+    
     // Load values
     [self willChangeValueForKey:@"tileSizeIndex"];
     [self willChangeValueForKey:@"outputFormatIndex"];
@@ -199,7 +197,7 @@
     _tileSizeIndex      = 2;
     _outputFormatIndex  = 0;
     _jpgQuality         = 0.7;
-    _minScalePower      = [DMTask defaultMinScaleSizeIndexWithTileSizeIndex:_tileSizeIndex originalPixelSize:self.task.sourcePixelSize];
+    _minScalePower      = [DMTask defaultMinScalePowerWithTileSizeIndex:_tileSizeIndex originalPixelSize:self.task.sourcePixelSize];
     _maxScalePower      = 0;
     [self didChangeValueForKey:@"tileSizeIndex"];
     [self didChangeValueForKey:@"outputFormatIndex"];

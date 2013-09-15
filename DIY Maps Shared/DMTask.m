@@ -96,7 +96,7 @@
 
 - (void)setSourcePixelSize:(CGSize)inValue {
     _sourcePixelSize = inValue;
-    self.minScalePower = [DMTask defaultMinScaleSizeIndexWithTileSizeIndex:self.tileSizeIndex originalPixelSize:_sourcePixelSize];
+    self.minScalePower = [DMTask defaultMinScalePowerWithTileSizeIndex:self.tileSizeIndex originalPixelSize:_sourcePixelSize];
 }
 
 #pragma mark Class Methods
@@ -118,7 +118,7 @@
     return 256 * pow(2, inValue);
 }
 
-+ (int)defaultMinScaleSizeIndexWithTileSizeIndex:(int)tileSizeIndex originalPixelSize:(CGSize)originalPixelSize {
++ (int)defaultMinScalePowerWithTileSizeIndex:(int)tileSizeIndex originalPixelSize:(CGSize)originalPixelSize {
     int minScaleLevel = 0;
     int tileSize = [DMTask tileSizeFromSizeIndex:tileSizeIndex];
     while ((originalPixelSize.width * pow(2, minScaleLevel)) > tileSize) {
