@@ -21,8 +21,13 @@
             NSStringFromClass([self class]), self,
             @{@"inputFilePath":self.inputFilePath,
               @"outputFolderPath":self.outputFolderPath,
+#if TARGET_OS_IPHONE
+              @"sourcePixelSize":NSStringFromCGSize(self.sourcePixelSize),
+              @"sourceImageSize":NSStringFromCGSize(self.sourceImageSize),
+#elif TARGET_OS_MAC
               @"sourcePixelSize":NSStringFromSize(self.sourcePixelSize),
               @"sourceImageSize":NSStringFromSize(self.sourceImageSize),
+#endif
               @"minScalePower":@(self.minScalePower),
               @"maxScalePower":@(self.maxScalePower),
               @"outputFormat":[DMTask fileExtensionFromFormat:self.outputFormatIndex],
