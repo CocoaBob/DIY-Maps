@@ -19,6 +19,7 @@
 }
 
 @property (nonatomic, strong) NSImage *srcImage;
+@property (nonatomic, strong) NSImageView *popoverContentView;
 
 @end
 
@@ -100,26 +101,29 @@
     if (!self.srcImage) {
         self.srcImage = [[NSImage alloc] initWithContentsOfFile:self.task.inputFilePath];
     }
-    CGFloat zoomScalePower = (slider == minScaleSlider)?self.minScalePower:self.maxScalePower;
     
-    static const CGFloat previewSize = 150;
-    CGFloat zoomScale = pow(2, zoomScalePower);
-	CGFloat adjustedZoom = zoomScale * self.task.sourcePixelSize.width / self.task.sourceImageSize.width;
-	int outputWidth = MIN(floor (self.task.sourcePixelSize.width * zoomScale), previewSize);
-	int outputHeight = MIN(floor (self.task.sourcePixelSize.height * zoomScale), previewSize);
-	NSRect sourceRect = NSMakeRect(0, 0, self.task.sourceImageSize.width, self.task.sourceImageSize.height);
-    sourceRect.origin.x = (outputWidth - previewSize)/2.0 / adjustedZoom;
-    sourceRect.origin.y = (outputHeight - previewSize)/2.0 / adjustedZoom;
-    sourceRect.size.width = outputWidth / adjustedZoom;
-    sourceRect.size.height = outputHeight / adjustedZoom;
+    static const CGFloat previewPointSize = 150;
     
-    NSImage *previewImage = [DMImageProcessor thumbnailWithImage:self.srcImage srcRect:sourceRect destSize:CGSizeMake(outputWidth, outputHeight)];
+    CGFloat zoomScale = pow(2, (slider == minScaleSlider)?self.minScalePower:self.maxScalePower);
+    int outputWidth = MIN(floor(self.task.sourceImageSize.width * zoomScale), previewPointSize);
+	int outputHeight = MIN(floor(self.task.sourceImageSize.height * zoomScale), previewPointSize);
     
-    NSImageView *imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, outputWidth, outputHeight)];
-    imageView.image = previewImage;
-    imageView.imageFrameStyle = NSImageFrameGroove;
+	NSRect sourceImageRect;
+    sourceImageRect.size.width = outputWidth / zoomScale;
+    sourceImageRect.size.height = outputHeight / zoomScale;
+    sourceImageRect.origin.x = (self.task.sourceImageSize.width - sourceImageRect.size.width) / 2.0f;
+    sourceImageRect.origin.y = (self.task.sourceImageSize.height - sourceImageRect.size.height) / 2.0f;
     
-    return imageView;
+    NSImage *previewImage = [DMImageProcessor thumbnailWithImage:self.srcImage srcRect:sourceImageRect destSize:CGSizeMake(outputWidth, outputHeight)];
+    
+    if (!self.popoverContentView) {
+        self.popoverContentView = [NSImageView new];
+        self.popoverContentView.imageFrameStyle = NSImageFrameGroove;
+    }
+    self.popoverContentView.frame = NSMakeRect(0, 0, outputWidth, outputHeight);
+    self.popoverContentView.image = previewImage;
+    
+    return self.popoverContentView;
 }
 
 #pragma mark Load/Save tasks

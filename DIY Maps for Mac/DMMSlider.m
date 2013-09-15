@@ -20,6 +20,7 @@
     self.popover = [NSPopover new];
     self.popover.appearance = NSPopoverAppearanceMinimal;
     self.popover.contentViewController = [NSViewController new];
+    self.popover.contentViewController.view = [NSView new];
     self.popover.delegate = self;
 }
 
@@ -74,9 +75,10 @@
         return;
     }
     
+    [[self.popover.contentViewController.view subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     NSView *contentView = [self.delegate contentViewForSlider:self];
-    self.popover.contentViewController.view = contentView;
     self.popover.contentSize = contentView.frame.size;
+    [self.popover.contentViewController.view addSubview:contentView];
     self.popover.animates = animated;
     
     NSRect knobRect = [((NSSliderCell *)self.cell) knobRectFlipped:self.isFlipped];

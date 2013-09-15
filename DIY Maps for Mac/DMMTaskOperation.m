@@ -161,8 +161,6 @@
 	int outputHeight = floor (self.task.sourcePixelSize.height * zoomScale);
     int tileSize = [DMTask tileSizeFromSizeIndex:self.task.tileSizeIndex];
     
-	NSRect sourceRect = NSMakeRect(0, 0, self.task.sourceImageSize.width, self.task.sourceImageSize.height);
-    
 	// Create slices
 	fileY = 0;
 	for (tileY = outputHeight; tileY > 0; tileY -= tileSize) {
@@ -175,17 +173,18 @@
 			tileWidth = MIN((outputWidth - tileX), tileSize);
 			tileHeight = MIN((tileY - 0), tileSize);
             
-			sourceRect.origin.x = tileX / adjustedZoom;
-			sourceRect.origin.y = (tileY - tileHeight) / adjustedZoom;
-			sourceRect.size.width = tileWidth / adjustedZoom;
-			sourceRect.size.height = tileHeight / adjustedZoom;
+            NSRect sourceImageRect;
+			sourceImageRect.origin.x = tileX / adjustedZoom;
+			sourceImageRect.origin.y = (tileY - tileHeight) / adjustedZoom;
+			sourceImageRect.size.width = tileWidth / adjustedZoom;
+			sourceImageRect.size.height = tileHeight / adjustedZoom;
             
 			NSString *filename = [NSString stringWithFormat:@"map-%@-%d-%d.%@", [NSString stringWithFormat:@"%f",zoomScale], fileX, fileY, [DMTask fileExtensionFromFormat:self.task.outputFormatIndex]];
             NSString *imageFilePath = [self.task.outputFolderPath stringByAppendingPathComponent:filename];
             
             DMMImageOperation *imageOperation = [DMMImageOperation new];
             imageOperation.srcImage = self.srcImage;
-            imageOperation.sourceRect = sourceRect;
+            imageOperation.sourceRect = sourceImageRect;
             imageOperation.destinationSize = CGSizeMake(tileWidth, tileHeight);
             imageOperation.outputPath = imageFilePath;
             imageOperation.outputFormat = self.task.outputFormatIndex;
