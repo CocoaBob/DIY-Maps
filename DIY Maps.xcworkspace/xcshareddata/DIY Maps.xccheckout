@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7DE4C05F-E85D-47B7-8B10-0400DD6B000F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>DIY Maps</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F4A90CB1-F5E8-4CB4-ACB3-A3E1B2F9F6BC</key>
+		<string>ssh://github.com/CocoaBob/DIY-Maps.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>DIY Maps.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>AB9A6134-84C9-4B1F-BA16-BC49016B310C</key>
+		<string>../Submodules/KissXML</string>
+		<key>F4A90CB1-F5E8-4CB4-ACB3-A3E1B2F9F6BC</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/CocoaBob/DIY-Maps.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F4A90CB1-F5E8-4CB4-ACB3-A3E1B2F9F6BC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F4A90CB1-F5E8-4CB4-ACB3-A3E1B2F9F6BC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>DIY-Maps</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>AB9A6134-84C9-4B1F-BA16-BC49016B310C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>KissXML</string>
+		</dict>
+	</array>
+</dict>
+</plist>
