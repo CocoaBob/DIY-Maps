@@ -1,5 +1,5 @@
 # Xcode
-.*
+!/.gitmodules
 !/.gitignore
 .DS_Store
 build/
