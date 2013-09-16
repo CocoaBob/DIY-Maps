@@ -10,6 +10,7 @@
 #import "DMMTaskManager.h"
 #import "DMMTaskListWindowController.h"
 #import "DMMSingleTaskWindowController.h"
+#import "DMMPreviewWindowController.h"
 
 @interface DMMAppDelegate()
 
@@ -37,6 +38,9 @@
 
     self.singleTaskWindowController = [[DMMSingleTaskWindowController alloc] initWithWindowNibName:@"DMMSingleTaskWindowController"];
     [self.singleTaskWindowController window];// Load the nib
+    
+    self.previewWindowController = [[DMMPreviewWindowController alloc] initWithWindowNibName:@"DMMPreviewWindowController"];
+    [self.previewWindowController window];
 }
 
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename {
