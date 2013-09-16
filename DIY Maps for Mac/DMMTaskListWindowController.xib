@@ -19,28 +19,28 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" unifiedTitleAndToolbar="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="344" height="454"/>
+            <rect key="contentRect" x="196" y="240" width="256" height="200"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <value key="minSize" type="size" width="256" height="200"/>
             <view key="contentView" id="2">
-                <rect key="frame" x="0.0" y="0.0" width="344" height="454"/>
+                <rect key="frame" x="0.0" y="0.0" width="256" height="200"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFp-o5-dfm">
-                        <rect key="frame" x="-1" y="22" width="346" height="433"/>
+                        <rect key="frame" x="-1" y="22" width="258" height="179"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <clipView key="contentView" id="fL0-lY-N0u">
-                            <rect key="frame" x="0.0" y="0.0" width="346" height="433"/>
+                            <rect key="frame" x="0.0" y="0.0" width="258" height="179"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="gfU-WQ-Fqa">
-                                    <rect key="frame" x="0.0" y="0.0" width="346" height="433"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="258" height="179"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn width="343" minWidth="40" maxWidth="99999" id="hNs-QW-OOI">
+                                        <tableColumn width="255" minWidth="40" maxWidth="99999" id="hNs-QW-OOI">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -54,11 +54,11 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
                                                 <tableCellView id="zfJ-iK-xcz" customClass="DMMTaskListCellView">
-                                                    <rect key="frame" x="1" y="1" width="343" height="36"/>
+                                                    <rect key="frame" x="1" y="1" width="255" height="36"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="rCU-bv-2YQ">
-                                                            <rect key="frame" x="39" y="17" width="278" height="17"/>
+                                                            <rect key="frame" x="39" y="17" width="190" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="TextField 1" id="GUp-Gy-VPS">
                                                                 <font key="font" metaFont="systemBold"/>
@@ -67,7 +67,7 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Lxj-do-0l5">
-                                                            <rect key="frame" x="39" y="0.0" width="278" height="14"/>
+                                                            <rect key="frame" x="39" y="0.0" width="190" height="14"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="14" id="dPd-5m-y2R"/>
@@ -88,7 +88,7 @@
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="bHS-g7-Mcw"/>
                                                         </imageView>
                                                         <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8aG-yT-66q">
-                                                            <rect key="frame" x="316" y="6" width="24" height="24"/>
+                                                            <rect key="frame" x="228" y="6" width="24" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="24" id="6Ck-tH-dfB"/>
@@ -176,6 +176,7 @@
                             </binding>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="4A0E7D43-84FD-4E06-9460-1BC7C07A006F" label="Preview" paletteLabel="Preview" tag="-1" image="PreviewTemplate" id="QFE-ES-L9T"/>
                     <toolbarItem implicitItemIdentifier="57969457-1CD1-4858-B8ED-B6E0F0E99956" label="Start" paletteLabel="Start/Pause" image="PlayTemplate" autovalidates="NO" id="Ov2-Tl-6SW">
                         <connections>
                             <action selector="doToolbarStartPauseButtonAction:" target="-2" id="r2V-gb-5Bv"/>
@@ -196,6 +197,7 @@
                     <toolbarItem reference="tr4-yt-5Hj"/>
                     <toolbarItem reference="ACV-Lw-kXE"/>
                     <toolbarItem reference="3B3-vE-VXy"/>
+                    <toolbarItem reference="QFE-ES-L9T"/>
                     <toolbarItem reference="Ov2-Tl-6SW"/>
                     <toolbarItem reference="FSY-fv-hw9"/>
                 </defaultToolbarItems>
@@ -215,6 +217,7 @@
         <image name="NSActionTemplate" width="15" height="15"/>
         <image name="NSApplicationIcon" width="128" height="128"/>
         <image name="PlayTemplate" width="24" height="24"/>
+        <image name="PreviewTemplate" width="24" height="24"/>
         <image name="StopTemplate" width="24" height="24"/>
     </resources>
 </document>

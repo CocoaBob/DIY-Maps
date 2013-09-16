@@ -31,6 +31,7 @@
 		45CA607417E3C73400E6F835 /* DMImageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA607317E3C73400E6F835 /* DMImageProcessor.m */; };
 		45CA607B17E3C83800E6F835 /* DMMTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA607A17E3C83800E6F835 /* DMMTaskManager.m */; };
 		45CA608B17E4675B00E6F835 /* ZipKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45CA608517E463D700E6F835 /* ZipKit.framework */; };
+		45E3195817E7907400422402 /* PreviewTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 45E3195717E7907400422402 /* PreviewTemplate.pdf */; };
 		5B6398A717E73B7100AE2EA6 /* SMDoubleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6398A317E73B7100AE2EA6 /* SMDoubleSlider.m */; };
 		5B6398A817E73B7100AE2EA6 /* SMDoubleSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6398A517E73B7100AE2EA6 /* SMDoubleSliderCell.m */; };
 		5B6398A917E73B7100AE2EA6 /* SMDoubleSliderIB3Framework-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B6398A617E73B7100AE2EA6 /* SMDoubleSliderIB3Framework-Info.plist */; };
@@ -134,6 +135,7 @@
 		45CA607917E3C83800E6F835 /* DMMTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMTaskManager.h; sourceTree = "<group>"; };
 		45CA607A17E3C83800E6F835 /* DMMTaskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMTaskManager.m; sourceTree = "<group>"; };
 		45CA607E17E463D700E6F835 /* ZipKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZipKit.xcodeproj; path = ZipKit/ZipKit.xcodeproj; sourceTree = "<group>"; };
+		45E3195717E7907400422402 /* PreviewTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = PreviewTemplate.pdf; path = Resources/PreviewTemplate.pdf; sourceTree = "<group>"; };
 		5B6398A217E73B7100AE2EA6 /* SMDoubleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDoubleSlider.h; sourceTree = "<group>"; };
 		5B6398A317E73B7100AE2EA6 /* SMDoubleSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDoubleSlider.m; sourceTree = "<group>"; };
 		5B6398A417E73B7100AE2EA6 /* SMDoubleSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDoubleSliderCell.h; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				455639F917C028840094876F /* DeleteTemplate.pdf */,
 				455639FA17C028840094876F /* PauseTemplate.pdf */,
 				455639FB17C028840094876F /* PlayTemplate.pdf */,
+				45E3195717E7907400422402 /* PreviewTemplate.pdf */,
 				455639FC17C028840094876F /* StopTemplate.pdf */,
 			);
 			name = Resources;
@@ -450,6 +453,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BD3A16217BE5C4A00AE0C2F /* DMMTaskListWindowController.xib in Resources */,
+				45E3195817E7907400422402 /* PreviewTemplate.pdf in Resources */,
 				5BD3A15D17BE5C3700AE0C2F /* DMMSingleTaskWindowController.xib in Resources */,
 				5B6398A917E73B7100AE2EA6 /* SMDoubleSliderIB3Framework-Info.plist in Resources */,
 				45563A0017C028840094876F /* PlayTemplate.pdf in Resources */,
