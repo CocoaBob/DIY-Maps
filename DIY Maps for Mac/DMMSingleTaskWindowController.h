@@ -22,5 +22,6 @@
 @property (nonatomic, strong) NSString *minScaleLabel,*maxScaleLabel;
 
 - (IBAction)finishSetting:(id)sender;
+- (IBAction)updateScalePower:(id)sender;
 
 @end

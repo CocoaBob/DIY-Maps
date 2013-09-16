@@ -31,6 +31,9 @@
 		45CA607417E3C73400E6F835 /* DMImageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA607317E3C73400E6F835 /* DMImageProcessor.m */; };
 		45CA607B17E3C83800E6F835 /* DMMTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA607A17E3C83800E6F835 /* DMMTaskManager.m */; };
 		45CA608B17E4675B00E6F835 /* ZipKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45CA608517E463D700E6F835 /* ZipKit.framework */; };
+		5B6398A717E73B7100AE2EA6 /* SMDoubleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6398A317E73B7100AE2EA6 /* SMDoubleSlider.m */; };
+		5B6398A817E73B7100AE2EA6 /* SMDoubleSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6398A517E73B7100AE2EA6 /* SMDoubleSliderCell.m */; };
+		5B6398A917E73B7100AE2EA6 /* SMDoubleSliderIB3Framework-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B6398A617E73B7100AE2EA6 /* SMDoubleSliderIB3Framework-Info.plist */; };
 		5BD3A15C17BE5C3700AE0C2F /* DMMSingleTaskWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD3A15A17BE5C3700AE0C2F /* DMMSingleTaskWindowController.m */; };
 		5BD3A15D17BE5C3700AE0C2F /* DMMSingleTaskWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BD3A15B17BE5C3700AE0C2F /* DMMSingleTaskWindowController.xib */; };
 		5BD3A16117BE5C4A00AE0C2F /* DMMTaskListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD3A15F17BE5C4A00AE0C2F /* DMMTaskListWindowController.m */; };
@@ -131,6 +134,11 @@
 		45CA607917E3C83800E6F835 /* DMMTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMTaskManager.h; sourceTree = "<group>"; };
 		45CA607A17E3C83800E6F835 /* DMMTaskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMTaskManager.m; sourceTree = "<group>"; };
 		45CA607E17E463D700E6F835 /* ZipKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZipKit.xcodeproj; path = ZipKit/ZipKit.xcodeproj; sourceTree = "<group>"; };
+		5B6398A217E73B7100AE2EA6 /* SMDoubleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDoubleSlider.h; sourceTree = "<group>"; };
+		5B6398A317E73B7100AE2EA6 /* SMDoubleSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDoubleSlider.m; sourceTree = "<group>"; };
+		5B6398A417E73B7100AE2EA6 /* SMDoubleSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDoubleSliderCell.h; sourceTree = "<group>"; };
+		5B6398A517E73B7100AE2EA6 /* SMDoubleSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDoubleSliderCell.m; sourceTree = "<group>"; };
+		5B6398A617E73B7100AE2EA6 /* SMDoubleSliderIB3Framework-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SMDoubleSliderIB3Framework-Info.plist"; sourceTree = "<group>"; };
 		5BD3A15917BE5C3700AE0C2F /* DMMSingleTaskWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMSingleTaskWindowController.h; sourceTree = "<group>"; };
 		5BD3A15A17BE5C3700AE0C2F /* DMMSingleTaskWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMSingleTaskWindowController.m; sourceTree = "<group>"; };
 		5BD3A15B17BE5C3700AE0C2F /* DMMSingleTaskWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMMSingleTaskWindowController.xib; sourceTree = "<group>"; };
@@ -220,6 +228,7 @@
 			children = (
 				45CA607E17E463D700E6F835 /* ZipKit.xcodeproj */,
 				4505E2E217C7FC98005C56C6 /* KissXML */,
+				5B6398A117E73B7100AE2EA6 /* SMDoubleSlider */,
 			);
 			name = Submodules;
 			path = ../Submodules;
@@ -344,6 +353,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		5B6398A117E73B7100AE2EA6 /* SMDoubleSlider */ = {
+			isa = PBXGroup;
+			children = (
+				5B6398A217E73B7100AE2EA6 /* SMDoubleSlider.h */,
+				5B6398A317E73B7100AE2EA6 /* SMDoubleSlider.m */,
+				5B6398A417E73B7100AE2EA6 /* SMDoubleSliderCell.h */,
+				5B6398A517E73B7100AE2EA6 /* SMDoubleSliderCell.m */,
+				5B6398A617E73B7100AE2EA6 /* SMDoubleSliderIB3Framework-Info.plist */,
+			);
+			name = SMDoubleSlider;
+			path = SMDoubleSlider/Framework_code;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -429,6 +451,7 @@
 			files = (
 				5BD3A16217BE5C4A00AE0C2F /* DMMTaskListWindowController.xib in Resources */,
 				5BD3A15D17BE5C3700AE0C2F /* DMMSingleTaskWindowController.xib in Resources */,
+				5B6398A917E73B7100AE2EA6 /* SMDoubleSliderIB3Framework-Info.plist in Resources */,
 				45563A0017C028840094876F /* PlayTemplate.pdf in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
@@ -451,11 +474,13 @@
 				45577E4C17C1762C008151DB /* DMMTaskListRowView.m in Sources */,
 				456D017F17E51888000C26E3 /* DMMSlider.m in Sources */,
 				4505E33617C7FC99005C56C6 /* DDXMLElementAdditions.m in Sources */,
+				5B6398A817E73B7100AE2EA6 /* SMDoubleSliderCell.m in Sources */,
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				4505E33A17C7FC99005C56C6 /* DDXMLNode.m in Sources */,
 				45CA607417E3C73400E6F835 /* DMImageProcessor.m in Sources */,
 				45CA606017E3C41100E6F835 /* DMTask.m in Sources */,
 				45CA605717E3C1B800E6F835 /* DMProfile.m in Sources */,
+				5B6398A717E73B7100AE2EA6 /* SMDoubleSlider.m in Sources */,
 				5BD3A16117BE5C4A00AE0C2F /* DMMTaskListWindowController.m in Sources */,
 				4505E33717C7FC99005C56C6 /* NSString+DDXML.m in Sources */,
 				E0DEF6880FB2198C003218A8 /* DMMAppDelegate.m in Sources */,

@@ -21,7 +21,7 @@
 #define POPOVER_MAX_SIZE 128
 
 @interface DMMSingleTaskWindowController () <DMMSliderDelegate> {
-    IBOutlet DMMSlider *minScaleSlider,*maxScaleSlider;
+    IBOutlet DMMSlider *scaleRangeSlider;
 }
 
 @property (nonatomic, strong) NSImage *previewImageSmall;
@@ -33,12 +33,19 @@
 @implementation DMMSingleTaskWindowController
 
 - (void)awakeFromNib {
+    // Prepare scale range slider
+    [scaleRangeSlider setTickMarkPosition:NSTickMarkAbove];
+    [scaleRangeSlider setAllowsTickMarkValuesOnly:YES];
+    [scaleRangeSlider.cell setControlSize:NSMiniControlSize];
+
+    // Prepare tile size popup list
     NSMutableArray *tileSizes = [@[] mutableCopy];
     for (int i = 0; i < DMPTileSizeCount; ++i) {
         tileSizes[i] = @(256*pow(2, i));
     }
     self.tileSizeList = tileSizes;
-    
+
+    // Prepare output formats popup list
     NSMutableArray *outputFormats = [@[] mutableCopy];
     for (int i = 0; i < DMPOutputFormatCount; ++i) {
         NSString *format = nil;
@@ -56,7 +63,12 @@
         outputFormats[i] = format;
     }
     self.formatList = outputFormats;
-    
+
+    // ScaleRangeSlider
+    [scaleRangeSlider setTarget:self];
+    [scaleRangeSlider setAction:@selector(updateScalePower:)];
+
+    // KVO
     [self addObserver:self forKeyPath:@"task" options:0 context:NULL];
     [self addObserver:self forKeyPath:@"tileSizeIndex" options:0 context:NULL];
     [self addObserver:self forKeyPath:@"outputFormatIndex" options:0 context:NULL];
@@ -66,6 +78,7 @@
 }
 
 - (void)dealloc {
+	[scaleRangeSlider unbind:@"intValue"];
     [self removeObserver:self forKeyPath:@"task"];
     [self removeObserver:self forKeyPath:@"tileSizeIndex"];
     [self removeObserver:self forKeyPath:@"outputFormatIndex"];
@@ -85,21 +98,19 @@
             [self preparePreviewImages];
         });
     }
-    else {
-        if ([keyPath isEqualToString:@"minScalePower"]) {
-            if (self.maxScalePower < self.minScalePower) {
-                self.maxScalePower = self.minScalePower;
-            }
-            self.minScaleLabel = [DMImageProcessor stringFromSize:self.task.sourcePixelSize
-                                                             scale:pow(2, self.minScalePower)];
+    else if ([keyPath isEqualToString:@"minScalePower"]) {
+        if (self.maxScalePower < self.minScalePower) {
+            self.maxScalePower = self.minScalePower;
         }
-        else if ([keyPath isEqualToString:@"maxScalePower"]) {
-            if (self.maxScalePower < self.minScalePower) {
-                self.minScalePower = self.maxScalePower;
-            }
-            self.maxScaleLabel = [DMImageProcessor stringFromSize:self.task.sourcePixelSize
-                                                            scale:pow(2, self.maxScalePower)];
+        self.minScaleLabel = [DMImageProcessor stringFromSize:self.task.sourcePixelSize
+                                                        scale:pow(2, self.minScalePower)];
+    }
+    else if ([keyPath isEqualToString:@"maxScalePower"]) {
+        if (self.maxScalePower < self.minScalePower) {
+            self.minScalePower = self.maxScalePower;
         }
+        self.maxScaleLabel = [DMImageProcessor stringFromSize:self.task.sourcePixelSize
+                                                        scale:pow(2, self.maxScalePower)];
     }
 }
 
@@ -127,8 +138,7 @@
     self.previewImageLarge = [DMImageProcessor thumbnailWithImage:srcImage
                                                           srcRect:sourceImageRect
                                                          destSize:CGSizeMake(outputWidth, outputHeight)];
-    [minScaleSlider updatePopoverContentView];
-    [maxScaleSlider updatePopoverContentView];
+    [scaleRangeSlider updatePopoverContentView];
     
     // Prepare small preview image
     if ((maxWidth <= PREVIEW_IMAGE_SIZE && maxHeight <= PREVIEW_IMAGE_SIZE) ||
@@ -149,8 +159,7 @@
                                                               srcRect:sourceImageRect
                                                              destSize:CGSizeMake(outputWidth, outputHeight)];
     }
-    [minScaleSlider updatePopoverContentView];
-    [maxScaleSlider updatePopoverContentView];
+    [scaleRangeSlider updatePopoverContentView];
 }
 
 #pragma mark Min/Max Scale
@@ -177,7 +186,7 @@
 #pragma mark DMMSliderDelegate
 
 - (NSView *)contentViewForSlider:(DMMSlider *)slider {
-    int currentScalePower = ((slider == minScaleSlider)?self.minScalePower:self.maxScalePower);
+    int currentScalePower = [scaleRangeSlider trackingLoKnob]?self.minScalePower:self.maxScalePower;
     if ((currentScalePower > 0 && !self.previewImageLarge) ||
         !self.previewImageSmall) {
         return nil;
@@ -226,12 +235,12 @@
     // Update Min/Max sliders
     int sliderMinValue = [self possibleMinScalePower];
     int sliderMaxValue = [self possibleMaxScalePower];
-    [minScaleSlider setNumberOfTickMarks:sliderMaxValue - sliderMinValue + 1];
-    [minScaleSlider setMinValue:sliderMinValue];
-    [minScaleSlider setMaxValue:sliderMaxValue];
-    [maxScaleSlider setNumberOfTickMarks:sliderMaxValue - sliderMinValue + 1];
-    [maxScaleSlider setMinValue:sliderMinValue];
-    [maxScaleSlider setMaxValue:sliderMaxValue];
+    [scaleRangeSlider setNumberOfTickMarks:sliderMaxValue - sliderMinValue + 1];
+    [scaleRangeSlider setMinValue:sliderMinValue];
+    [scaleRangeSlider setMaxValue:sliderMaxValue];
+    [scaleRangeSlider setIntLoValue:self.task.minScalePower];
+    [scaleRangeSlider setIntHiValue:self.task.maxScalePower];
+
     
     // Load values
     [self willChangeValueForKey:@"tileSizeIndex"];
@@ -270,6 +279,11 @@
     self.task = nil;
     [NSApp endSheet:self.window];
     [self.window orderOut:nil];
+}
+
+- (IBAction)updateScalePower:(id)sender {
+    self.minScalePower = [scaleRangeSlider intLoValue];
+    self.maxScalePower = [scaleRangeSlider intHiValue];
 }
 
 - (IBAction)setDefaultValues:(id)sender {

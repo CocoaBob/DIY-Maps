@@ -22,3 +22,6 @@
 [submodule "Submodules/ZipKit"]
 	path = Submodules/ZipKit
 	url = https://github.com/kolpanic/ZipKit.git
+[submodule "Submodules/SMDoubleSlider"]
+	path = Submodules/SMDoubleSlider
+	url = https://github.com/jjk/SMDoubleSlider.git

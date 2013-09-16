@@ -6,6 +6,8 @@
 //
 //
 
+#import "SMDoubleSlider.h"
+
 @class DMMSlider;
 
 @protocol DMMSliderDelegate <NSObject>
@@ -14,7 +16,7 @@
 
 @end
 
-@interface DMMSlider : NSSlider
+@interface DMMSlider : SMDoubleSlider
 
 @property (nonatomic, assign) IBOutlet id<DMMSliderDelegate> delegate;
 @property (nonatomic, assign) BOOL shouldShowPopover;

@@ -7,6 +7,30 @@
 //
 
 #import "DMMSlider.h"
+#import "SMDoubleSliderCell.h"
+
+@implementation SMDoubleSliderCell (KnobRect)
+
+- (NSRect)loKnobRect {
+    NSRect	loKnobRect;
+    double	saveValue;
+
+    // Adjust the current value of the slider, get the rectangle, then reset the current value.
+    saveValue = _value;
+    _value = [self doubleLoValue];
+    loKnobRect = [self knobRectFlipped:[[self controlView] isFlipped]];
+    _value = saveValue;
+
+    return loKnobRect;
+}
+
+- (NSRect)hiKnobRect {
+    return [self knobRectFlipped:[[self controlView] isFlipped]];
+}
+
+@end
+
+#pragma mark -
 
 @interface DMMSlider () <NSPopoverDelegate>
 
@@ -85,10 +109,11 @@
     self.popover.contentSize = contentView.frame.size;
     [self.popover.contentViewController.view addSubview:contentView];
     self.popover.animates = animated;
-    
-    NSRect knobRect = [((NSSliderCell *)self.cell) knobRectFlipped:self.isFlipped];
+
+    // To get the correct knob rect
+    NSRect knobRect = [self trackingLoKnob]?[self.cell loKnobRect]:[self.cell hiKnobRect];
     NSRectEdge preferredEdge;
-    if (((NSSliderCell *)self.cell).sliderType==NSCircularSlider) {
+    if (((SMDoubleSliderCell *)self.cell).sliderType==NSCircularSlider) {
         NSPoint tickMartCenter = NSMakePoint(NSMidX(knobRect), NSMidY(knobRect));
         NSPoint viewCenter = NSMakePoint(NSMidX(self.bounds), NSMidY(self.bounds));
         CGFloat cutoffValue = sqrtf(((viewCenter.x-tickMartCenter.x)*(viewCenter.x-tickMartCenter.x)+(viewCenter.y-tickMartCenter.y)*(viewCenter.y-tickMartCenter.y))/2);
