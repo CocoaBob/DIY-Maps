@@ -99,16 +99,10 @@
         });
     }
     else if ([keyPath isEqualToString:@"minScalePower"]) {
-        if (self.maxScalePower < self.minScalePower) {
-            self.maxScalePower = self.minScalePower;
-        }
         self.minScaleLabel = [DMImageProcessor stringFromSize:self.task.sourcePixelSize
                                                         scale:pow(2, self.minScalePower)];
     }
     else if ([keyPath isEqualToString:@"maxScalePower"]) {
-        if (self.maxScalePower < self.minScalePower) {
-            self.minScalePower = self.maxScalePower;
-        }
         self.maxScaleLabel = [DMImageProcessor stringFromSize:self.task.sourcePixelSize
                                                         scale:pow(2, self.maxScalePower)];
     }

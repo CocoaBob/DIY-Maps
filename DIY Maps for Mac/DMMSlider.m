@@ -74,7 +74,6 @@
 #pragma mark Mouse
 
 - (void)mouseDown:(NSEvent *)theEvent {
-    [self showPopover:NO];// Mouse Down
     [super mouseDown:theEvent];
     [self hidePopover:YES];// Mouse Up
 }
