@@ -6,25 +6,25 @@
 //
 //
 
-typedef NS_ENUM(NSUInteger, DMPTaskState) {
-    DMPTaskStateReady,
-    DMPTaskStateRunning,
-    DMPTaskStateError,
-    DMPTaskStateSuccessful
+typedef NS_ENUM(NSUInteger, DMTaskStatus) {
+    DMTaskStatusReady,
+    DMTaskStatusRunning,
+    DMTaskStatusError,
+    DMTaskStatusSuccessful
 };
 
-typedef NS_ENUM (NSUInteger, DMPTileSize) {
-    DMPTileSizeTiny,       // 256
-    DMPTileSizeSmall,      // 512
-    DMPTileSizeDefault,    // 1024
-    DMPTileSizeLarge,      // 2048
-    DMPTileSizeCount
+typedef NS_ENUM (NSUInteger, DMTileSize) {
+    DMTileSizeTiny,       // 256
+    DMTileSizeSmall,      // 512
+    DMTileSizeDefault,    // 1024
+    DMTileSizeLarge,      // 2048
+    DMTileSizeCount
 };
 
-typedef NS_ENUM(NSUInteger, DMPOutputFormat) {
-    DMPOutputFormatJPG,
-    DMPOutputFormatPNG,
-    DMPOutputFormatCount
+typedef NS_ENUM(NSUInteger, DMOutputFormat) {
+    DMOutputFormatJPG,
+    DMOutputFormatPNG,
+    DMOutputFormatCount
 };
 
 @class DMProfile;
@@ -39,15 +39,15 @@ typedef NS_ENUM(NSUInteger, DMPOutputFormat) {
 @property (nonatomic, assign) NSSize sourcePixelSize, sourceImageSize;
 #endif
 @property (nonatomic, strong) NSString *inputFilePath,*outputFolderPath;
-@property (nonatomic, assign) DMPTileSize tileSizeIndex;
-@property (nonatomic, assign) DMPOutputFormat outputFormatIndex;
+@property (nonatomic, assign) DMTileSize tileSizeIndex;
+@property (nonatomic, assign) DMOutputFormat outputFormatIndex;
 
-@property (nonatomic, assign) DMPTaskState state;
+@property (nonatomic, assign) DMTaskStatus state;
 @property (nonatomic, assign) float progress;
 @property (nonatomic, strong) NSString *logs;
 
-+ (NSString *)fileExtensionFromFormat:(DMPOutputFormat)inValue;
-+ (int)tileSizeFromSizeIndex:(DMPTileSize)inValue;
++ (NSString *)fileExtensionFromFormat:(DMOutputFormat)inValue;
++ (int)tileSizeFromSizeIndex:(DMTileSize)inValue;
 + (int)defaultMinScalePowerWithTileSizeIndex:(int)tileSizeIndex originalPixelSize:(CGSize)originalPixelSize;
 
 - (DMProfile *)mapProfile;

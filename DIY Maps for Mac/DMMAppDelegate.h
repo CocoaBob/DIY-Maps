@@ -7,6 +7,7 @@
 @class DMTask;
 @class DMMSingleTaskWindowController;
 
+
 @interface DMMAppDelegate : NSObject
 
 @property (nonatomic, strong) IBOutlet NSWindow *window;

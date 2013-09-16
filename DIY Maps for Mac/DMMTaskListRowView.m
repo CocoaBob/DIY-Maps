@@ -11,7 +11,7 @@
 @implementation DMMTaskListRowView
 
 - (void)drawProgress {
-    if (self.taskState == DMPTaskStateRunning) {
+    if (self.taskStatus == DMTaskStatusRunning) {
         NSRect progressRect = NSMakeRect(0, 1, NSWidth([self bounds]) * self.progress, NSHeight([self bounds])-2);
         [[NSColor colorWithCalibratedWhite:0 alpha:0.1] setFill];
         NSRectFillUsingOperation(progressRect, NSCompositeSourceOver);
@@ -20,18 +20,18 @@
 
 - (void)drawBackgroundInRect:(NSRect)dirtyRect {
     CGFloat colorValue = (self.row & 1)?0.8:0.9;
-    switch (self.taskState) {
+    switch (self.taskStatus) {
         default:
-        case DMPTaskStateReady:
+        case DMTaskStatusReady:
             [[NSColor colorWithCalibratedWhite:(self.row & 1)?0.95:0.98 alpha:1] setFill];
             break;
-        case DMPTaskStateRunning:
+        case DMTaskStatusRunning:
             [[NSColor colorWithCalibratedRed:colorValue green:colorValue blue:1 alpha:1] setFill];
             break;
-        case DMPTaskStateError:
+        case DMTaskStatusError:
             [[NSColor colorWithCalibratedRed:1 green:colorValue blue:colorValue alpha:1] setFill];
             break;
-        case DMPTaskStateSuccessful:
+        case DMTaskStatusSuccessful:
             [[NSColor colorWithCalibratedRed:colorValue green:1 blue:colorValue alpha:1] setFill];
             break;
     }

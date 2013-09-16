@@ -11,7 +11,7 @@
 @interface DMMTaskListRowView : NSTableRowView
 
 @property (nonatomic, assign) NSInteger row;
-@property (nonatomic, assign) DMPTaskState taskState;
+@property (nonatomic, assign) DMTaskStatus taskStatus;
 @property (nonatomic, assign) float progress;
 
 @end

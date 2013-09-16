@@ -70,7 +70,7 @@
     }
     
     if (self.task &&
-        self.task.state != DMPTaskStateSuccessful &&
+        self.task.state != DMTaskStatusSuccessful &&
         [[NSFileManager defaultManager] fileExistsAtPath:self.task.inputFilePath]) {
         [self willChangeValueForKey:@"isExecuting"];
         mIsExecuting = YES;
@@ -102,7 +102,7 @@
 }
 
 - (void)doTask {
-    self.task.state = DMPTaskStateRunning;
+    self.task.state = DMTaskStatusRunning;
     self.task.progress = 0;
     
     // Load the image
@@ -242,11 +242,11 @@
             }
         }
         
-        [self taskDidCompleteWithStatus:DMPTaskStateSuccessful];
+        [self taskDidCompleteWithStatus:DMTaskStatusSuccessful];
     }
 }
 
-- (void)taskDidCompleteWithStatus:(DMPTaskState)status {
+- (void)taskDidCompleteWithStatus:(DMTaskStatus)status {
     self.task.state = status;
     self.task.progress = 0;
     [[NSNotificationCenter defaultCenter] postNotificationName:DMPTaskDidUpdateNotification object:self.task];
@@ -257,7 +257,7 @@
     if (error) {
         NSLog(@"%@ %@\n%@",[error localizedDescription],[error localizedFailureReason],[NSThread callStackSymbols]);
     }
-    [self taskDidCompleteWithStatus:DMPTaskStateError];
+    [self taskDidCompleteWithStatus:DMTaskStatusError];
 }
 
 @end

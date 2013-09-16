@@ -14,7 +14,7 @@
 @property (nonatomic, assign) CGRect sourceRect;
 @property (nonatomic, assign) CGSize destinationSize;
 @property (nonatomic, strong) NSString *outputPath;
-@property (nonatomic, assign) DMPOutputFormat outputFormat;
+@property (nonatomic, assign) DMOutputFormat outputFormat;
 @property (nonatomic, assign) CGFloat jpgQuality;
 
 @end

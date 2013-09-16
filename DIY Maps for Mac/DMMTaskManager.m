@@ -163,11 +163,11 @@ static DMMTaskManager *sharedInstance = nil;
 - (void)verifyAllTasks {
     __block BOOL updated = NO;
     [self.tasks enumerateObjectsUsingBlock:^(DMTask *obj, NSUInteger idx, BOOL *stop) {
-        if (obj.state != DMPTaskStateRunning) {
+        if (obj.state != DMTaskStatusRunning) {
             if (![[NSFileManager defaultManager] fileExistsAtPath:[obj.outputFolderPath stringByAppendingPathExtension:@"map"]]) {
-                if (obj.state != DMPTaskStateReady) {
+                if (obj.state != DMTaskStatusReady) {
                     updated = YES;
-                    obj.state = DMPTaskStateReady;
+                    obj.state = DMTaskStatusReady;
                 }
             }
         }
@@ -180,14 +180,12 @@ static DMMTaskManager *sharedInstance = nil;
 }
 
 - (DMMTaskOperation *)currentRunningOperation {
-    __block DMMTaskOperation *operation = nil;
-    [[self.processQueue operations] enumerateObjectsUsingBlock:^(DMMTaskOperation *obj, NSUInteger idx, BOOL *stop) {
-        if ([obj isExecuting]) {
-            operation = obj;
-            *stop = YES;
+    for (DMMTaskOperation *operation in [self.processQueue operations]) {
+        if ([operation isExecuting]) {
+            return operation;
         }
-    }];
-    return operation;
+    }
+    return nil;
 }
 
 #pragma mark Run Tasks

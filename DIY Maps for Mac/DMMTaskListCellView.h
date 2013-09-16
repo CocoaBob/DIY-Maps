@@ -12,6 +12,6 @@
 
 @property (nonatomic, weak) IBOutlet NSTextField *textField2;
 @property (nonatomic, weak) IBOutlet NSButton *actionButton;
-@property (nonatomic, assign) DMPTaskState taskState;
+@property (nonatomic, assign) DMTaskStatus taskStatus;
 
 @end

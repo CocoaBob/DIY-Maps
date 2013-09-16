@@ -121,17 +121,17 @@
     [tableCellView.textField setStringValue:task.inputFilePath?[task.inputFilePath lastPathComponent]:@""];
     [tableCellView.imageView setImage:[[NSWorkspace sharedWorkspace] iconForFile:task.inputFilePath]];
     [tableCellView.actionButton setTag:row];
-    tableCellView.taskState = task.state;
+    tableCellView.taskStatus = task.state;
     NSString *originalDimension = [DMImageProcessor stringFromSize:task.sourcePixelSize scale:1];
     int tileSize = [DMTask tileSizeFromSizeIndex:task.tileSizeIndex];
     NSString *formatExtension = [[DMTask fileExtensionFromFormat:task.outputFormatIndex] uppercaseString];
-    NSString *jpgQuality = (task.outputFormatIndex==DMPOutputFormatJPG)?[NSString stringWithFormat:@"@%2.0f%%",task.jpgQuality*100]:@"";
+    NSString *jpgQuality = (task.outputFormatIndex==DMOutputFormatJPG)?[NSString stringWithFormat:@"@%2.0f%%",task.jpgQuality*100]:@"";
     NSString *fromDimension = (task.minScalePower<0)?[NSString stringWithFormat:@"1/%.0f",pow(2, -task.minScalePower)]:[NSString stringWithFormat:@"%.0f",pow(2, task.minScalePower)];
     NSString *toDimension = (task.maxScalePower<0)?[NSString stringWithFormat:@"1/%.0f",pow(2, -task.maxScalePower)]:[NSString stringWithFormat:@"%.0f",pow(2, task.maxScalePower)];
     [tableCellView.textField2 setStringValue:[NSString stringWithFormat:@"[%@] %d %@%@ %@->%@",originalDimension,tileSize,formatExtension,jpgQuality,fromDimension,toDimension]];
     
     DMMTaskListRowView *tableRowView = [tableView rowViewAtRow:row makeIfNecessary:NO];
-    tableRowView.taskState = task.state;
+    tableRowView.taskStatus = task.state;
     tableRowView.progress = task.progress;
     
     return tableCellView;
@@ -232,21 +232,21 @@
     DMTask *task = [[DMMTaskManager shared] taskAtIndex:taskIndex];
     switch (task.state) {
         default:
-        case DMPTaskStateReady:
-        case DMPTaskStateError:
+        case DMTaskStatusReady:
+        case DMTaskStatusError:
         {
             [self showTaskPanel:task];
         }
             break;
-        case DMPTaskStateRunning:
+        case DMTaskStatusRunning:
         {
-            task.state = DMPTaskStateReady;
+            task.state = DMTaskStatusReady;
             [[NSNotificationCenter defaultCenter] postNotificationName:DMPTaskDidUpdateNotification object:task];
             [[DMMTaskManager shared] saveTaskList];
             [[DMMTaskManager shared] skipCurrent];
         }
             break;
-        case DMPTaskStateSuccessful:
+        case DMTaskStatusSuccessful:
         {
             [self showResultOfTask:task];
         }

@@ -40,20 +40,20 @@
 
     // Prepare tile size popup list
     NSMutableArray *tileSizes = [@[] mutableCopy];
-    for (int i = 0; i < DMPTileSizeCount; ++i) {
+    for (int i = 0; i < DMTileSizeCount; ++i) {
         tileSizes[i] = @(256*pow(2, i));
     }
     self.tileSizeList = tileSizes;
 
     // Prepare output formats popup list
     NSMutableArray *outputFormats = [@[] mutableCopy];
-    for (int i = 0; i < DMPOutputFormatCount; ++i) {
+    for (int i = 0; i < DMOutputFormatCount; ++i) {
         NSString *format = nil;
         switch (i) {
-            case DMPOutputFormatJPG:
+            case DMOutputFormatJPG:
                 format = @"JPG";
                 break;
-            case DMPOutputFormatPNG:
+            case DMOutputFormatPNG:
                 format = @"PNG";
                 break;
             default:

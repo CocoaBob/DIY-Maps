@@ -74,7 +74,7 @@
         }
         if (imageRep) {
             NSData *imageData = nil;
-            if (self.outputFormat == DMPOutputFormatPNG)
+            if (self.outputFormat == DMOutputFormatPNG)
                 imageData = [imageRep representationUsingType:NSPNGFileType properties:nil];
             else
                 imageData = [imageRep representationUsingType:NSJPEGFileType properties:@{NSImageCompressionFactor:@(self.jpgQuality)}];

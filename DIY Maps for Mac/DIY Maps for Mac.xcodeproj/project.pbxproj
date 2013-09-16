@@ -32,6 +32,8 @@
 		45CA607B17E3C83800E6F835 /* DMMTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA607A17E3C83800E6F835 /* DMMTaskManager.m */; };
 		45CA608B17E4675B00E6F835 /* ZipKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45CA608517E463D700E6F835 /* ZipKit.framework */; };
 		45E3195817E7907400422402 /* PreviewTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 45E3195717E7907400422402 /* PreviewTemplate.pdf */; };
+		45E3195F17E7A34800422402 /* DMMPreviewWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E3195D17E7A34800422402 /* DMMPreviewWindowController.m */; };
+		45E3196017E7A34800422402 /* DMMPreviewWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45E3195E17E7A34800422402 /* DMMPreviewWindowController.xib */; };
 		5B6398A717E73B7100AE2EA6 /* SMDoubleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6398A317E73B7100AE2EA6 /* SMDoubleSlider.m */; };
 		5B6398A817E73B7100AE2EA6 /* SMDoubleSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6398A517E73B7100AE2EA6 /* SMDoubleSliderCell.m */; };
 		5B6398A917E73B7100AE2EA6 /* SMDoubleSliderIB3Framework-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5B6398A617E73B7100AE2EA6 /* SMDoubleSliderIB3Framework-Info.plist */; };
@@ -136,6 +138,9 @@
 		45CA607A17E3C83800E6F835 /* DMMTaskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMTaskManager.m; sourceTree = "<group>"; };
 		45CA607E17E463D700E6F835 /* ZipKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZipKit.xcodeproj; path = ZipKit/ZipKit.xcodeproj; sourceTree = "<group>"; };
 		45E3195717E7907400422402 /* PreviewTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = PreviewTemplate.pdf; path = Resources/PreviewTemplate.pdf; sourceTree = "<group>"; };
+		45E3195C17E7A34800422402 /* DMMPreviewWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMPreviewWindowController.h; sourceTree = "<group>"; };
+		45E3195D17E7A34800422402 /* DMMPreviewWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMPreviewWindowController.m; sourceTree = "<group>"; };
+		45E3195E17E7A34800422402 /* DMMPreviewWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMMPreviewWindowController.xib; sourceTree = "<group>"; };
 		5B6398A217E73B7100AE2EA6 /* SMDoubleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDoubleSlider.h; sourceTree = "<group>"; };
 		5B6398A317E73B7100AE2EA6 /* SMDoubleSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDoubleSlider.m; sourceTree = "<group>"; };
 		5B6398A417E73B7100AE2EA6 /* SMDoubleSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDoubleSliderCell.h; sourceTree = "<group>"; };
@@ -175,6 +180,7 @@
 				E0DEF6860FB2198C003218A8 /* DMMAppDelegate.h */,
 				E0DEF6870FB2198C003218A8 /* DMMAppDelegate.m */,
 				45CA607817E3C83200E6F835 /* Services */,
+				45E3195B17E7A29900422402 /* PreviewWindowController */,
 				45577E5117C178B6008151DB /* SingleTaskWindowController */,
 				45577E5017C178AB008151DB /* TaskListWindowController */,
 			);
@@ -356,6 +362,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		45E3195B17E7A29900422402 /* PreviewWindowController */ = {
+			isa = PBXGroup;
+			children = (
+				45E3195C17E7A34800422402 /* DMMPreviewWindowController.h */,
+				45E3195D17E7A34800422402 /* DMMPreviewWindowController.m */,
+				45E3195E17E7A34800422402 /* DMMPreviewWindowController.xib */,
+			);
+			name = PreviewWindowController;
+			sourceTree = "<group>";
+		};
 		5B6398A117E73B7100AE2EA6 /* SMDoubleSlider */ = {
 			isa = PBXGroup;
 			children = (
@@ -458,6 +474,7 @@
 				5B6398A917E73B7100AE2EA6 /* SMDoubleSliderIB3Framework-Info.plist in Resources */,
 				45563A0017C028840094876F /* PlayTemplate.pdf in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				45E3196017E7A34800422402 /* DMMPreviewWindowController.xib in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				455639FD17C028840094876F /* AddTemplate.pdf in Resources */,
 				45563A0117C028840094876F /* StopTemplate.pdf in Resources */,
@@ -489,6 +506,7 @@
 				4505E33717C7FC99005C56C6 /* NSString+DDXML.m in Sources */,
 				E0DEF6880FB2198C003218A8 /* DMMAppDelegate.m in Sources */,
 				456D017517E4A417000C26E3 /* DMMImageOperation.m in Sources */,
+				45E3195F17E7A34800422402 /* DMMPreviewWindowController.m in Sources */,
 				45CA607B17E3C83800E6F835 /* DMMTaskManager.m in Sources */,
 				4505E33817C7FC99005C56C6 /* DDXMLDocument.m in Sources */,
 				45577E4F17C17662008151DB /* DMMTaskListCellView.m in Sources */,

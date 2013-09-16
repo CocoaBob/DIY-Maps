@@ -101,12 +101,12 @@
 
 #pragma mark Class Methods
 
-+ (NSString *)fileExtensionFromFormat:(DMPOutputFormat)inValue {
++ (NSString *)fileExtensionFromFormat:(DMOutputFormat)inValue {
     switch (inValue) {
-        case DMPOutputFormatJPG:
+        case DMOutputFormatJPG:
             return @"jpg";
             break;
-        case DMPOutputFormatPNG:
+        case DMOutputFormatPNG:
             return @"png";
         default:
             return nil;
@@ -114,7 +114,7 @@
     }
 }
 
-+ (int)tileSizeFromSizeIndex:(DMPTileSize)inValue {
++ (int)tileSizeFromSizeIndex:(DMTileSize)inValue {
     return 256 * pow(2, inValue);
 }
 
