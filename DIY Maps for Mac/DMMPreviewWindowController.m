@@ -12,7 +12,7 @@
 #import "DMImageProcessor.h"
 #import "DMMTaskManager.h"
 
-#define PREVIEW_SIZE 512
+#define PREVIEW_SIZE 320
 
 @implementation DMMPreviewWindowImageView
 
