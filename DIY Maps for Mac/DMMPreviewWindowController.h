@@ -8,7 +8,7 @@
 
 @class DMTask;
 
-@interface DMMPreviewWindowRootView : NSView
+@interface DMMPreviewWindowImageView : NSImageView
 
 @end
 

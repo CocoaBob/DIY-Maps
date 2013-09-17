@@ -13,13 +13,9 @@
 
 #define PREVIEW_SIZE 512
 
-@implementation DMMPreviewWindowRootView
+@implementation DMMPreviewWindowImageView
 
 - (BOOL)mouseDownCanMoveWindow {
-    return YES;
-}
-
-- (BOOL)isOpaque {
     return YES;
 }
 
@@ -29,7 +25,7 @@
 
 @interface DMMPreviewWindowController ()
 
-@property (nonatomic, assign) IBOutlet NSImageView *previewImageView;
+@property (nonatomic, assign) IBOutlet DMMPreviewWindowImageView *imageView;
 
 @end
 
@@ -37,7 +33,8 @@
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-
+    [self.window setMovableByWindowBackground:YES];
+    [self.window setLevel:NSFloatingWindowLevel];
     [self addObserver:self forKeyPath:@"task" options:0 context:NULL];
 }
 
@@ -50,17 +47,17 @@
         NSRect oldWindowFrame = self.window.frame;
         if (self.task) {
             NSImage *srcImage = [[NSImage alloc] initWithContentsOfFile:self.task.inputFilePath];
-            self.previewImageView.image = [DMImageProcessor thumbnailWithImage:srcImage
-                                                                      cropRect:CGRectZero
-                                                                    outputSize:CGSizeMake(PREVIEW_SIZE,PREVIEW_SIZE)];
-            CGFloat imageWidth = self.previewImageView.image.size.width;
-            CGFloat imageHeight = self.previewImageView.image.size.height;
+            [self imageView].image = [DMImageProcessor thumbnailWithImage:srcImage
+                                                                 cropRect:CGRectZero
+                                                               outputSize:CGSizeMake(PREVIEW_SIZE,PREVIEW_SIZE)];
+            CGFloat imageWidth = [self imageView].image.size.width;
+            CGFloat imageHeight = [self imageView].image.size.height;
             [self.window setFrame:NSMakeRect(NSMidX(oldWindowFrame) - imageWidth / 2.0f, NSMidY(oldWindowFrame) - imageHeight / 2.0f, imageWidth, imageHeight)
                           display:YES
                           animate:YES];
         }
         else {
-            self.previewImageView.image = nil;
+            [self imageView].image = nil;
             [self.window setFrame:NSMakeRect(NSMidX(oldWindowFrame) - 50, NSMidY(oldWindowFrame) - 50, 100, 100)
                           display:YES
                           animate:YES];

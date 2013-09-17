@@ -7,7 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="DMMPreviewWindowController">
             <connections>
-                <outlet property="previewImageView" destination="KTZ-vM-Zez" id="tKb-Sd-nWs"/>
+                <outlet property="imageView" destination="KTZ-vM-Zez" id="wYS-PA-Xt8"/>
                 <outlet property="window" destination="1" id="3"/>
             </connections>
         </customObject>
@@ -19,11 +19,11 @@
             <rect key="contentRect" x="196" y="240" width="64" height="64"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
             <value key="minSize" type="size" width="64" height="64"/>
-            <view key="contentView" id="2" customClass="DMMPreviewWindowRootView">
+            <view key="contentView" id="2">
                 <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KTZ-vM-Zez">
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KTZ-vM-Zez" customClass="DMMPreviewWindowImageView">
                         <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="tNm-Jc-v2c"/>
