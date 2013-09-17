@@ -53,9 +53,7 @@
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag {
-	if(flag==NO){
-        [self.taskListWindowController.window makeKeyAndOrderFront:nil];
-	}
+	[self.taskListWindowController.window makeKeyAndOrderFront:nil];
 	return YES;
 }
 

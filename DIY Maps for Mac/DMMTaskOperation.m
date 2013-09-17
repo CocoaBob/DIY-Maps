@@ -79,9 +79,6 @@
         mIsExecuting = YES;
         [self didChangeValueForKey:@"isExecuting"];
 
-        // Update preview
-        [[DMMAppDelegate shared].previewWindowController setTask:self.task];
-
         // Begin the task
         [self doTask];
     }
@@ -101,6 +98,8 @@
 }
 
 - (void)doFinish {
+    [[NSNotificationCenter defaultCenter] postNotificationName:DMPTaskDidUpdateNotification object:nil];
+    
     [self willChangeValueForKey:@"isFinished"];
     [self willChangeValueForKey:@"isExecuting"];
     mIsExecuting = NO;
@@ -200,7 +199,7 @@
             imageOperation.outputFormat = self.task.outputFormatIndex;
             imageOperation.jpgQuality = [self.task jpgQuality];
             [imageOperation setCompletionBlock:^{
-                [self imageOperationCompletion];
+                [self imageOperationCompletionWithRect:sourceImageRect zoomScale:zoomScale];
             }];
             [self.imageProcessingQueue addOperation:imageOperation];
 			
@@ -210,7 +209,7 @@
 	}
 }
 
-- (void)imageOperationCompletion {
+- (void)imageOperationCompletionWithRect:(CGRect)completedRect zoomScale:(CGFloat)zoomScale {
     if (self.isCancelled) {
         [self doFinish];
         return;
@@ -219,7 +218,10 @@
     @synchronized(self) {
         ++numberOfTilesCompleted;
         self.task.progress = (float)numberOfTilesCompleted/numberOfTiles;
-        [[NSNotificationCenter defaultCenter] postNotificationName:DMPTaskDidUpdateNotification object:self.task];
+        [[NSNotificationCenter defaultCenter] postNotificationName:DMPTaskDidUpdateNotification
+                                                            object:self.task
+                                                          userInfo:@{@"CompletedRect":[NSValue valueWithRect:NSRectFromCGRect(completedRect)],
+                                                                     @"ZoomScale":@(zoomScale)}];
     }
     
     NSError *error;

@@ -54,10 +54,12 @@
                                                            queue:[NSOperationQueue mainQueue]
                                                       usingBlock:^(NSNotification *note) {
                                                           DMTask *updatedTask = [note object];
-                                                          NSUInteger taskIndex = [[DMMTaskManager shared] indexOfTask:updatedTask];
-                                                          if (taskIndex < [[DMMTaskManager shared] tasksCount]) {
-                                                              [taskListTableView reloadDataForRowIndexes:[NSIndexSet indexSetWithIndex:taskIndex]
-                                                                                           columnIndexes:[NSIndexSet indexSetWithIndex:0]];
+                                                          if (updatedTask) {
+                                                              NSUInteger taskIndex = [[DMMTaskManager shared] indexOfTask:updatedTask];
+                                                              if (taskIndex < [[DMMTaskManager shared] tasksCount]) {
+                                                                  [taskListTableView reloadDataForRowIndexes:[NSIndexSet indexSetWithIndex:taskIndex]
+                                                                                               columnIndexes:[NSIndexSet indexSetWithIndex:0]];
+                                                              }
                                                           }
                                                       }];
     }
@@ -101,9 +103,6 @@
             [self.progressIndicator stopAnimation:nil];
         }
         self.isStopButtonEnabled = isProcessing;
-        if (!isProcessing) {
-            [[DMMAppDelegate shared].previewWindowController setTask:nil];
-        }
     }
 }
 
