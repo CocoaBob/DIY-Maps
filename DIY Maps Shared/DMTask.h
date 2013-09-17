@@ -8,7 +8,9 @@
 
 typedef NS_ENUM(NSUInteger, DMTaskStatus) {
     DMTaskStatusReady,
-    DMTaskStatusRunning,
+    DMTaskStatusLoading,
+    DMTaskStatusSlicing,
+    DMTaskStatusPacking,
     DMTaskStatusError,
     DMTaskStatusSuccessful
 };
@@ -42,7 +44,7 @@ typedef NS_ENUM(NSUInteger, DMOutputFormat) {
 @property (nonatomic, assign) DMTileSize tileSizeIndex;
 @property (nonatomic, assign) DMOutputFormat outputFormatIndex;
 
-@property (nonatomic, assign) DMTaskStatus state;
+@property (nonatomic, assign) DMTaskStatus status;
 @property (nonatomic, assign) float progress;
 @property (nonatomic, strong) NSString *logs;
 

@@ -125,7 +125,7 @@
     [tableCellView.textField setStringValue:task.inputFilePath?[task.inputFilePath lastPathComponent]:@""];
     [tableCellView.imageView setImage:[[NSWorkspace sharedWorkspace] iconForFile:task.inputFilePath]];
     [tableCellView.actionButton setTag:row];
-    tableCellView.taskStatus = task.state;
+    tableCellView.taskStatus = task.status;
     NSString *originalDimension = [DMImageProcessor stringFromSize:task.sourcePixelSize scale:1];
     int tileSize = [DMTask tileSizeFromSizeIndex:task.tileSizeIndex];
     NSString *formatExtension = [[DMTask fileExtensionFromFormat:task.outputFormatIndex] uppercaseString];
@@ -135,7 +135,7 @@
     [tableCellView.textField2 setStringValue:[NSString stringWithFormat:@"[%@] %d %@%@ %@->%@",originalDimension,tileSize,formatExtension,jpgQuality,fromDimension,toDimension]];
     
     DMMTaskListRowView *tableRowView = [tableView rowViewAtRow:row makeIfNecessary:NO];
-    tableRowView.taskStatus = task.state;
+    tableRowView.taskStatus = task.status;
     tableRowView.progress = task.progress;
     
     return tableCellView;
@@ -234,7 +234,7 @@
 - (IBAction)doCellButtonAction:(id)sender {
     NSInteger taskIndex = ((NSButton *)sender).tag;
     DMTask *task = [[DMMTaskManager shared] taskAtIndex:taskIndex];
-    switch (task.state) {
+    switch (task.status) {
         default:
         case DMTaskStatusReady:
         case DMTaskStatusError:
@@ -242,9 +242,11 @@
             [self showTaskPanel:task];
         }
             break;
-        case DMTaskStatusRunning:
+        case DMTaskStatusLoading:
+        case DMTaskStatusSlicing:
+        case DMTaskStatusPacking:
         {
-            task.state = DMTaskStatusReady;
+            task.status = DMTaskStatusReady;
             [[NSNotificationCenter defaultCenter] postNotificationName:DMPTaskDidUpdateNotification object:task];
             [[DMMTaskManager shared] saveTaskList];
             [[DMMTaskManager shared] skipCurrent];

@@ -23,7 +23,9 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"taskStatus"]) {
         switch (self.taskStatus) {
-            case DMTaskStatusRunning:
+            case DMTaskStatusLoading:
+            case DMTaskStatusSlicing:
+            case DMTaskStatusPacking:
                 [self.actionButton setImage:[NSImage imageNamed:NSImageNameStopProgressTemplate]];
                 break;
             case DMTaskStatusSuccessful:

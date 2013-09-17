@@ -163,12 +163,10 @@ static DMMTaskManager *sharedInstance = nil;
 - (void)verifyAllTasks {
     __block BOOL updated = NO;
     [self.tasks enumerateObjectsUsingBlock:^(DMTask *obj, NSUInteger idx, BOOL *stop) {
-        if (obj.state != DMTaskStatusRunning) {
+        if (obj.status == DMTaskStatusError || obj.status == DMTaskStatusSuccessful) {
             if (![[NSFileManager defaultManager] fileExistsAtPath:[obj.outputFolderPath stringByAppendingPathExtension:@"map"]]) {
-                if (obj.state != DMTaskStatusReady) {
-                    updated = YES;
-                    obj.state = DMTaskStatusReady;
-                }
+                updated = YES;
+                obj.status = DMTaskStatusReady;
             }
         }
     }];

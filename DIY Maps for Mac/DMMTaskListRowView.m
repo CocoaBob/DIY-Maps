@@ -10,11 +10,17 @@
 
 @implementation DMMTaskListRowView
 
-- (void)drawProgress {
-    if (self.taskStatus == DMTaskStatusRunning) {
+- (void)drawProcessing {
+    if (self.taskStatus == DMTaskStatusLoading) {
+        
+    }
+    else if (self.taskStatus == DMTaskStatusSlicing) {
         NSRect progressRect = NSMakeRect(0, 1, NSWidth([self bounds]) * self.progress, NSHeight([self bounds])-2);
         [[NSColor colorWithCalibratedWhite:0 alpha:0.1] setFill];
         NSRectFillUsingOperation(progressRect, NSCompositeSourceOver);
+    }
+    else if (self.taskStatus == DMTaskStatusPacking) {
+        
     }
 }
 
@@ -25,7 +31,9 @@
         case DMTaskStatusReady:
             [[NSColor colorWithCalibratedWhite:(self.row & 1)?0.95:0.98 alpha:1] setFill];
             break;
-        case DMTaskStatusRunning:
+        case DMTaskStatusLoading:
+        case DMTaskStatusSlicing:
+        case DMTaskStatusPacking:
             [[NSColor colorWithCalibratedRed:colorValue green:colorValue blue:1 alpha:1] setFill];
             break;
         case DMTaskStatusError:
@@ -36,7 +44,7 @@
             break;
     }
     NSRectFill(dirtyRect);
-    [self drawProgress];
+    [self drawProcessing];
 }
 
 - (void)drawSelectionInRect:(NSRect)dirtyRect {
@@ -53,7 +61,7 @@
         [[NSColor colorWithCalibratedWhite:colorValue alpha:1] setFill];
     }
     NSRectFill(dirtyRect);
-    [self drawProgress];
+    [self drawProcessing];
 }
 
 @end

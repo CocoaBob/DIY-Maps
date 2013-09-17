@@ -72,7 +72,7 @@
     }
     
     if (self.task &&
-        self.task.state != DMTaskStatusSuccessful &&
+        self.task.status != DMTaskStatusSuccessful &&
         [[NSFileManager defaultManager] fileExistsAtPath:self.task.inputFilePath]) {
         // Update status
         [self willChangeValueForKey:@"isExecuting"];
@@ -110,8 +110,9 @@
 }
 
 - (void)doTask {
-    self.task.state = DMTaskStatusRunning;
+    self.task.status = DMTaskStatusLoading;
     self.task.progress = 0;
+    [[NSNotificationCenter defaultCenter] postNotificationName:DMPTaskDidUpdateNotification object:self.task];
     
     // Load the image
     self.srcImage = [[NSImage alloc] initWithContentsOfFile:self.task.inputFilePath];
@@ -150,6 +151,7 @@
     }
     
     // Generate slices for each scale level
+    self.task.status = DMTaskStatusSlicing;
     for (double currentScalePower = self.task.minScalePower; currentScalePower <= self.task.maxScalePower; ++currentScalePower) {
         [self sliceImageForZoomScale:pow(2, currentScalePower)];
     }
@@ -220,12 +222,12 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:DMPTaskDidUpdateNotification object:self.task];
     }
     
+    NSError *error;
+    
+    // Final tile
     if (numberOfTilesCompleted == numberOfTiles) {
-        NSError *error;
-        
         // Check if all images are processed
-        NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:self.task.outputFolderPath
-                                                                                error:&error];
+        NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:self.task.outputFolderPath error:&error];
         if (error) {
             [self handleError:error];
         }
@@ -233,29 +235,29 @@
             [self handleError:[NSError errorWithDomain:@"" code:0 userInfo:@{NSLocalizedDescriptionKey:@"Some output images are missing!"}]];
         }
         else {
-            // Generate final package
+            // Start to create package
+            self.task.status = DMTaskStatusPacking;
+            [[NSNotificationCenter defaultCenter] postNotificationName:DMPTaskDidUpdateNotification object:self.task];
+            
+            // Create the package
             NSString *zipFilePath = [self.task.outputFolderPath stringByAppendingPathExtension:@"map"];
             ZKFileArchive *archive = [ZKFileArchive archiveWithArchivePath:zipFilePath];
             NSInteger result = [archive deflateDirectory:self.task.outputFolderPath
                                           relativeToPath:[self.task.outputFolderPath stringByDeletingLastPathComponent]
                                        usingResourceFork:NO];
             if (result == zkSucceeded) {
-                [[NSFileManager defaultManager] removeItemAtPath:self.task.outputFolderPath error:&error];
-                if (error) {
-                    [self handleError:error];
-                }
+                [[NSFileManager defaultManager] removeItemAtPath:self.task.outputFolderPath error:nil];
+                [self taskDidCompleteWithStatus:DMTaskStatusSuccessful];
             }
             else {
                 [self handleError:[NSError errorWithDomain:@"" code:0 userInfo:@{NSLocalizedDescriptionKey:@"Failed to create package!"}]];
             }
         }
-        
-        [self taskDidCompleteWithStatus:DMTaskStatusSuccessful];
     }
 }
 
 - (void)taskDidCompleteWithStatus:(DMTaskStatus)status {
-    self.task.state = status;
+    self.task.status = status;
     self.task.progress = 0;
     [[NSNotificationCenter defaultCenter] postNotificationName:DMPTaskDidUpdateNotification object:self.task];
     [self doFinish];

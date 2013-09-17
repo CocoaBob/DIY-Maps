@@ -62,7 +62,7 @@
         _outputFormatIndex = [coder decodeIntForKey:@"outputFormatIndex"];
         _inputFilePath = [coder decodeObjectForKey:@"inputFilePath"];
         _outputFolderPath = [coder decodeObjectForKey:@"outputFolderPath"];
-        _state = [coder decodeIntForKey:@"state"];
+        _status = [coder decodeIntForKey:@"status"];
         _logs = [coder decodeObjectForKey:@"logs"];
     }
     return self;
@@ -84,7 +84,7 @@
         [coder encodeInt:self.outputFormatIndex forKey:@"outputFormatIndex"];
         [coder encodeObject:self.inputFilePath forKey:@"inputFilePath"];
         [coder encodeObject:self.outputFolderPath forKey:@"outputFolderPath"];
-        [coder encodeInt:self.state forKey:@"state"];
+        [coder encodeInt:self.status forKey:@"status"];
         [coder encodeObject:self.logs forKey:@"logs"];
     }
     else {
