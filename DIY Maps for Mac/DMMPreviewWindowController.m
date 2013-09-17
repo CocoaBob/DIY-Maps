@@ -11,6 +11,7 @@
 #import "DMTask.h"
 #import "DMImageProcessor.h"
 #import "DMMTaskManager.h"
+#import "DMMAppDelegate.h"
 
 #define PREVIEW_SIZE 320
 

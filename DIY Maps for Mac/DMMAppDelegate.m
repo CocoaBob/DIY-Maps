@@ -14,8 +14,6 @@
 
 @interface DMMAppDelegate()
 
-@property (nonatomic, strong) DMMTaskListWindowController *taskListWindowController;
-
 @end
 
 @implementation DMMAppDelegate

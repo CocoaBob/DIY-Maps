@@ -284,11 +284,21 @@
 }
 
 - (IBAction)doToolbarPreviewButtonAction:(id)sender {
-    if (![[DMMAppDelegate shared].previewWindowController.window isVisible]) {
-        [[DMMAppDelegate shared].previewWindowController.window orderFront:nil];
+    NSWindow *previewWindow = [DMMAppDelegate shared].previewWindowController.window;
+    if (![previewWindow isVisible]) {
+        NSScreen *displayScreen = [self.window screen];
+        NSRect screenRect = [displayScreen frame];
+        NSRect windowFrame = [previewWindow frame];
+        [previewWindow setFrame:NSMakeRect(NSMidX(screenRect) - NSWidth(windowFrame) / 2.0,
+                                           NSMidY(screenRect) - NSHeight(windowFrame) / 2.0,
+                                           NSWidth(windowFrame),
+                                           NSHeight(windowFrame))
+                        display:NO
+                        animate:NO];
+        [previewWindow orderFront:nil];
     }
     else {
-        [[DMMAppDelegate shared].previewWindowController.window orderOut:nil];
+        [previewWindow orderOut:nil];
     }
 }
 
