@@ -30,7 +30,7 @@
 @property (nonatomic, assign) IBOutlet DMMPreviewWindowImageView *imageView;
 @property (nonatomic, strong) DMTask *task;
 
-@property (nonatomic, strong) NSImage *fullPreviewImage;
+@property (nonatomic, strong) NSImage *previewImage;
 
 @end
 
@@ -64,13 +64,13 @@
     if (self.task) {
         // Prepare preview image
         NSImage *srcImage = [[NSImage alloc] initWithContentsOfFile:self.task.inputFilePath];
-        self.fullPreviewImage = [DMImageProcessor thumbnailWithImage:srcImage
+        self.previewImage = [DMImageProcessor thumbnailWithImage:srcImage
                                                         cropRect:CGRectZero
                                                       outputSize:CGSizeMake(PREVIEW_SIZE,PREVIEW_SIZE)];
         
         // Update window frame
-        CGFloat imageWidth = self.fullPreviewImage.size.width;
-        CGFloat imageHeight = self.fullPreviewImage.size.height;
+        CGFloat imageWidth = self.previewImage.size.width;
+        CGFloat imageHeight = self.previewImage.size.height;
         [self.window setFrame:NSMakeRect(NSMidX(oldWindowFrame) - imageWidth / 2.0f, NSMidY(oldWindowFrame) - imageHeight / 2.0f, imageWidth, imageHeight)
                       display:YES
                       animate:YES];
@@ -96,7 +96,7 @@
 }
 
 - (void)updateProgressWithRect:(CGRect)updatedRect zoomScalePower:(CGFloat)zoomScalePower {
-    CGFloat ratio = self.fullPreviewImage.size.width / self.task.sourceImageSize.width;
+    CGFloat ratio = self.previewImage.size.width / self.task.sourceImageSize.width;
     NSRect updatedPreviewRect = NSMakeRect(updatedRect.origin.x * ratio,
                                            updatedRect.origin.y * ratio,
                                            updatedRect.size.width * ratio,
@@ -105,7 +105,7 @@
     [[NSColor blackColor] setFill];
     NSRectFill(updatedPreviewRect);
     CGFloat alpha = (CGFloat)(zoomScalePower - self.task.minScalePower + 1)/(self.task.maxScalePower - self.task.minScalePower + 1);
-    [self.fullPreviewImage drawInRect:updatedPreviewRect
+    [self.previewImage drawInRect:updatedPreviewRect
                              fromRect:updatedPreviewRect
                             operation:NSCompositeSourceOver
                              fraction:alpha];

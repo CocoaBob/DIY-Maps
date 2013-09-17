@@ -66,8 +66,8 @@ static DMImageProcessor *sharedInstance = nil;
     if (CGRectEqualToRect(srcRect, CGRectZero)) {
         srcRect = CGRectMake(0, 0, imageWidth, imageHeight);
         CGSize newDestSize;
-        newDestSize.width = MIN(destSize.width, destSize.height * imageWidth / imageHeight);
-        newDestSize.height = MIN(destSize.height, destSize.width * imageHeight / imageWidth);
+        newDestSize.width = MAX(1, MIN(destSize.width, destSize.height * imageWidth / imageHeight));
+        newDestSize.height = MAX(1, MIN(destSize.height, destSize.width * imageHeight / imageWidth));
         destSize = newDestSize;
     }
     NSRect destRect = NSMakeRect(0, 0, destSize.width, destSize.height);
