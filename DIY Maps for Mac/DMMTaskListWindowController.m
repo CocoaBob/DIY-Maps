@@ -9,12 +9,13 @@
 #import "DMMTaskListWindowController.h"
 
 #import "DMMAppDelegate.h"
+#import "DMMSingleTaskWindowController.h"
+#import "DMMPreviewWindowController.h"
 #import "DMImageProcessor.h"
 #import "DMMTaskManager.h"
 #import "DMTask.h"
 #import "DMMTaskListRowView.h"
 #import "DMMTaskListCellView.h"
-#import "DMMSingleTaskWindowController.h"
 
 #pragma mark -
 
@@ -100,6 +101,9 @@
             [self.progressIndicator stopAnimation:nil];
         }
         self.isStopButtonEnabled = isProcessing;
+        if (!isProcessing) {
+            [[DMMAppDelegate shared].previewWindowController setTask:nil];
+        }
     }
 }
 
@@ -276,6 +280,15 @@
 
 - (IBAction)doToolbarAddButtonAction:(id)sender {
     [[DMMAppDelegate shared] openDocument:nil];
+}
+
+- (IBAction)doToolbarPreviewButtonAction:(id)sender {
+    if (![[DMMAppDelegate shared].previewWindowController.window isVisible]) {
+        [[DMMAppDelegate shared].previewWindowController.window orderFront:nil];
+    }
+    else {
+        [[DMMAppDelegate shared].previewWindowController.window orderOut:nil];
+    }
 }
 
 - (IBAction)doubleClickAction:(id)sender {

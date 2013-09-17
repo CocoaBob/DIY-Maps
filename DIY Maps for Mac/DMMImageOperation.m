@@ -59,8 +59,8 @@
     }
     if (![[NSFileManager defaultManager] fileExistsAtPath:self.outputPath]) {
         NSImage *thumbnail = [DMImageProcessor thumbnailWithImage:self.srcImage
-                                                          srcRect:self.sourceRect
-                                                         destSize:self.destinationSize];
+                                                          cropRect:self.sourceRect
+                                                         outputSize:self.destinationSize];
         
         if (self.isCancelled) {
             [self doFinish];

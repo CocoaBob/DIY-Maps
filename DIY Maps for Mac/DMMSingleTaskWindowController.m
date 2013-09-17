@@ -130,8 +130,8 @@
     
     if (!self.task) return;// Cancel if panel is closed
     self.previewImageLarge = [DMImageProcessor thumbnailWithImage:srcImage
-                                                          srcRect:sourceImageRect
-                                                         destSize:CGSizeMake(outputWidth, outputHeight)];
+                                                          cropRect:sourceImageRect
+                                                         outputSize:CGSizeMake(outputWidth, outputHeight)];
     [scaleRangeSlider updatePopoverContentView];
     
     // Prepare small preview image
@@ -150,8 +150,8 @@
         
         if (!self.task) return;// Cancel if panel is closed
         self.previewImageSmall = [DMImageProcessor thumbnailWithImage:srcImage
-                                                              srcRect:sourceImageRect
-                                                             destSize:CGSizeMake(outputWidth, outputHeight)];
+                                                              cropRect:sourceImageRect
+                                                             outputSize:CGSizeMake(outputWidth, outputHeight)];
     }
     [scaleRangeSlider updatePopoverContentView];
 }
@@ -211,7 +211,9 @@
     sourceImageRect.origin.x = (previewImageSize.width - sourceImageRect.size.width) / 2.0f;
     sourceImageRect.origin.y = (previewImageSize.height - sourceImageRect.size.height) / 2.0f;
     
-    NSImage *displayImage = [DMImageProcessor thumbnailWithImage:previewImage srcRect:sourceImageRect destSize:CGSizeMake(outputWidth, outputHeight)];
+    NSImage *displayImage = [DMImageProcessor thumbnailWithImage:previewImage
+                                                        cropRect:sourceImageRect
+                                                      outputSize:CGSizeMake(outputWidth, outputHeight)];
     
     if (!self.popoverContentView) {
         self.popoverContentView = [NSImageView new];

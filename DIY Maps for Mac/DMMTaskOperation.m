@@ -12,6 +12,8 @@
 #import "DMMTaskManager.h"
 #import "DMProfile.h"
 #import "DMMImageOperation.h"
+#import "DMMAppDelegate.h"
+#import "DMMPreviewWindowController.h"
 
 #import <ZipKit/ZKFileArchive.h>
 #import <ZipKit/ZKDefs.h>
@@ -72,9 +74,15 @@
     if (self.task &&
         self.task.state != DMTaskStatusSuccessful &&
         [[NSFileManager defaultManager] fileExistsAtPath:self.task.inputFilePath]) {
+        // Update status
         [self willChangeValueForKey:@"isExecuting"];
         mIsExecuting = YES;
         [self didChangeValueForKey:@"isExecuting"];
+
+        // Update preview
+        [[DMMAppDelegate shared].previewWindowController setTask:self.task];
+
+        // Begin the task
         [self doTask];
     }
     else {
