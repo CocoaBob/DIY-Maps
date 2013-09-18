@@ -303,7 +303,10 @@
 }
 
 - (IBAction)doubleClickAction:(id)sender {
-    [self showTaskPanel:[[DMMTaskManager shared] taskAtIndex:[taskListTableView clickedRow]]];
+    NSInteger selectedRow = [taskListTableView clickedRow];
+    if (selectedRow >= 0) {
+        [self showTaskPanel:[[DMMTaskManager shared] taskAtIndex:selectedRow]];
+    }
 }
 
 @end

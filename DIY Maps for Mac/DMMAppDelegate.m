@@ -38,7 +38,7 @@
     [self.singleTaskWindowController window];// Load the nib
     
     self.previewWindowController = [[DMMPreviewWindowController alloc] initWithWindowNibName:@"DMMPreviewWindowController"];
-    [self.previewWindowController window];
+    [self.previewWindowController window];// Load the nib
 }
 
 - (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename {

@@ -45,16 +45,18 @@
                                                        queue:[NSOperationQueue mainQueue]
                                                   usingBlock:^(NSNotification *note) {
                                                       DMTask *updatedTask = [note object];
-                                                      if (updatedTask != self.task) {
-                                                          self.task  = updatedTask;
-                                                          [self updateTask];
-                                                      }
-                                                      else {
-                                                          NSDictionary *userInfo = [note userInfo];
-                                                          NSRect completedRect = [userInfo[@"CompletedRect"] rectValue];
-                                                          CGFloat zoomScale = [userInfo[@"ZoomScale"] doubleValue];
-                                                          [self updateProgressWithRect:NSRectToCGRect(completedRect)
-                                                                        zoomScalePower:log2(zoomScale)];
+                                                      NSDictionary *userInfo = [note userInfo];
+                                                      if (userInfo || !updatedTask) {
+                                                          if (updatedTask != self.task) {
+                                                              self.task  = updatedTask;
+                                                              [self updateTask];
+                                                          }
+                                                          else {
+                                                              NSRect completedRect = [userInfo[@"CompletedRect"] rectValue];
+                                                              CGFloat zoomScale = [userInfo[@"ZoomScale"] doubleValue];
+                                                              [self updateProgressWithRect:NSRectToCGRect(completedRect)
+                                                                            zoomScalePower:log2(zoomScale)];
+                                                          }
                                                       }
                                                   }];
 }
@@ -97,10 +99,10 @@
 
 - (void)updateProgressWithRect:(CGRect)updatedRect zoomScalePower:(CGFloat)zoomScalePower {
     CGFloat ratio = self.previewImage.size.width / self.task.sourceImageSize.width;
-    NSRect updatedPreviewRect = NSMakeRect(updatedRect.origin.x * ratio,
-                                           updatedRect.origin.y * ratio,
-                                           updatedRect.size.width * ratio,
-                                           updatedRect.size.height * ratio);
+    NSRect updatedPreviewRect = NSMakeRect(floor(updatedRect.origin.x * ratio),
+                                           floor(updatedRect.origin.y * ratio),
+                                           ceil(updatedRect.size.width * ratio),
+                                           ceil(updatedRect.size.height * ratio));
     [self.imageView.image lockFocus];
     [[NSColor blackColor] setFill];
     NSRectFill(updatedPreviewRect);

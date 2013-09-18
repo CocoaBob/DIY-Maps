@@ -298,6 +298,9 @@
     [self didChangeValueForKey:@"jpgQuality"];
     [self didChangeValueForKey:@"minScalePower"];
     [self didChangeValueForKey:@"maxScalePower"];
+
+    [scaleRangeSlider setIntLoValue:_minScalePower];
+    [scaleRangeSlider setIntHiValue:_maxScalePower];
 }
 
 @end
