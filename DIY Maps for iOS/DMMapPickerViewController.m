@@ -46,7 +46,14 @@ static DMMapPickerViewController *sharedInstance = nil;
 - (id)init {
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
+        // Full Screen Settings
         self.wantsFullScreenLayout = NO;
+        if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+            self.edgesForExtendedLayout = UIRectEdgeNone;
+        if ([self respondsToSelector:@selector(extendedLayoutIncludesOpaqueBars)])
+            self.extendedLayoutIncludesOpaqueBars = NO;
+        if ([self respondsToSelector:@selector(automaticallyAdjustsScrollViewInsets)])
+            self.automaticallyAdjustsScrollViewInsets = NO;
         
         self.navigationItem.title = NSLocalizedString(@"Maps", nil);
         
@@ -99,10 +106,7 @@ static DMMapPickerViewController *sharedInstance = nil;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (!IS_PAD) {
-        [self.navigationController.navigationBar setTranslucent:YES];
-    }
-    
+    [self.navigationController.navigationBar setTranslucent:NO];
     [[DMFileManager shared] reloadFileList];
 }
 

@@ -49,6 +49,16 @@ static DMMapViewController *sharedInstance = nil;
 - (id)init {
     self = [super init];
     if (self) {
+        // Full Screen Settings
+        self.wantsFullScreenLayout = YES;
+        if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+            self.edgesForExtendedLayout = UIRectEdgeAll;
+        if ([self respondsToSelector:@selector(extendedLayoutIncludesOpaqueBars)])
+            self.extendedLayoutIncludesOpaqueBars = YES;
+        if ([self respondsToSelector:@selector(automaticallyAdjustsScrollViewInsets)])
+            self.automaticallyAdjustsScrollViewInsets = NO;
+
+        // Map View
         CBMapView *mapView = [[CBMapView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
         self.view = mapView;
         
@@ -60,30 +70,22 @@ static DMMapViewController *sharedInstance = nil;
         [self.tapGestureRecognizer requireGestureRecognizerToFail:mapView.doubleTapAndPanGestureRecognizer];
         [self.view addGestureRecognizer:self.tapGestureRecognizer];
         
-//        [mapView.doubleTapAndPanGestureRecognizer addObserver:self forKeyPath:@"state" options:0 context:NULL];
-        
         CBColorMaskedButton *listButton = [[CBColorMaskedButton alloc] initWithFrame:CGRectMake(0, 0, 36, 24)];
         [listButton setImage:[UIImage imageNamed:@"img-list"] forState:UIControlStateNormal];
         [listButton addTarget:self action:@selector(showMapPickerView:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:listButton];
-        
-        self.wantsFullScreenLayout = YES;
     }
     return self;
 }
 
 - (void)dealloc {
     [[self mapView] removeObserver:self forKeyPath:@"visibleMapRect"];
-//    [[self mapView].doubleTapAndPanGestureRecognizer removeObserver:self forKeyPath:@"state"];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"visibleMapRect"]) {
         DefaultsSet(Object, kLastOpenedMapVisibleRect, NSStringFromCGRect([[self mapView] visibleMapRect]));
     }
-//    else if ([keyPath isEqualToString:@"state"]) {
-//        NSLog(@"%d",[self mapView].doubleTapAndPanGestureRecognizer.state);
-//    }
 }
 
 #pragma mark UIViewController
