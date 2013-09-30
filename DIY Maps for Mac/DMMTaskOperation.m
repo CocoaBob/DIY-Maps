@@ -228,7 +228,7 @@
     
     NSError *error;
     
-    // Final tile
+    // The last tile
     if (numberOfTilesCompleted == numberOfTiles) {
         // Check if all images are processed
         NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:self.task.outputFolderPath error:&error];
@@ -239,24 +239,28 @@
             [self handleError:[NSError errorWithDomain:@"" code:0 userInfo:@{NSLocalizedDescriptionKey:@"Some output images are missing!"}]];
         }
         else {
-            // Start to create package
-            self.task.status = DMTaskStatusPacking;
-            [[NSNotificationCenter defaultCenter] postNotificationName:DMPTaskDidUpdateNotification object:self.task];
-            
-            // Create the package
-            NSString *zipFilePath = [self.task.outputFolderPath stringByAppendingPathExtension:@"map"];
-            ZKFileArchive *archive = [ZKFileArchive archiveWithArchivePath:zipFilePath];
-            NSInteger result = [archive deflateDirectory:self.task.outputFolderPath
-                                          relativeToPath:[self.task.outputFolderPath stringByDeletingLastPathComponent]
-                                       usingResourceFork:NO];
-            if (result == zkSucceeded) {
-                [[NSFileManager defaultManager] removeItemAtPath:self.task.outputFolderPath error:nil];
-                [self taskDidCompleteWithStatus:DMTaskStatusSuccessful];
-            }
-            else {
-                [self handleError:[NSError errorWithDomain:@"" code:0 userInfo:@{NSLocalizedDescriptionKey:@"Failed to create package!"}]];
-            }
+            [self createPackage];
         }
+    }
+}
+
+- (void)createPackage {
+    // Start to create package
+    self.task.status = DMTaskStatusPacking;
+    [[NSNotificationCenter defaultCenter] postNotificationName:DMPTaskDidUpdateNotification object:self.task];
+    
+    // Create the package
+    NSString *zipFilePath = [self.task.outputFolderPath stringByAppendingPathExtension:@"map"];
+    ZKFileArchive *archive = [ZKFileArchive archiveWithArchivePath:zipFilePath];
+    NSInteger result = [archive deflateDirectory:self.task.outputFolderPath
+                                  relativeToPath:[self.task.outputFolderPath stringByDeletingLastPathComponent]
+                               usingResourceFork:NO];
+    if (result == zkSucceeded) {
+        [[NSFileManager defaultManager] removeItemAtPath:self.task.outputFolderPath error:nil];
+        [self taskDidCompleteWithStatus:DMTaskStatusSuccessful];
+    }
+    else {
+        [self handleError:[NSError errorWithDomain:@"" code:0 userInfo:@{NSLocalizedDescriptionKey:@"Failed to create package!"}]];
     }
 }
 
