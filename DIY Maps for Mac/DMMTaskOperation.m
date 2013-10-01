@@ -22,7 +22,6 @@
 
 @property (nonatomic, strong) NSImage *srcImage;
 @property (nonatomic, strong) NSOperationQueue *imageProcessingQueue;
-@property (nonatomic, strong) NSDate *taskStartDate;
 
 @end
 
@@ -80,7 +79,7 @@
         mIsExecuting = YES;
         [self didChangeValueForKey:@"isExecuting"];
         
-        self.taskStartDate = [NSDate date];
+        self.task.beginDate = [NSDate date];
 
         // Begin the task
         [self doTask];
@@ -103,8 +102,10 @@
 - (void)doFinish {
     if (!mIsFinished) {
         [[NSNotificationCenter defaultCenter] postNotificationName:DMPTaskDidUpdateNotification object:nil];
-        self.task.logs = [NSString stringWithFormat:@"Task starts at %@, costs %.1f seconds, result is %@.",[NSDateFormatter localizedStringFromDate:self.taskStartDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterLongStyle],-[self.taskStartDate timeIntervalSinceNow],(self.task.status == DMTaskStatusSuccessful)?@"Successful":@"Failed"];
-        NSLog(@"%@\n%@", self.task.inputFilePath, self.task.logs);
+        
+        self.task.endDate = [NSDate date];
+        
+        NSLog(@"%@\nTask starts at %@, costs %.1f seconds, result is %@, task logs:\n%@", self.task.inputFilePath, [NSDateFormatter localizedStringFromDate:self.task.beginDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterLongStyle],[self.task.endDate timeIntervalSinceDate:self.task.beginDate],(self.task.status == DMTaskStatusSuccessful)?@"Successful":@"Failed", self.task.logs);
     }
     
     [self willChangeValueForKey:@"isFinished"];
@@ -279,6 +280,7 @@
 - (void)handleError:(NSError *)error {
     if (error) {
         NSLog(@"%@ %@\n%@",[error localizedDescription],[error localizedFailureReason],[NSThread callStackSymbols]);
+        self.task.logs = [NSString stringWithFormat:@"%@\n%@ %@",self.task.logs,[error localizedDescription],[error localizedFailureReason]];
     }
     [self taskDidCompleteWithStatus:DMTaskStatusError];
 }

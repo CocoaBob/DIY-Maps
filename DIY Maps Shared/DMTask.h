@@ -46,6 +46,8 @@ typedef NS_ENUM(NSUInteger, DMOutputFormat) {
 
 @property (nonatomic, assign) DMTaskStatus status;
 @property (nonatomic, assign) float progress;
+@property (nonatomic, strong) NSDate *beginDate;
+@property (nonatomic, strong) NSDate *endDate;
 @property (nonatomic, strong) NSString *logs;
 
 + (NSString *)fileExtensionFromFormat:(DMOutputFormat)inValue;
