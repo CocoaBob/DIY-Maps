@@ -61,6 +61,10 @@
                                                   }];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:DMPTaskDidUpdateNotification];
+}
+
 - (void)updateTask {
     NSRect oldWindowFrame = self.window.frame;
     if (self.task) {

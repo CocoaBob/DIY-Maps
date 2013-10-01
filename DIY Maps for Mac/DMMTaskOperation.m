@@ -22,6 +22,7 @@
 
 @property (nonatomic, strong) NSImage *srcImage;
 @property (nonatomic, strong) NSOperationQueue *imageProcessingQueue;
+@property (nonatomic, strong) NSDate *taskStartDate;
 
 @end
 
@@ -78,6 +79,8 @@
         [self willChangeValueForKey:@"isExecuting"];
         mIsExecuting = YES;
         [self didChangeValueForKey:@"isExecuting"];
+        
+        self.taskStartDate = [NSDate date];
 
         // Begin the task
         [self doTask];
@@ -100,6 +103,8 @@
 - (void)doFinish {
     if (!mIsFinished) {
         [[NSNotificationCenter defaultCenter] postNotificationName:DMPTaskDidUpdateNotification object:nil];
+        self.task.logs = [NSString stringWithFormat:@"Task starts at %@, costs %.1f seconds, result is %@.",[NSDateFormatter localizedStringFromDate:self.taskStartDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterLongStyle],-[self.taskStartDate timeIntervalSinceNow],(self.task.status == DMTaskStatusSuccessful)?@"Successful":@"Failed"];
+        NSLog(@"%@\n%@", self.task.inputFilePath, self.task.logs);
     }
     
     [self willChangeValueForKey:@"isFinished"];
