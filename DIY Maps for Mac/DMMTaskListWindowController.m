@@ -125,13 +125,39 @@
     [tableCellView.imageView setImage:[[NSWorkspace sharedWorkspace] iconForFile:task.inputFilePath]];
     [tableCellView.actionButton setTag:row];
     tableCellView.taskStatus = task.status;
-    NSString *originalDimension = [DMImageProcessor stringFromSize:task.sourcePixelSize scale:1];
-    int tileSize = [DMTask tileSizeFromSizeIndex:task.tileSizeIndex];
-    NSString *formatExtension = [[DMTask fileExtensionFromFormat:task.outputFormatIndex] uppercaseString];
-    NSString *jpgQuality = (task.outputFormatIndex==DMOutputFormatJPG)?[NSString stringWithFormat:@"@%2.0f%%",task.jpgQuality*100]:@"";
-    NSString *fromDimension = (task.minScalePower<0)?[NSString stringWithFormat:@"1/%.0f",pow(2, -task.minScalePower)]:[NSString stringWithFormat:@"%.0f",pow(2, task.minScalePower)];
-    NSString *toDimension = (task.maxScalePower<0)?[NSString stringWithFormat:@"1/%.0f",pow(2, -task.maxScalePower)]:[NSString stringWithFormat:@"%.0f",pow(2, task.maxScalePower)];
-    [tableCellView.textField2 setStringValue:[NSString stringWithFormat:@"[%@] %d %@%@ %@->%@",originalDimension,tileSize,formatExtension,jpgQuality,fromDimension,toDimension]];
+    
+    if (task.status == DMTaskStatusLoading) {
+        [tableCellView.textField2 setStringValue:NSLocalizedString(@"Loading...", nil)];
+    }
+    else if (task.status == DMTaskStatusSlicing) {
+        NSTimeInterval elapsedTime = [[NSDate date] timeIntervalSinceDate:task.beginDate];
+        CGFloat minutes = floor(elapsedTime/60.);
+        CGFloat seconds = (int)elapsedTime % 60;
+        NSTimeInterval remainingTime = (elapsedTime / task.progress) - elapsedTime;
+        CGFloat remainingMinutes = floor(remainingTime/60.);
+        CGFloat remainingSeconds = (int)remainingTime % 60;
+
+        NSMutableString *progressString = [[NSMutableString alloc] initWithFormat:NSLocalizedString(@"Progress:%02.f%% Elapsed:%02.0f'%02.0f\" ",nil),task.progress * 100,minutes,seconds];
+        if (task.progress <= 0) {
+            [progressString appendString:@"Calculating..."];
+        }
+        else {
+            [progressString appendFormat:NSLocalizedString(@"Remaining:%02.0f'%02.0f\"",nil),remainingMinutes,remainingSeconds];
+        }
+        [tableCellView.textField2 setStringValue:progressString];
+    }
+    else if (task.status == DMTaskStatusPacking) {
+        [tableCellView.textField2 setStringValue:NSLocalizedString(@"Exporting...", nil)];
+    }
+    else {
+        NSString *originalDimension = [DMImageProcessor stringFromSize:task.sourcePixelSize scale:1];
+        int tileSize = [DMTask tileSizeFromSizeIndex:task.tileSizeIndex];
+        NSString *formatExtension = [[DMTask fileExtensionFromFormat:task.outputFormatIndex] uppercaseString];
+        NSString *jpgQuality = (task.outputFormatIndex==DMOutputFormatJPG)?[NSString stringWithFormat:@"@%2.0f%%",task.jpgQuality*100]:@"";
+        NSString *fromDimension = (task.minScalePower<0)?[NSString stringWithFormat:@"1/%.0f",pow(2, -task.minScalePower)]:[NSString stringWithFormat:@"%.0f",pow(2, task.minScalePower)];
+        NSString *toDimension = (task.maxScalePower<0)?[NSString stringWithFormat:@"1/%.0f",pow(2, -task.maxScalePower)]:[NSString stringWithFormat:@"%.0f",pow(2, task.maxScalePower)];
+        [tableCellView.textField2 setStringValue:[NSString stringWithFormat:@"[%@] %d %@%@ %@->%@",originalDimension,tileSize,formatExtension,jpgQuality,fromDimension,toDimension]];
+    }
     
     DMMTaskListRowView *tableRowView = [tableView rowViewAtRow:row makeIfNecessary:NO];
     tableRowView.taskStatus = task.status;

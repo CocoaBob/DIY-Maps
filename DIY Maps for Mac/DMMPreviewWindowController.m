@@ -40,7 +40,6 @@
     [super windowDidLoad];
     [self.window setMovableByWindowBackground:YES];
     [self.window setLevel:NSFloatingWindowLevel];
-    self.messageLabelString = nil;
     [[NSNotificationCenter defaultCenter] addObserverForName:DMPTaskDidUpdateNotification
                                                       object:nil
                                                        queue:[NSOperationQueue mainQueue]
@@ -70,9 +69,6 @@
     NSRect oldWindowFrame = self.window.frame;
     // New Task
     if (self.task) {
-        // Update time label
-        self.messageLabelString = NSLocalizedString(@"Loading...", nil);
-        
         // Prepare preview image
         NSImage *srcImage = [[NSImage alloc] initWithContentsOfFile:self.task.inputFilePath];
         self.previewImage = [DMImageProcessor thumbnailWithImage:srcImage
@@ -96,9 +92,6 @@
     }
     // No Task
     else {
-        // Update time label
-        self.messageLabelString = nil;
-        
         // Update image view
         self.imageView.image = nil;
         [self.imageView setNeedsDisplay];
@@ -127,26 +120,6 @@
                              fraction:alpha];
     [self.imageView.image unlockFocus];
     [self.imageView setNeedsDisplay];
-    
-    // Update time label string
-    if (self.task && self.task.beginDate) {
-        NSTimeInterval elapsedTime = [[NSDate date] timeIntervalSinceDate:self.task.beginDate];
-        CGFloat minutes = floor(elapsedTime/60.);
-        CGFloat seconds = (int)elapsedTime % 60;
-        NSTimeInterval remainingTime = elapsedTime / self.task.progress;
-        CGFloat remainingMinutes = floor(remainingTime/60.);
-        CGFloat remainingSeconds = (int)remainingTime % 60;
-    
-        if (self.task.progress <= 0) {
-            self.messageLabelString = [NSString stringWithFormat:NSLocalizedString(@"Elapsed :\n%2.0f:%2.0f\nCalculating...",nil),minutes,seconds];
-        }
-        else {
-            self.messageLabelString = [NSString stringWithFormat:NSLocalizedString(@"Elapsed :\n%2.0f:%2.0f\nRemaining :\n%2.0f:%2.0f",nil),minutes,seconds,remainingMinutes,remainingSeconds];
-        }
-    }
-    else {
-        self.messageLabelString = nil;
-    }
 }
 
 @end

@@ -14,6 +14,4 @@
 
 @interface DMMPreviewWindowController : NSWindowController
 
-@property (nonatomic, strong) NSString *messageLabelString;
-
 @end

@@ -28,37 +28,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="tNm-Jc-v2c"/>
                     </imageView>
-                    <textField autoresizesSubviews="NO" wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XZL-MR-NNe">
-                        <rect key="frame" x="0.0" y="4" width="70" height="58"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="64" id="JXW-pF-gTu"/>
-                            <constraint firstAttribute="height" constant="58" id="ROh-Uu-s9f"/>
-                        </constraints>
-                        <shadow key="shadow" blurRadius="2">
-                            <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        </shadow>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" id="WRO-5h-RoG">
-                            <font key="font" size="9" name="LucidaGrande"/>
-                            <string key="title">Elapsed :
-00:35
-Remaining:
-02:33
-Calculating...</string>
-                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        </textFieldCell>
-                        <connections>
-                            <binding destination="-2" name="value" keyPath="messageLabelString" id="QKT-GH-8Xb"/>
-                        </connections>
-                    </textField>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="XZL-MR-NNe" firstAttribute="top" secondItem="2" secondAttribute="top" constant="2" id="8xu-6t-AH8"/>
                     <constraint firstItem="KTZ-vM-Zez" firstAttribute="leading" secondItem="2" secondAttribute="leading" id="Nii-aA-ktQ"/>
                     <constraint firstAttribute="bottom" secondItem="KTZ-vM-Zez" secondAttribute="bottom" id="PVa-8e-Gbb"/>
                     <constraint firstAttribute="trailing" secondItem="KTZ-vM-Zez" secondAttribute="trailing" id="Rul-5m-bBR"/>
-                    <constraint firstItem="XZL-MR-NNe" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="3" id="hBS-cY-tWc"/>
                     <constraint firstItem="KTZ-vM-Zez" firstAttribute="top" secondItem="2" secondAttribute="top" id="hoi-IS-Dkd"/>
                 </constraints>
             </view>
