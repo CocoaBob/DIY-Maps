@@ -65,12 +65,11 @@ static DMMTaskManager *sharedInstance = nil;
              [keyPath isEqualToString:@"isSuspended"]) {
         if (self.isSuspended != [self.processQueue isSuspended]) {
             self.isSuspended = [self.processQueue isSuspended];
-            DMMTaskOperation *operation = [self currentRunningOperation];
-            if (operation) {
+            if (self.currentRunningOperation) {
                 if (self.isSuspended)
-                    [operation pauseImageProcessing];
+                    [self.currentRunningOperation pauseImageProcessing];
                 else
-                    [operation continueImageProcessing];
+                    [self.currentRunningOperation continueImageProcessing];
             }
         }
         self.isProcessing = self.isSuspended?YES:([self.processQueue operationCount] > 0);
@@ -176,15 +175,6 @@ static DMMTaskManager *sharedInstance = nil;
     }
 }
 
-- (DMMTaskOperation *)currentRunningOperation {
-    for (DMMTaskOperation *operation in [self.processQueue operations]) {
-        if ([operation isExecuting]) {
-            return operation;
-        }
-    }
-    return nil;
-}
-
 #pragma mark Run Tasks
 
 - (void)startProcessing {
@@ -201,8 +191,9 @@ static DMMTaskManager *sharedInstance = nil;
     [self.processQueue willChangeValueForKey:@"isSuspended"];
     [self.processQueue setSuspended:YES];
     [self.processQueue didChangeValueForKey:@"isSuspended"];
-    DMMTaskOperation *operation = [self currentRunningOperation];
-    [operation pauseImageProcessing];
+    if (self.currentRunningOperation) {
+        [self.currentRunningOperation pauseImageProcessing];
+    }
     [self stopElapsingTime];
 }
 
@@ -210,15 +201,15 @@ static DMMTaskManager *sharedInstance = nil;
     [self.processQueue willChangeValueForKey:@"isSuspended"];
     [self.processQueue setSuspended:NO];
     [self.processQueue didChangeValueForKey:@"isSuspended"];
-    DMMTaskOperation *operation = [self currentRunningOperation];
-    [operation continueImageProcessing];
+    if (self.currentRunningOperation) {
+        [self.currentRunningOperation continueImageProcessing];
+    }
     [self startElapsingTime];
 }
 
 - (void)skipCurrent {
-    DMMTaskOperation *operation = [self currentRunningOperation];
-    if (operation) {
-        [operation cancel];
+    if (self.currentRunningOperation) {
+        [self.currentRunningOperation cancel];
     }
 }
 
@@ -249,8 +240,9 @@ static DMMTaskManager *sharedInstance = nil;
 }
 
 - (void)elapseTime {
-    DMMTaskOperation *operation = [self currentRunningOperation];
-    operation.task.elapsedTime += TIMER_INTERVAL;
+    if (self.currentRunningOperation) {
+        self.currentRunningOperation.task.elapsedTime += TIMER_INTERVAL;
+    }
 }
 
 @end

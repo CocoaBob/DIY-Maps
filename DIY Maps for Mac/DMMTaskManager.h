@@ -10,9 +10,11 @@ static NSString* const DMPTaskListDidUpdateNotification = @"DMPTaskListDidUpdate
 static NSString* const DMPTaskDidUpdateNotification = @"DMPTaskDidUpdateNotification";
 
 @class DMTask;
+@class DMMTaskOperation;
 
 @interface DMMTaskManager : NSObject
 
+@property (nonatomic, strong) DMMTaskOperation *currentRunningOperation;
 @property (nonatomic, assign) BOOL isProcessing;
 @property (nonatomic, assign) BOOL isSuspended;
 

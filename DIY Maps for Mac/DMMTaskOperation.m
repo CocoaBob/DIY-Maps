@@ -78,6 +78,7 @@
         [self willChangeValueForKey:@"isExecuting"];
         mIsExecuting = YES;
         [self didChangeValueForKey:@"isExecuting"];
+        [DMMTaskManager shared].currentRunningOperation = self;
 
         // Begin the task
         [self doTask];
@@ -98,7 +99,9 @@
 }
 
 - (void)doFinish {
+    // 1st time to call doFinish, it may be called multiple times
     if (!mIsFinished) {
+        [DMMTaskManager shared].currentRunningOperation = nil;
         [[NSNotificationCenter defaultCenter] postNotificationName:DMPTaskDidUpdateNotification object:nil];
     }
     
