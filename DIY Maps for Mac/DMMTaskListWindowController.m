@@ -66,8 +66,11 @@
     return self;
 }
 
+#define DMTaskPboardType @"DMTaskPboardType"
+
 - (void)awakeFromNib {
     [taskListTableView setDoubleAction:@selector(doubleClickAction:)];
+    [taskListTableView registerForDraggedTypes:@[@"DMTaskPboardType"]];
 }
 
 - (void)windowDidLoad {
@@ -114,6 +117,50 @@
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     return [[DMMTaskManager shared] taskAtIndex:row];
+}
+
+- (BOOL)tableView:(NSTableView *)aTableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard {
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:rowIndexes];
+    [pboard declareTypes:[NSArray arrayWithObject:DMTaskPboardType] owner:self];
+    [pboard setData:data forType:DMTaskPboardType];
+    return YES;
+}
+
+- (NSDragOperation)tableView:(NSTableView *)aTableView
+                validateDrop:(id < NSDraggingInfo >)info
+                 proposedRow:(NSInteger)row
+       proposedDropOperation:(NSTableViewDropOperation)operation {
+    return NSDragOperationEvery;
+}
+
+- (BOOL)tableView:(NSTableView *)aTableView
+       acceptDrop:(id < NSDraggingInfo >)info
+              row:(NSInteger)row
+    dropOperation:(NSTableViewDropOperation)operation {
+    NSPasteboard* pboard = [info draggingPasteboard];
+    NSData* rowData = [pboard dataForType:DMTaskPboardType];
+    
+    NSIndexSet* rowIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:rowData];
+    
+    // Removed moved tasks
+    NSMutableArray *movedTasks = [@[] mutableCopy];
+    [rowIndexes enumerateIndexesWithOptions:NSEnumerationReverse usingBlock:^(NSUInteger idx, BOOL *stop) {
+        [movedTasks addObject:[[DMMTaskManager shared] taskAtIndex:idx]];
+        [[DMMTaskManager shared] removeTaskAtIndex:idx];
+    }];
+    
+    // Calculate the new dest row
+    __block NSUInteger newRow = row;
+    [rowIndexes enumerateIndexesWithOptions:NSEnumerationReverse usingBlock:^(NSUInteger idx, BOOL *stop) {
+        if (idx <= row) {
+            --newRow;
+        }
+    }];
+    
+    // Insert moved tasks back
+    [[DMMTaskManager shared] insertTasks:movedTasks atIndex:newRow];
+    
+    return YES;
 }
 
 #pragma mark NSTableViewDelegate

@@ -140,6 +140,20 @@ static DMMTaskManager *sharedInstance = nil;
     [self didChangeValueForKey:@"tasks"];
 }
 
+- (void)insertTask:(DMTask *)newTask atIndex:(NSUInteger)index {
+    [self willChangeValueForKey:@"tasks"];
+    [self.tasks insertObject:newTask atIndex:index];
+    [self didChangeValueForKey:@"tasks"];
+}
+
+- (void)insertTasks:(NSArray *)newTasks atIndex:(NSUInteger)index {
+    [self willChangeValueForKey:@"tasks"];
+    [newTasks enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [self.tasks insertObject:obj atIndex:index];
+    }];
+    [self didChangeValueForKey:@"tasks"];
+}
+
 - (void)removeTaskAtIndex:(NSUInteger)index {
     if ((index + 1) > [self tasksCount]) {
         return;
