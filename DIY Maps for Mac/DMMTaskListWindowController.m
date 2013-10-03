@@ -130,7 +130,7 @@
         [tableCellView.textField2 setStringValue:NSLocalizedString(@"Loading...", nil)];
     }
     else if (task.status == DMTaskStatusSlicing) {
-        NSTimeInterval elapsedTime = [[NSDate date] timeIntervalSinceDate:task.beginDate];
+        NSTimeInterval elapsedTime = task.elapsedTime;
         CGFloat minutes = floor(elapsedTime/60.);
         CGFloat seconds = (int)elapsedTime % 60;
         NSTimeInterval remainingTime = (elapsedTime / task.progress) - elapsedTime;

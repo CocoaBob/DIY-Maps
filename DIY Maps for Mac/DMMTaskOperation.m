@@ -78,8 +78,6 @@
         [self willChangeValueForKey:@"isExecuting"];
         mIsExecuting = YES;
         [self didChangeValueForKey:@"isExecuting"];
-        
-        self.task.beginDate = [NSDate date];
 
         // Begin the task
         [self doTask];
@@ -102,10 +100,6 @@
 - (void)doFinish {
     if (!mIsFinished) {
         [[NSNotificationCenter defaultCenter] postNotificationName:DMPTaskDidUpdateNotification object:nil];
-        
-        self.task.endDate = [NSDate date];
-        
-        NSLog(@"%@\nTask starts at %@, costs %.1f seconds, result is %@, task logs:\n%@", self.task.inputFilePath, [NSDateFormatter localizedStringFromDate:self.task.beginDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterLongStyle],[self.task.endDate timeIntervalSinceDate:self.task.beginDate],(self.task.status == DMTaskStatusSuccessful)?@"Successful":@"Failed", self.task.logs);
     }
     
     [self willChangeValueForKey:@"isFinished"];
