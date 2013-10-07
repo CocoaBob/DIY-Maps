@@ -178,6 +178,11 @@
 	int outputHeight = floor (self.task.sourcePixelSize.height * zoomScale);
     int tileSize = [DMTask tileSizeFromSizeIndex:self.task.tileSizeIndex];
     
+    static dispatch_queue_t imageOperationCompletionQueue = nil;
+    if (!imageOperationCompletionQueue) {
+        imageOperationCompletionQueue = dispatch_queue_create("ImageOperationCompletionQueue", DISPATCH_QUEUE_SERIAL);
+    }
+    
 	// Create slices
 	fileY = 0;
 	for (tileY = outputHeight; tileY > 0; tileY -= tileSize) {
@@ -208,7 +213,7 @@
             imageOperation.outputFormat = self.task.outputFormatIndex;
             imageOperation.jpgQuality = [self.task jpgQuality];
             [imageOperation setCompletionBlock:^{
-                dispatch_async(dispatch_get_main_queue(), ^{
+                dispatch_async(imageOperationCompletionQueue, ^{
                     if (weakImageOperation) {
                         [self updateLastTileDuration:-[weakImageOperation.beginTime timeIntervalSinceNow]];
                         weakImageOperation = nil;
