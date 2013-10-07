@@ -177,18 +177,14 @@
         [tableCellView.textField2 setStringValue:NSLocalizedString(@"Loading...", nil)];
     }
     else if (task.status == DMTaskStatusSlicing) {
-        NSTimeInterval elapsedTime = task.elapsedTime;
-        CGFloat minutes = floor(elapsedTime/60.);
-        CGFloat seconds = (int)elapsedTime % 60;
-        NSTimeInterval remainingTime = (elapsedTime / task.progress) - elapsedTime;
-        CGFloat remainingMinutes = floor(remainingTime/60.);
-        CGFloat remainingSeconds = (int)remainingTime % 60;
-
-        NSMutableString *progressString = [[NSMutableString alloc] initWithFormat:NSLocalizedString(@"Progress:%02.f%% Elapsed:%02.0f'%02.0f\" ",nil),task.progress * 100,minutes,seconds];
-        if (task.progress <= 0) {
-            [progressString appendString:@"Calculating..."];
+        NSTimeInterval remainingTime = task.remainingTime;
+        NSMutableString *progressString = [[NSMutableString alloc] initWithFormat:NSLocalizedString(@"Progress:%02.f%% ",nil),task.progress * 100];
+        if (task.progress <= 0 || remainingTime == -1) {
+            [progressString appendString:@"Estimating..."];
         }
         else {
+            CGFloat remainingMinutes = floor(remainingTime/60.);
+            CGFloat remainingSeconds = (int)remainingTime % 60;
             [progressString appendFormat:NSLocalizedString(@"Remaining:%02.0f'%02.0f\"",nil),remainingMinutes,remainingSeconds];
         }
         [tableCellView.textField2 setStringValue:progressString];

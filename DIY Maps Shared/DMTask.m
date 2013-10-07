@@ -64,7 +64,7 @@
         _outputFolderPath = [coder decodeObjectForKey:@"outputFolderPath"];
         _status = [coder decodeIntForKey:@"status"];
         _progress = [coder decodeFloatForKey:@"progress"];
-        _elapsedTime = [coder decodeDoubleForKey:@"elapsedTime"];
+        _remainingTime = [coder decodeDoubleForKey:@"remainingTime"];
         _logs = [coder decodeObjectForKey:@"logs"];
     }
     return self;
@@ -88,7 +88,7 @@
         [coder encodeObject:self.outputFolderPath forKey:@"outputFolderPath"];
         [coder encodeInt:self.status forKey:@"status"];
         [coder encodeFloat:self.progress forKey:@"progress"];
-        [coder encodeDouble:self.elapsedTime forKey:@"elapsedTime"];
+        [coder encodeDouble:self.remainingTime forKey:@"remainingTime"];
         [coder encodeObject:self.logs forKey:@"logs"];
     }
     else {

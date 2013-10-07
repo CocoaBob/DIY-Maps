@@ -34,6 +34,8 @@
         return;
     }
     
+    self.beginTime = [NSDate date];
+    
     [self willChangeValueForKey:@"isExecuting"];
     mIsExecuting = YES;
     [self didChangeValueForKey:@"isExecuting"];

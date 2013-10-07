@@ -16,5 +16,6 @@
 @property (nonatomic, strong) NSString *outputPath;
 @property (nonatomic, assign) DMOutputFormat outputFormat;
 @property (nonatomic, assign) CGFloat jpgQuality;
+@property (nonatomic, strong) NSDate *beginTime;
 
 @end

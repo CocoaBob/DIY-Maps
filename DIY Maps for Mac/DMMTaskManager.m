@@ -198,7 +198,6 @@ static DMMTaskManager *sharedInstance = nil;
         taskOperation.task = (DMTask *)obj;
         [self.processQueue addOperation:taskOperation];
     }];
-    [self startElapsingTime];
 }
 
 - (void)pauseProcessing {
@@ -208,7 +207,6 @@ static DMMTaskManager *sharedInstance = nil;
     if (self.currentRunningOperation) {
         [self.currentRunningOperation pauseImageProcessing];
     }
-    [self stopElapsingTime];
 }
 
 - (void)continueProcessing {
@@ -218,7 +216,6 @@ static DMMTaskManager *sharedInstance = nil;
     if (self.currentRunningOperation) {
         [self.currentRunningOperation continueImageProcessing];
     }
-    [self startElapsingTime];
 }
 
 - (void)skipCurrent {
@@ -234,29 +231,6 @@ static DMMTaskManager *sharedInstance = nil;
         [self.processQueue didChangeValueForKey:@"isSuspended"];
     }
     [self.processQueue cancelAllOperations];
-    [self stopElapsingTime];
-}
-
-#pragma mark Elapsed Time Logging
-
-#define TIMER_INTERVAL 0.5
-
-- (void)startElapsingTime {
-    [self stopElapsingTime];
-    self.elapseTimer = [NSTimer scheduledTimerWithTimeInterval:TIMER_INTERVAL target:self selector:@selector(elapseTime) userInfo:nil repeats:YES];
-}
-
-- (void)stopElapsingTime {
-    if (self.elapseTimer) {
-        [self.elapseTimer invalidate];
-        self.elapseTimer = nil;
-    }
-}
-
-- (void)elapseTime {
-    if (self.currentRunningOperation) {
-        self.currentRunningOperation.task.elapsedTime += TIMER_INTERVAL;
-    }
 }
 
 @end

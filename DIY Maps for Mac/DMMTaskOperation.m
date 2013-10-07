@@ -22,6 +22,7 @@
 
 @property (nonatomic, strong) NSImage *srcImage;
 @property (nonatomic, strong) NSOperationQueue *imageProcessingQueue;
+@property (nonatomic, strong) NSMutableArray *lastThreeTilesDurations;
 
 @end
 
@@ -33,6 +34,8 @@
 - (id)init {
     self = [super init];
     if (self) {
+        self.lastThreeTilesDurations = [NSMutableArray new];
+        
         self.imageProcessingQueue = [NSOperationQueue new];
         [self.imageProcessingQueue setMaxConcurrentOperationCount:[[NSProcessInfo processInfo] processorCount]];
         
@@ -197,6 +200,7 @@
             NSString *imageFilePath = [self.task.outputFolderPath stringByAppendingPathComponent:filename];
             
             DMMImageOperation *imageOperation = [DMMImageOperation new];
+            __block DMMImageOperation *weakImageOperation = imageOperation;
             imageOperation.srcImage = self.srcImage;
             imageOperation.sourceRect = sourceImageRect;
             imageOperation.destinationSize = CGSizeMake(tileWidth, tileHeight);
@@ -204,7 +208,14 @@
             imageOperation.outputFormat = self.task.outputFormatIndex;
             imageOperation.jpgQuality = [self.task jpgQuality];
             [imageOperation setCompletionBlock:^{
-                [self imageOperationCompletionWithRect:sourceImageRect zoomScale:zoomScale];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (weakImageOperation) {
+                        [self updateLastTileDuration:-[weakImageOperation.beginTime timeIntervalSinceNow]];
+                        weakImageOperation = nil;
+                        self.task.remainingTime = [self remainingTime];
+                    }
+                    [self imageOperationCompletionWithRect:sourceImageRect zoomScale:zoomScale];
+                });
             }];
             [self.imageProcessingQueue addOperation:imageOperation];
 			
@@ -280,6 +291,30 @@
         self.task.logs = [NSString stringWithFormat:@"%@\n%@ %@",self.task.logs,[error localizedDescription],[error localizedFailureReason]];
     }
     [self taskDidCompleteWithStatus:DMTaskStatusError];
+}
+
+#define AVERAGE_SAMPLING_COUNT 10
+
+- (void)updateLastTileDuration:(NSTimeInterval)tileDuration {
+    while ([self.lastThreeTilesDurations count] >= AVERAGE_SAMPLING_COUNT) {
+        [self.lastThreeTilesDurations removeLastObject];
+    }
+    [self.lastThreeTilesDurations insertObject:@(tileDuration) atIndex:0];
+}
+
+- (NSTimeInterval)remainingTime {
+    if ([self.lastThreeTilesDurations count] == 0) {
+        return -1;
+    }
+    else {
+        __block NSTimeInterval sum = 0;
+        [self.lastThreeTilesDurations enumerateObjectsUsingBlock:^(NSNumber *obj, NSUInteger idx, BOOL *stop) {
+            sum += [obj doubleValue];
+        }];
+        NSTimeInterval average = sum / [self.lastThreeTilesDurations count];
+        NSTimeInterval remaining = average * (numberOfTiles - numberOfTilesCompleted);
+        return remaining;
+    }
 }
 
 @end
