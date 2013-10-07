@@ -154,12 +154,25 @@ static DMMTaskManager *sharedInstance = nil;
     [self didChangeValueForKey:@"tasks"];
 }
 
-- (void)removeTaskAtIndex:(NSUInteger)index {
-    if ((index + 1) > [self tasksCount]) {
-        return;
-    }
+- (void)removeTasksAtIndexes:(NSIndexSet *)indexes {
     [self willChangeValueForKey:@"tasks"];
-    [self.tasks removeObjectAtIndex:index];
+    [indexes enumerateIndexesWithOptions:NSEnumerationReverse usingBlock:^(NSUInteger idx, BOOL *stop) {
+        if (idx < [self tasksCount]) {
+            if (![self isTaskRunning:self.tasks[idx]]) {
+                [self.tasks removeObjectAtIndex:idx];
+            }
+        }
+    }];
+    [self didChangeValueForKey:@"tasks"];
+}
+
+- (void)removeTaskAtIndex:(NSUInteger)index {
+    [self willChangeValueForKey:@"tasks"];
+    if (index < [self tasksCount]) {
+        if (![self isTaskRunning:self.tasks[index]]) {
+            [self.tasks removeObjectAtIndex:index];
+        }
+    }
     [self didChangeValueForKey:@"tasks"];
 }
 
@@ -187,6 +200,13 @@ static DMMTaskManager *sharedInstance = nil;
         [self saveTaskList];
         [[NSNotificationCenter defaultCenter] postNotificationName:DMPTaskListDidUpdateNotification object:nil];
     }
+}
+
+- (BOOL)isTaskRunning:(DMTask *)task {
+    if (!self.currentRunningOperation) {
+        return NO;
+    }
+    return (self.currentRunningOperation.task == task);
 }
 
 #pragma mark Run Tasks

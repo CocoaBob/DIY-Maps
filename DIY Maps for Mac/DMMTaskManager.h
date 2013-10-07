@@ -34,9 +34,11 @@ static NSString* const DMPTaskDidUpdateNotification = @"DMPTaskDidUpdateNotifica
 - (void)addTask:(DMTask *)newTask;
 - (void)insertTask:(DMTask *)newTask atIndex:(NSUInteger)index;
 - (void)insertTasks:(NSArray *)newTasks atIndex:(NSUInteger)index;
+- (void)removeTasksAtIndexes:(NSIndexSet *)indexes;
 - (void)removeTaskAtIndex:(NSUInteger)index;
 
 - (void)verifyAllTasks;
+- (BOOL)isTaskRunning:(DMTask *)task;
 
 - (void)startProcessing;
 - (void)pauseProcessing;

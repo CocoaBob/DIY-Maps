@@ -273,9 +273,7 @@
 }
 
 - (void)removeSelectedTasks {
-    [[taskListTableView selectedRowIndexes] enumerateIndexesWithOptions:NSEnumerationReverse usingBlock:^(NSUInteger idx, BOOL *stop) {
-        [[DMMTaskManager shared] removeTaskAtIndex:idx];
-    }];
+    [[DMMTaskManager shared] removeTasksAtIndexes:[taskListTableView selectedRowIndexes]];
 }
 
 #pragma mark Handle Keoboard Events
