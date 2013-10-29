@@ -19,9 +19,6 @@
 		4578F10016596CC3004DA0B2 /* DMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4578F0FB16596CC3004DA0B2 /* DMAppDelegate.m */; };
 		4578F10116596CC3004DA0B2 /* DMMapPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4578F0FD16596CC3004DA0B2 /* DMMapPickerViewController.m */; };
 		4578F10216596CC3004DA0B2 /* DMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4578F0FF16596CC3004DA0B2 /* DMMapViewController.m */; };
-		4578F10916596CD1004DA0B2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4578F10316596CD1004DA0B2 /* Default-568h@2x.png */; };
-		4578F10A16596CD1004DA0B2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4578F10416596CD1004DA0B2 /* Default.png */; };
-		4578F10B16596CD1004DA0B2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4578F10516596CD1004DA0B2 /* Default@2x.png */; };
 		4578F10D16596CD1004DA0B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4578F10816596CD1004DA0B2 /* main.m */; };
 		459A177C17948FC6009CDE06 /* CBMapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 459A176717948FC6009CDE06 /* CBMapKit.m */; };
 		459A178017948FC6009CDE06 /* CBMapFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 459A176C17948FC6009CDE06 /* CBMapFile.m */; };
@@ -39,6 +36,7 @@
 		45CA606617E3C41800E6F835 /* DMTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA606317E3C41800E6F835 /* DMTask.m */; };
 		45CA607717E3C73800E6F835 /* DMImageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA607617E3C73800E6F835 /* DMImageProcessor.m */; };
 		45F9814817E4684500842EB1 /* libtouchzipkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45CA609A17E4680F00E6F835 /* libtouchzipkit.a */; };
+		5B0A3FD61805473300A4907B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B0A3FD51805473300A4907B /* Images.xcassets */; };
 		5B4CB8EC1797ED8C00F0CC19 /* img-cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B4CB8DD1797ED8C00F0CC19 /* img-cancel@2x.png */; };
 		5B4CB8ED1797ED8C00F0CC19 /* img-check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B4CB8DE1797ED8C00F0CC19 /* img-check@2x.png */; };
 		5B4CB8EE1797ED8C00F0CC19 /* img-check2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B4CB8DF1797ED8C00F0CC19 /* img-check2@2x.png */; };
@@ -118,9 +116,6 @@
 		4578F0FD16596CC3004DA0B2 /* DMMapPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMapPickerViewController.m; sourceTree = "<group>"; };
 		4578F0FE16596CC3004DA0B2 /* DMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMapViewController.h; sourceTree = "<group>"; };
 		4578F0FF16596CC3004DA0B2 /* DMMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMapViewController.m; sourceTree = "<group>"; };
-		4578F10316596CD1004DA0B2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
-		4578F10416596CD1004DA0B2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
-		4578F10516596CD1004DA0B2 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = SOURCE_ROOT; };
 		4578F10616596CD1004DA0B2 /* DIY Maps for iOS-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DIY Maps for iOS-Info.plist"; sourceTree = SOURCE_ROOT; };
 		4578F10716596CD1004DA0B2 /* DIY Maps for iOS-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DIY Maps for iOS-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		4578F10816596CD1004DA0B2 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
@@ -155,6 +150,7 @@
 		45CA607517E3C73800E6F835 /* DMImageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMImageProcessor.h; sourceTree = "<group>"; };
 		45CA607617E3C73800E6F835 /* DMImageProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMImageProcessor.m; sourceTree = "<group>"; };
 		45CA608F17E4680F00E6F835 /* ZipKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZipKit.xcodeproj; path = ZipKit/ZipKit.xcodeproj; sourceTree = "<group>"; };
+		5B0A3FD51805473300A4907B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "DIY Maps for iOS/Images.xcassets"; sourceTree = SOURCE_ROOT; };
 		5B121CDE17B25EC8007EB6EB /* DMConfigs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMConfigs.h; sourceTree = "<group>"; };
 		5B4CB8DD1797ED8C00F0CC19 /* img-cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img-cancel@2x.png"; sourceTree = "<group>"; };
 		5B4CB8DE1797ED8C00F0CC19 /* img-check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img-check@2x.png"; sourceTree = "<group>"; };
@@ -406,6 +402,7 @@
 		5B4CB8DC1797D67400F0CC19 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5B0A3FD51805473300A4907B /* Images.xcassets */,
 				5B4CB8DD1797ED8C00F0CC19 /* img-cancel@2x.png */,
 				5B4CB8DE1797ED8C00F0CC19 /* img-check@2x.png */,
 				5B4CB8DF1797ED8C00F0CC19 /* img-check2@2x.png */,
@@ -479,9 +476,6 @@
 				4578F10816596CD1004DA0B2 /* main.m */,
 				4578F10616596CD1004DA0B2 /* DIY Maps for iOS-Info.plist */,
 				4578F10716596CD1004DA0B2 /* DIY Maps for iOS-Prefix.pch */,
-				4578F10316596CD1004DA0B2 /* Default-568h@2x.png */,
-				4578F10416596CD1004DA0B2 /* Default.png */,
-				4578F10516596CD1004DA0B2 /* Default@2x.png */,
 			);
 			name = "Supporting Files";
 			path = DIYMaps;
@@ -605,9 +599,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4578F10916596CD1004DA0B2 /* Default-568h@2x.png in Resources */,
-				4578F10A16596CD1004DA0B2 /* Default.png in Resources */,
-				4578F10B16596CD1004DA0B2 /* Default@2x.png in Resources */,
+				5B0A3FD61805473300A4907B /* Images.xcassets in Resources */,
 				5B4CB8EC1797ED8C00F0CC19 /* img-cancel@2x.png in Resources */,
 				5B4CB8ED1797ED8C00F0CC19 /* img-check@2x.png in Resources */,
 				5B4CB8EE1797ED8C00F0CC19 /* img-check2@2x.png in Resources */,
@@ -725,6 +717,8 @@
 		5B6E2E93164D274E00A91687 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DIY Maps for iOS-Prefix.pch";
@@ -743,6 +737,8 @@
 		5B6E2E94164D274E00A91687 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DIY Maps for iOS-Prefix.pch";
