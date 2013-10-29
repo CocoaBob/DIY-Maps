@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		450BEB1C18204EA700EEFD5B /* CBZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 450BEB1818204EA700EEFD5B /* CBZipFile.m */; };
+		450BEB2C1820661C00EEFD5B /* CBActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 450BEB2B1820661C00EEFD5B /* CBActivityView.m */; };
 		45184EFF17E3B37800AC69C0 /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 45184EDF17E3B37800AC69C0 /* DDXMLElementAdditions.m */; };
 		45184F0017E3B37800AC69C0 /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 45184EE217E3B37800AC69C0 /* NSString+DDXML.m */; };
 		45184F0117E3B37800AC69C0 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 45184EE517E3B37800AC69C0 /* DDXMLDocument.m */; };
@@ -92,6 +93,8 @@
 /* Begin PBXFileReference section */
 		450BEB1718204EA700EEFD5B /* CBZipFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBZipFile.h; sourceTree = "<group>"; };
 		450BEB1818204EA700EEFD5B /* CBZipFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBZipFile.m; sourceTree = "<group>"; };
+		450BEB2A1820661C00EEFD5B /* CBActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBActivityView.h; sourceTree = "<group>"; };
+		450BEB2B1820661C00EEFD5B /* CBActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBActivityView.m; sourceTree = "<group>"; };
 		45184EDE17E3B37800AC69C0 /* DDXMLElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElementAdditions.h; sourceTree = "<group>"; };
 		45184EDF17E3B37800AC69C0 /* DDXMLElementAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElementAdditions.m; sourceTree = "<group>"; };
 		45184EE117E3B37800AC69C0 /* NSString+DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DDXML.h"; sourceTree = "<group>"; };
@@ -479,6 +482,8 @@
 				5BEBF45E1795358200FDB77D /* DMConstants.h */,
 				4578F0F416596C71004DA0B2 /* DMAppDelegate.h */,
 				4578F0FB16596CC3004DA0B2 /* DMAppDelegate.m */,
+				450BEB2A1820661C00EEFD5B /* CBActivityView.h */,
+				450BEB2B1820661C00EEFD5B /* CBActivityView.m */,
 				5B0BAFE31796928A00FCA9A6 /* Services */,
 				45A3E9A31795F3E400289F1A /* DMMapPickerViewController */,
 				4578F0FE16596CC3004DA0B2 /* DMMapViewController.h */,
@@ -615,6 +620,7 @@
 				45CA604E17E3BB3200E6F835 /* unzip.c in Sources */,
 				4578F10016596CC3004DA0B2 /* DMAppDelegate.m in Sources */,
 				4578F10116596CC3004DA0B2 /* DMMapPickerViewController.m in Sources */,
+				450BEB2C1820661C00EEFD5B /* CBActivityView.m in Sources */,
 				4578F10216596CC3004DA0B2 /* DMMapViewController.m in Sources */,
 				45CA5FED17E3B9F100E6F835 /* CBDoubleTapAndPanGestureRecognizer.m in Sources */,
 				4578F10D16596CD1004DA0B2 /* main.m in Sources */,
