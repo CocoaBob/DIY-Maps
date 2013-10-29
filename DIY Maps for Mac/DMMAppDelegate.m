@@ -63,7 +63,7 @@
     [[DMMTaskManager shared] verifyAllTasks];
 }
 
-#pragma mark Actions
+#pragma mark - Actions
 
 - (IBAction)openDocument:(id)sender {
 	NSOpenPanel *panel = [NSOpenPanel openPanel];

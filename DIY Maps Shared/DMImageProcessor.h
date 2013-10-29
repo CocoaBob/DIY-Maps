@@ -8,7 +8,7 @@
 
 @interface DMImageProcessor : NSObject
 
-+ (DMImageProcessor *)shared;
++ (instancetype)shared;
 
 #if TARGET_OS_IPHONE
 + (UIImage *)thumbnailWithImage:(UIImage *)inImage srcRect:(CGRect)srcRect destSize:(CGSize)destSize;

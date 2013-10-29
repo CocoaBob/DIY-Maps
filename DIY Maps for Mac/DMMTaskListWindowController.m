@@ -109,7 +109,7 @@
     }
 }
 
-#pragma mark NSTableViewDataSource
+#pragma mark - NSTableViewDataSource
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
     return [[DMMTaskManager shared] tasksCount];
@@ -163,7 +163,7 @@
     return YES;
 }
 
-#pragma mark NSTableViewDelegate
+#pragma mark - NSTableViewDelegate
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     DMMTaskListCellView *tableCellView = [tableView makeViewWithIdentifier:tableColumn.identifier owner:self];
@@ -224,13 +224,13 @@
     self.isDeleteButtonEnabled = [[taskListTableView selectedRowIndexes] count] > 0;
 }
 
-#pragma mark TableView
+#pragma mark - TableView
 
 - (void)reloadData {
     [taskListTableView reloadData];
 }
 
-#pragma mark Drag & Drop
+#pragma mark - Drag & Drop
 
 - (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender {
 	NSPasteboard *pboard = [sender draggingPasteboard];
@@ -256,7 +256,7 @@
 	return NO;
 }
 
-#pragma mark Routines
+#pragma mark - Routines
 
 - (void)showTaskPanel:(DMTask *)task {
     [[DMMAppDelegate shared].singleTaskWindowController setTask:task];
@@ -276,7 +276,7 @@
     [[DMMTaskManager shared] removeTasksAtIndexes:[taskListTableView selectedRowIndexes]];
 }
 
-#pragma mark Handle Keoboard Events
+#pragma mark - Handle Keoboard Events
 
 - (void)keyDown:(NSEvent*)event {
     if ([event type] == NSKeyDown) {
@@ -295,7 +295,7 @@
     [self removeSelectedTasks];
 }
 
-#pragma mark Actions
+#pragma mark - Actions
 
 - (IBAction)doCellButtonAction:(id)sender {
     NSInteger taskIndex = ((NSButton *)sender).tag;

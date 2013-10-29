@@ -96,14 +96,14 @@
     }
 }
 
-#pragma mark Properties
+#pragma mark - Properties
 
 - (void)setSourcePixelSize:(CGSize)inValue {
     _sourcePixelSize = inValue;
     self.minScalePower = [DMTask defaultMinScalePowerWithTileSizeIndex:self.tileSizeIndex originalPixelSize:_sourcePixelSize];
 }
 
-#pragma mark Class Methods
+#pragma mark - Class Methods
 
 + (NSString *)fileExtensionFromFormat:(DMOutputFormat)inValue {
     switch (inValue) {

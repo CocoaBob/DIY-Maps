@@ -14,20 +14,26 @@
 
 @implementation DMImageProcessor
 
-static DMImageProcessor *sharedInstance = nil;
-
-+ (DMImageProcessor *)shared {
-	@synchronized(self) {
-		if (!sharedInstance)
-			sharedInstance = [DMImageProcessor new];
-	}
-	return sharedInstance;
-}
-
 + (NSString *)stringFromSize:(CGSize)pixelSize scale:(CGFloat)zoomScale {
     return [NSString stringWithFormat:@"%.0fx%.0f",floor(pixelSize.width * zoomScale),floor(pixelSize.height * zoomScale)];
 }
 
+#pragma mark - Object Lifecycle
+
+static DMImageProcessor *__sharedInstance = nil;
+
++ (instancetype)shared {
+    if (__sharedInstance == nil) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            __sharedInstance = [[[self class] alloc] init];
+        });
+    }
+    
+    return __sharedInstance;
+}
+
+#pragma mark -
 
 #if TARGET_OS_IPHONE
 

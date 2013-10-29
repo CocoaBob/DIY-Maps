@@ -25,14 +25,17 @@
     NSUInteger numberOfTiles, numberOfTilesCompleted;
 }
 
-static DMMTaskManager *sharedInstance = nil;
+static DMMTaskManager *__sharedInstance = nil;
 
-+ (DMMTaskManager *)shared {
-	@synchronized(self) {
-		if (!sharedInstance)
-			sharedInstance = [DMMTaskManager new];
-	}
-	return sharedInstance;
++ (instancetype)shared {
+    if (__sharedInstance == nil) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            __sharedInstance = [[[self class] alloc] init];
+        });
+    }
+    
+    return __sharedInstance;
 }
 
 - (id)init {
@@ -76,7 +79,7 @@ static DMMTaskManager *sharedInstance = nil;
     }
 }
 
-#pragma mark Task Management
+#pragma mark - Task Management
 
 - (void)addNewTasksWithPaths:(NSArray *)inFilePaths {
     [inFilePaths enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -209,7 +212,7 @@ static DMMTaskManager *sharedInstance = nil;
     return (self.currentRunningOperation.task == task);
 }
 
-#pragma mark Run Tasks
+#pragma mark - Run Tasks
 
 - (void)startProcessing {
     [self.processQueue cancelAllOperations];

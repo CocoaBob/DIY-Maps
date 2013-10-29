@@ -18,7 +18,7 @@ static NSString* const DMPTaskDidUpdateNotification = @"DMPTaskDidUpdateNotifica
 @property (nonatomic, assign) BOOL isProcessing;
 @property (nonatomic, assign) BOOL isSuspended;
 
-+ (DMMTaskManager *)shared;
++ (instancetype)shared;
 
 - (void)saveTaskList;
 - (void)loadTaskList;

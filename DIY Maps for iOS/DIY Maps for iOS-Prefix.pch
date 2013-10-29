@@ -14,6 +14,7 @@
     #import "DMConfigs.h"
     #import "DMConstants.h"
     #import "DMFileManager.h"
+    #import "CBActivityView.h"
 
     // define some LLVM3 macros if the code is compiled with a different compiler (ie LLVMGCC42)
     #ifndef __has_feature

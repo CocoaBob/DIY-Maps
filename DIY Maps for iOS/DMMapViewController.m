@@ -25,16 +25,6 @@
 
 @implementation DMMapViewController
 
-static DMMapViewController *sharedInstance = nil;
-
-+ (DMMapViewController *)shared {
-	@synchronized(self) {
-		if (!sharedInstance)
-			sharedInstance = [DMMapViewController new];
-	}
-	return sharedInstance;
-}
-
 + (void)loadMapFile:(NSString *)filePath {
     CBMapFile *mapFile = [CBMapFile mapFileWithPath:filePath];
     if (mapFile) {
@@ -42,6 +32,21 @@ static DMMapViewController *sharedInstance = nil;
         [[[DMMapViewController shared] mapView] setMapFile:mapFile];
         [DMMapViewController shared].navigationItem.title = [[filePath lastPathComponent] stringByDeletingPathExtension];
     }
+}
+
+#pragma mark - Object Lifecycle
+
+static DMMapViewController *__sharedInstance = nil;
+
++ (instancetype)shared {
+    if (__sharedInstance == nil) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            __sharedInstance = [[[self class] alloc] init];
+        });
+    }
+    
+    return __sharedInstance;
 }
 
 #pragma mark Life Cycles

@@ -13,8 +13,10 @@
 @property (nonatomic, strong) NSMutableArray *sortedFileNames;
 @property (nonatomic, strong) MHWDirectoryWatcher *directoryWatcher;
 
-+ (DMFileManager *)shared;
++ (instancetype)shared;
 + (NSString *)docPath;
+
++ (void)importInbox;
 
 - (void)saveSortedFileNames;
 - (void)reloadFileList;
@@ -22,5 +24,6 @@
 - (void)deleteFileWithBaseName:(NSString *)fileBaseName;
 - (void)startWatchingDocumentFolder;
 - (void)stopWatchingDocumentFolder;
+- (void)shareFileWithBaseName:(NSString *)fileBaseName senderView:(UIView *)senderView;
 
 @end

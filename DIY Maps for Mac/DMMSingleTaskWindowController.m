@@ -87,7 +87,7 @@
     [self removeObserver:self forKeyPath:@"maxScalePower"];
 }
 
-#pragma mark KVO
+#pragma mark - KVO
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"task"]) {
@@ -108,7 +108,7 @@
     }
 }
 
-#pragma mark Preview Image
+#pragma mark - Preview Image
 
 - (void)preparePreviewImages {
     if (!self.task) return;// Cancel if panel is closed
@@ -156,7 +156,7 @@
     [scaleRangeSlider updatePopoverContentView];
 }
 
-#pragma mark Min/Max Scale
+#pragma mark - Min/Max Scale
 
 - (int)possibleMinScalePower {
     int returnValue = MIN_SCALE_POWER;
@@ -177,7 +177,7 @@
     return returnValue;
 }
 
-#pragma mark DMMSliderDelegate
+#pragma mark - DMMSliderDelegate
 
 - (NSView *)contentViewForSlider:(DMMSlider *)slider {
     int currentScalePower = [scaleRangeSlider trackingLoKnob]?self.minScalePower:self.maxScalePower;
@@ -225,7 +225,7 @@
     return self.popoverContentView;
 }
 
-#pragma mark Load/Save tasks
+#pragma mark - Load/Save tasks
 
 - (void)loadTask {
     // Update Min/Max sliders
@@ -266,7 +266,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:DMPTaskDidUpdateNotification object:self.task];
 }
 
-#pragma mark Actions
+#pragma mark - Actions
 
 - (IBAction)finishSetting:(id)sender {
     if (((NSButton *)sender).tag == 1) {

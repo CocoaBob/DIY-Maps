@@ -245,7 +245,9 @@ typedef NS_ENUM(NSUInteger, BackViewStatus) {
 }
 
 - (IBAction)doSetting:(id)sender {
-    NSLog(@"Set map at index: %d",self.tag);
+    [self endEditing:YES];
+    NSString *fileBaseName = [[DMFileManager shared].sortedFileNames[self.tag] stringByDeletingPathExtension];
+    [[DMFileManager shared] shareFileWithBaseName:fileBaseName senderView:sender];
 }
 
 - (IBAction)doCancel:(id)sender {

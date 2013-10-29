@@ -25,6 +25,9 @@
 	NSLog(@"Document path: %@",[DMFileManager docPath]);
 	NSLog(@"====================");
     
+    // Import inbox
+    [DMFileManager importInbox];
+    
     // Theme
     [CBStyleKit setStyleIOS7];
     
@@ -43,6 +46,11 @@
         }
     }
     
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString*)sourceApplication annotation:(id)annotation {
+    [DMFileManager importInbox];
     return YES;
 }
 

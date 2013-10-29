@@ -33,14 +33,19 @@
     CGRect _thumbnailRect;
 }
 
-static DMMapPickerViewController *sharedInstance = nil;
+#pragma mark - Object Lifecycle
 
-+ (DMMapPickerViewController *)shared {
-	@synchronized(self) {
-		if (!sharedInstance)
-			sharedInstance = [DMMapPickerViewController new];
-	}
-	return sharedInstance;
+static DMMapPickerViewController *__sharedInstance = nil;
+
++ (instancetype)shared {
+    if (__sharedInstance == nil) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            __sharedInstance = [[[self class] alloc] init];
+        });
+    }
+    
+    return __sharedInstance;
 }
 
 - (id)init {
@@ -286,7 +291,7 @@ static DMMapPickerViewController *sharedInstance = nil;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark ZKRevealingTableViewCellDelegate
+#pragma mark ZKRevealingTableViewCell
 
 - (void)updateCurrentRevealedCell:(ZKRevealingTableViewCell *)newValue {
     if (newValue != self.currentRevealedCell) {

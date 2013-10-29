@@ -71,7 +71,7 @@
     [self addTrackingArea:trackingArea];
 }
 
-#pragma mark Mouse
+#pragma mark - Mouse
 
 - (void)mouseDown:(NSEvent *)theEvent {
     [super mouseDown:theEvent];
@@ -83,7 +83,7 @@
     [self hidePopover:YES];
 }
 
-#pragma mark NSSlider
+#pragma mark - NSSlider
 
 - (BOOL)sendAction:(SEL)theAction to:(id)theTarget {
     BOOL returnValue = [super sendAction:theAction to:theTarget];
@@ -91,7 +91,7 @@
     return returnValue;
 }
 
-#pragma mark Popover
+#pragma mark - Popover
 
 - (void)showPopover:(BOOL)animated {
     self.shouldShowPopover = YES;

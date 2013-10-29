@@ -10,17 +10,15 @@
 
 #import "MHWDirectoryWatcher.h"
 
+@interface DMFileManager ()
+
+@property (nonatomic, strong) UIDocumentInteractionController *docInteractionController;
+
+@end
+
 @implementation DMFileManager
 
-static DMFileManager *sharedInstance = nil;
-
-+ (DMFileManager *)shared {
-	@synchronized(self) {
-		if (!sharedInstance)
-			sharedInstance = [DMFileManager new];
-	}
-	return sharedInstance;
-}
+#pragma mark -
 
 + (NSString *)docPath {
     static NSString *documentPath = nil;
@@ -30,7 +28,20 @@ static DMFileManager *sharedInstance = nil;
     return documentPath;
 }
 
-#pragma mark -
+#pragma mark - Object Lifecycle
+
+static DMFileManager *__sharedInstance = nil;
+
++ (instancetype)shared {
+    if (__sharedInstance == nil) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            __sharedInstance = [[[self class] alloc] init];
+        });
+    }
+    
+    return __sharedInstance;
+}
 
 - (id)init {
     self = [super init];
@@ -43,6 +54,19 @@ static DMFileManager *sharedInstance = nil;
     return self;
 }
 
+#pragma mark - File Names
+
++ (NSString *)uniqueFileName:(NSString *)fileName atFolder:(NSString *)folderPath {
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	NSString *baseName = [fileName stringByDeletingPathExtension];
+	NSString *extensionName = [fileName pathExtension];
+	NSInteger suffix = 0;
+	while ([fileManager fileExistsAtPath:[folderPath stringByAppendingPathComponent:[(suffix == 0)?baseName:[baseName stringByAppendingFormat:@"_%d",suffix] stringByAppendingPathExtension:extensionName]]]) {
+		suffix++;
+	}
+	return [folderPath stringByAppendingPathComponent:[(suffix == 0)?baseName:[baseName stringByAppendingFormat:@"_%d",suffix] stringByAppendingPathExtension:extensionName]];
+}
+
 - (NSString *)findFileNameWithBaseName:(NSString *)baseName {
     __block NSString *returnValue = nil;
     [self.sortedFileNames enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -53,6 +77,8 @@ static DMFileManager *sharedInstance = nil;
     }];
     return returnValue;
 }
+
+#pragma mark -
 
 - (NSUInteger *)indexOfFileWithName:(NSString *)fileName {
     return [self.sortedFileNames indexOfObject:fileName];
@@ -135,6 +161,51 @@ static DMFileManager *sharedInstance = nil;
 
 - (void)stopWatchingDocumentFolder {
     [self.directoryWatcher stopWatching];
+}
+
+#pragma mark - Exporting & Importing
+
+- (void)shareFileWithBaseName:(NSString *)fileBaseName senderView:(UIView *)senderView {
+    NSString *fileName = [self findFileNameWithBaseName:fileBaseName];
+    NSString *filePath = [[DMFileManager docPath] stringByAppendingPathComponent:fileName];
+    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:filePath];
+    if (self.docInteractionController == nil) {
+        self.docInteractionController = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
+    }
+    else {
+        self.docInteractionController.URL = fileURL;
+    }
+    [[CBActivityView shared] showActivityViewWithCompletionHandler:^{
+        [self.docInteractionController presentOpenInMenuFromRect:senderView.bounds
+                                                          inView:senderView
+                                                        animated:YES];
+        [[CBActivityView shared] hideActivityView];
+    }];
+}
+
++ (void)importInbox {
+    NSFileManager *fileMgr = [NSFileManager defaultManager];
+    NSString *docFolderPath = [self docPath];
+    NSString *inboxFolderPath = [docFolderPath stringByAppendingPathComponent:@"Inbox"];
+    if (![fileMgr fileExistsAtPath:inboxFolderPath])
+        return;
+    
+    NSArray *inboxContents = [fileMgr contentsOfDirectoryAtPath:inboxFolderPath error:nil];
+    if (inboxContents && [inboxContents count] > 0) {
+        [[CBActivityView shared] showActivityViewWithCompletionHandler:^{
+            [inboxContents enumerateObjectsUsingBlock:^(NSString *contentName, NSUInteger idx, BOOL *stop) {
+                if ([[contentName pathExtension] isEqualToString:@"map"]) {
+                    NSString *contentPath = [inboxFolderPath stringByAppendingPathComponent:contentName];
+                    BOOL isDir = NO;
+                    if ([fileMgr fileExistsAtPath:contentPath isDirectory:&isDir] && !isDir) {
+                        NSString *uniqueContentFilePath = [self uniqueFileName:contentName atFolder:docFolderPath];
+                        [fileMgr moveItemAtPath:contentPath toPath:uniqueContentFilePath error:nil];
+                    }
+                }
+            }];
+            [[CBActivityView shared] hideActivityView];
+        }];
+    }
 }
 
 @end

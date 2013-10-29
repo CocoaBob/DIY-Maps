@@ -10,6 +10,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-+ (DMAppDelegate *)shared;
++ (instancetype)shared;
 
 @end

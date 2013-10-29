@@ -17,7 +17,7 @@
 @property (nonatomic, strong) DMMSingleTaskWindowController *singleTaskWindowController;
 @property (nonatomic, strong) DMMPreviewWindowController *previewWindowController;
 
-+ (DMMAppDelegate *)shared;
++ (instancetype)shared;
 
 - (IBAction)openDocument:(id)sender;
 

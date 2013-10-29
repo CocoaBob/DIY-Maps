@@ -8,6 +8,6 @@
 
 @interface DMMapPickerViewController : UITableViewController
 
-+ (DMMapPickerViewController *)shared;
++ (instancetype)shared;
 
 @end
