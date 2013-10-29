@@ -20,15 +20,6 @@
 
 @implementation CBMapFile
 
-// Public
-@synthesize zipFile;
-@synthesize mapFormat;
-@synthesize mapWidth,mapHeight,minScale,maxScale,tileSize;
-@synthesize latitudeTopLeft,longitudeTopLeft,latitudeBottomRight,longitudeBottomRight;
-
-// Private
-@synthesize zipFileRootFolderPath;
-
 + (CBMapFile *)mapFileWithPath:(NSString *)filePath {
     CBZipFile *aZipFile = [[CBZipFile alloc] initWithFileAtPath:filePath];
     if (aZipFile) {
@@ -52,7 +43,7 @@
     
     // Initialization
     if ([self.zipFile isOpen]) {
-        NSString *firstFilePath = [zipFile firstFileName];
+        NSString *firstFilePath = [self.zipFile firstFileName];
         firstFilePath = [firstFilePath pathComponents][0];
         self.zipFileRootFolderPath = firstFilePath;
         
@@ -77,10 +68,10 @@
 
 - (void)setZipFile:(CBZipFile *)newValue {
     @synchronized(self) {
-        if (zipFile) {
-            [zipFile close];
+        if (_zipFile) {
+            [_zipFile close];
         }
-        zipFile = newValue;
+        _zipFile = newValue;
         [self openZipFile];
     }
 }

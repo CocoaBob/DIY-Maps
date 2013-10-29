@@ -82,14 +82,6 @@ static DMMapPickerViewController *sharedInstance = nil;
                                  forKeyPath:@"sortedFileNames"
                                     options:0
                                     context:NULL];
-        
-        [[NSNotificationCenter defaultCenter] addObserverForName:UIDeviceOrientationDidChangeNotification
-                                                          object:nil
-                                                           queue:[NSOperationQueue mainQueue]
-                                                      usingBlock:^(NSNotification *note) {
-                                                          [[self.view window] endEditing:YES];
-                                                          [self updateNavigationBarShadow:YES];
-                                                      }];
     }
     return self;
 }
@@ -132,6 +124,15 @@ static DMMapPickerViewController *sharedInstance = nil;
 }
 
 #pragma mark Rotation
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [[self.view window] endEditing:YES];
+    [self updateNavigationBarShadow:YES];
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    [self updateNavigationBarShadow:NO];
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
@@ -353,11 +354,9 @@ static DMMapPickerViewController *sharedInstance = nil;
                              completion:nil];
 }
 
-- (void)updateNavigationBarShadow:(BOOL)reDrop {
-    if (self.tableView.contentOffset.y > (- self.tableView.contentInset.top + 3)) {
-        if (reDrop) {
-            [self.navigationController.navigationBar hideShadowAnimated:NO];
-        }
+- (void)updateNavigationBarShadow:(BOOL)isHidden {
+    if (!isHidden &&
+        self.tableView.contentOffset.y > (- self.tableView.contentInset.top + 3)) {
         [self.navigationController.navigationBar dropShadowWithOffset:CGSizeZero
                                                                radius:3
                                                                 color:[UIColor blackColor]

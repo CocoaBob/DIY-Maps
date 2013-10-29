@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		450BEB1B18204EA700EEFD5B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 450BEB1618204EA700EEFD5B /* .gitignore */; };
 		450BEB1C18204EA700EEFD5B /* CBZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 450BEB1818204EA700EEFD5B /* CBZipFile.m */; };
-		450BEB1D18204EA700EEFD5B /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 450BEB1918204EA700EEFD5B /* LICENSE */; };
-		450BEB1E18204EA700EEFD5B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 450BEB1A18204EA700EEFD5B /* README.md */; };
 		45184EFF17E3B37800AC69C0 /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 45184EDF17E3B37800AC69C0 /* DDXMLElementAdditions.m */; };
 		45184F0017E3B37800AC69C0 /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 45184EE217E3B37800AC69C0 /* NSString+DDXML.m */; };
 		45184F0117E3B37800AC69C0 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 45184EE517E3B37800AC69C0 /* DDXMLDocument.m */; };
@@ -93,11 +90,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		450BEB1618204EA700EEFD5B /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		450BEB1718204EA700EEFD5B /* CBZipFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBZipFile.h; sourceTree = "<group>"; };
 		450BEB1818204EA700EEFD5B /* CBZipFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBZipFile.m; sourceTree = "<group>"; };
-		450BEB1918204EA700EEFD5B /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		450BEB1A18204EA700EEFD5B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		45184EDE17E3B37800AC69C0 /* DDXMLElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElementAdditions.h; sourceTree = "<group>"; };
 		45184EDF17E3B37800AC69C0 /* DDXMLElementAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElementAdditions.m; sourceTree = "<group>"; };
 		45184EE117E3B37800AC69C0 /* NSString+DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DDXML.h"; sourceTree = "<group>"; };
@@ -205,11 +199,8 @@
 		450BEB1518204EA700EEFD5B /* CBZipFile */ = {
 			isa = PBXGroup;
 			children = (
-				450BEB1618204EA700EEFD5B /* .gitignore */,
 				450BEB1718204EA700EEFD5B /* CBZipFile.h */,
 				450BEB1818204EA700EEFD5B /* CBZipFile.m */,
-				450BEB1918204EA700EEFD5B /* LICENSE */,
-				450BEB1A18204EA700EEFD5B /* README.md */,
 			);
 			path = CBZipFile;
 			sourceTree = "<group>";
@@ -607,9 +598,6 @@
 				5B4CB8F11797ED8C00F0CC19 /* img-eye@2x.png in Resources */,
 				5B4CB8F21797ED8C00F0CC19 /* img-gear@2x.png in Resources */,
 				5B4CB8F31797ED8C00F0CC19 /* img-list@2x.png in Resources */,
-				450BEB1D18204EA700EEFD5B /* LICENSE in Resources */,
-				450BEB1E18204EA700EEFD5B /* README.md in Resources */,
-				450BEB1B18204EA700EEFD5B /* .gitignore in Resources */,
 				5B4CB8F61797ED8C00F0CC19 /* img-pencil@2x.png in Resources */,
 				5B4CB8F71797ED8C00F0CC19 /* img-trash@2x.png in Resources */,
 				5B4CB8F91797ED8C00F0CC19 /* img-wrench@2x.png in Resources */,
