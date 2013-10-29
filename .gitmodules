@@ -19,9 +19,9 @@
 [submodule "Submodules/minizip"]
 	path = Submodules/minizip
 	url = https://github.com/nmoinvaz/minizip.git
-[submodule "Submodules/ZipKit"]
-	path = Submodules/ZipKit
-	url = https://github.com/kolpanic/ZipKit.git
 [submodule "Submodules/SMDoubleSlider"]
 	path = Submodules/SMDoubleSlider
 	url = https://github.com/jjk/SMDoubleSlider.git
+[submodule "Submodules/CBZipFile"]
+	path = Submodules/CBZipFile
+	url = git@github.com:CocoaBob/CBZipFile.git

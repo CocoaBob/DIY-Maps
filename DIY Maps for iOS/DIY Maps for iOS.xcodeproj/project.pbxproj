@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		450BEB1B18204EA700EEFD5B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 450BEB1618204EA700EEFD5B /* .gitignore */; };
+		450BEB1C18204EA700EEFD5B /* CBZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 450BEB1818204EA700EEFD5B /* CBZipFile.m */; };
+		450BEB1D18204EA700EEFD5B /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 450BEB1918204EA700EEFD5B /* LICENSE */; };
+		450BEB1E18204EA700EEFD5B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 450BEB1A18204EA700EEFD5B /* README.md */; };
 		45184EFF17E3B37800AC69C0 /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 45184EDF17E3B37800AC69C0 /* DDXMLElementAdditions.m */; };
 		45184F0017E3B37800AC69C0 /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 45184EE217E3B37800AC69C0 /* NSString+DDXML.m */; };
 		45184F0117E3B37800AC69C0 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 45184EE517E3B37800AC69C0 /* DDXMLDocument.m */; };
@@ -21,7 +25,6 @@
 		4578F10D16596CD1004DA0B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4578F10816596CD1004DA0B2 /* main.m */; };
 		459A177C17948FC6009CDE06 /* CBMapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 459A176717948FC6009CDE06 /* CBMapKit.m */; };
 		459A178017948FC6009CDE06 /* CBMapFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 459A176C17948FC6009CDE06 /* CBMapFile.m */; };
-		459A178117948FC6009CDE06 /* ZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 459A177017948FC6009CDE06 /* ZipFile.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		45A3E9A61795F3FD00289F1A /* DMMapPickerViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A3E9A51795F3FD00289F1A /* DMMapPickerViews.m */; };
 		45C5D05B17E3B3B10026477C /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C5D05A17E3B3B10026477C /* libxml2.dylib */; };
 		45CA5FD217E3B9E800E6F835 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA5FD117E3B9E800E6F835 /* Base64.m */; };
@@ -92,6 +95,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		450BEB1618204EA700EEFD5B /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		450BEB1718204EA700EEFD5B /* CBZipFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBZipFile.h; sourceTree = "<group>"; };
+		450BEB1818204EA700EEFD5B /* CBZipFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBZipFile.m; sourceTree = "<group>"; };
+		450BEB1918204EA700EEFD5B /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		450BEB1A18204EA700EEFD5B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		45184EDE17E3B37800AC69C0 /* DDXMLElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElementAdditions.h; sourceTree = "<group>"; };
 		45184EDF17E3B37800AC69C0 /* DDXMLElementAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElementAdditions.m; sourceTree = "<group>"; };
 		45184EE117E3B37800AC69C0 /* NSString+DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DDXML.h"; sourceTree = "<group>"; };
@@ -120,8 +128,6 @@
 		459A176717948FC6009CDE06 /* CBMapKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBMapKit.m; sourceTree = "<group>"; };
 		459A176C17948FC6009CDE06 /* CBMapFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBMapFile.m; sourceTree = "<group>"; };
 		459A176D17948FC6009CDE06 /* CBMapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBMapKit.h; sourceTree = "<group>"; };
-		459A176F17948FC6009CDE06 /* ZipFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipFile.h; sourceTree = "<group>"; };
-		459A177017948FC6009CDE06 /* ZipFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipFile.m; sourceTree = "<group>"; };
 		45A3E9A41795F3FD00289F1A /* DMMapPickerViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMapPickerViews.h; sourceTree = "<group>"; };
 		45A3E9A51795F3FD00289F1A /* DMMapPickerViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMapPickerViews.m; sourceTree = "<group>"; };
 		45C5D05A17E3B3B10026477C /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -200,6 +206,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		450BEB1518204EA700EEFD5B /* CBZipFile */ = {
+			isa = PBXGroup;
+			children = (
+				450BEB1618204EA700EEFD5B /* .gitignore */,
+				450BEB1718204EA700EEFD5B /* CBZipFile.h */,
+				450BEB1818204EA700EEFD5B /* CBZipFile.m */,
+				450BEB1918204EA700EEFD5B /* LICENSE */,
+				450BEB1A18204EA700EEFD5B /* README.md */,
+			);
+			path = CBZipFile;
+			sourceTree = "<group>";
+		};
 		45184EDC17E3B37800AC69C0 /* KissXML */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,11 +272,11 @@
 				459A176317948FC6009CDE06 /* CBMapKit */,
 				5B8D527117B153A600A21035 /* CBStyleKit */,
 				45CA5FD517E3B9F100E6F835 /* CBDoubleTapAndPanGestureRecognizer */,
+				450BEB1518204EA700EEFD5B /* CBZipFile */,
 				45CA5FFD17E3BA0500E6F835 /* DSFingerTipWindow */,
 				45184EDC17E3B37800AC69C0 /* KissXML */,
 				45CA600417E3BA1300E6F835 /* MHWDirectoryWatcher */,
 				45CA604517E3BB2B00E6F835 /* minizip */,
-				459A176E17948FC6009CDE06 /* ZipFile */,
 				45CA608F17E4680F00E6F835 /* ZipKit.xcodeproj */,
 				45CA602617E3BA3000E6F835 /* ZKRevealingTableViewCell */,
 			);
@@ -275,15 +293,6 @@
 				459A176717948FC6009CDE06 /* CBMapKit.m */,
 			);
 			path = CBMapKit;
-			sourceTree = "<group>";
-		};
-		459A176E17948FC6009CDE06 /* ZipFile */ = {
-			isa = PBXGroup;
-			children = (
-				459A176F17948FC6009CDE06 /* ZipFile.h */,
-				459A177017948FC6009CDE06 /* ZipFile.m */,
-			);
-			path = ZipFile;
 			sourceTree = "<group>";
 		};
 		45A3E9A31795F3E400289F1A /* DMMapPickerViewController */ = {
@@ -606,6 +615,9 @@
 				5B4CB8F11797ED8C00F0CC19 /* img-eye@2x.png in Resources */,
 				5B4CB8F21797ED8C00F0CC19 /* img-gear@2x.png in Resources */,
 				5B4CB8F31797ED8C00F0CC19 /* img-list@2x.png in Resources */,
+				450BEB1D18204EA700EEFD5B /* LICENSE in Resources */,
+				450BEB1E18204EA700EEFD5B /* README.md in Resources */,
+				450BEB1B18204EA700EEFD5B /* .gitignore in Resources */,
 				5B4CB8F61797ED8C00F0CC19 /* img-pencil@2x.png in Resources */,
 				5B4CB8F71797ED8C00F0CC19 /* img-trash@2x.png in Resources */,
 				5B4CB8F91797ED8C00F0CC19 /* img-wrench@2x.png in Resources */,
@@ -630,8 +642,8 @@
 				459A177C17948FC6009CDE06 /* CBMapKit.m in Sources */,
 				459A178017948FC6009CDE06 /* CBMapFile.m in Sources */,
 				45CA600017E3BA0500E6F835 /* DSFingerTipWindow.m in Sources */,
-				459A178117948FC6009CDE06 /* ZipFile.m in Sources */,
 				45184F0217E3B37800AC69C0 /* DDXMLElement.m in Sources */,
+				450BEB1C18204EA700EEFD5B /* CBZipFile.m in Sources */,
 				45CA606617E3C41800E6F835 /* DMTask.m in Sources */,
 				45184EFF17E3B37800AC69C0 /* DDXMLElementAdditions.m in Sources */,
 				45CA601917E3BA1300E6F835 /* MHWDirectoryWatcher.m in Sources */,

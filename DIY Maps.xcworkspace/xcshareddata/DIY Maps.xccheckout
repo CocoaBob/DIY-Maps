@@ -38,14 +38,6 @@
 			<key>IDESourceControlWCCName</key>
 			<string>DIY-Maps</string>
 		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>AB9A6134-84C9-4B1F-BA16-BC49016B310C</string>
-			<key>IDESourceControlWCCName</key>
-			<string>KissXML</string>
-		</dict>
 	</array>
 </dict>
 </plist>

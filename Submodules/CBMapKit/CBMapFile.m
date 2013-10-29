@@ -8,12 +8,12 @@
 
 #import "CBMapFile.h"
 
-#import "ZipFile.h"
+#import "CBZipFile.h"
 #import "DMProfile.h"
 
 @interface CBMapFile()
 
-@property (nonatomic, strong) ZipFile *zipFile;
+@property (nonatomic, strong) CBZipFile *zipFile;
 @property (nonatomic, strong) NSString *zipFileRootFolderPath;
 
 @end
@@ -30,7 +30,7 @@
 @synthesize zipFileRootFolderPath;
 
 + (CBMapFile *)mapFileWithPath:(NSString *)filePath {
-    ZipFile *aZipFile = [[ZipFile alloc] initWithFileAtPath:filePath];
+    CBZipFile *aZipFile = [[CBZipFile alloc] initWithFileAtPath:filePath];
     if (aZipFile) {
         CBMapFile *aMapFile = [CBMapFile new];
         aMapFile.zipFile = aZipFile;
@@ -46,16 +46,19 @@
 - (BOOL)openZipFile {
     if (!self.zipFile)
         return NO;
+    
     if (![self.zipFile isOpen])
         [self.zipFile open];
     
     // Initialization
     if ([self.zipFile isOpen]) {
-        NSString *firstFilePath = [zipFile firstFilePath];
+        NSString *firstFilePath = [zipFile firstFileName];
         firstFilePath = [firstFilePath pathComponents][0];
         self.zipFileRootFolderPath = firstFilePath;
         
-        NSData *mapProfileData = [self.zipFile readWithFilePath:[self.zipFileRootFolderPath stringByAppendingPathComponent:@"profile.xml"] maxLength:NSUIntegerMax];
+        NSData *mapProfileData = [self.zipFile readWithFileName:[self.zipFileRootFolderPath stringByAppendingPathComponent:@"profile.xml"]
+                                                  caseSensitive:YES
+                                                      maxLength:NSUIntegerMax];
         DMProfile *profile = [DMProfile profileWithXMLData:mapProfileData];
         if (!profile)
             return NO;
@@ -72,7 +75,7 @@
     return YES;
 }
 
-- (void)setZipFile:(ZipFile *)newValue {
+- (void)setZipFile:(CBZipFile *)newValue {
     @synchronized(self) {
         if (zipFile) {
             [zipFile close];
@@ -84,17 +87,20 @@
 
 - (UIImage *)tileImageForScale:(CGFloat)mapScale indexX:(NSInteger)indexX indexY:(NSInteger)indexY {
     UIImage *returnValue = nil;
-    @synchronized(self){
-        if ([self openZipFile]) {
-            NSString *mapScaleString = [NSString stringWithFormat:@"%f",mapScale];
-            NSString *mapaIndexX = [NSString stringWithFormat:@"%d",indexX];
-            NSString *mapaIndexY = [NSString stringWithFormat:@"%d",indexY];
-            NSString *imageFileName = [NSString stringWithFormat:@"%@-%@-%@-%@.%@",@"map",mapScaleString,mapaIndexX,mapaIndexY,self.mapFormat];
-            NSString *tileImagePath = [self.zipFileRootFolderPath stringByAppendingPathComponent:imageFileName];
-            NSData *imageData = [self.zipFile readWithFilePath:tileImagePath maxLength:NSUIntegerMax];
-            if (imageData) {
-                returnValue = [UIImage imageWithData:imageData];
-            }
+    if ([self openZipFile]) {
+        if (![self.zipFile hasHashTable]) {
+            [self.zipFile buildHashTable];
+        }
+        NSString *mapScaleString = [NSString stringWithFormat:@"%f",mapScale];
+        NSString *mapaIndexX = [NSString stringWithFormat:@"%d",indexX];
+        NSString *mapaIndexY = [NSString stringWithFormat:@"%d",indexY];
+        NSString *imageFileName = [NSString stringWithFormat:@"%@-%@-%@-%@.%@",@"map",mapScaleString,mapaIndexX,mapaIndexY,self.mapFormat];
+        NSString *tileImagePath = [self.zipFileRootFolderPath stringByAppendingPathComponent:imageFileName];
+        NSData *imageData = [self.zipFile readWithFileName:tileImagePath
+                                             caseSensitive:YES
+                                                 maxLength:NSUIntegerMax];
+        if (imageData) {
+            returnValue = [UIImage imageWithData:imageData];
         }
     }
     return returnValue;
