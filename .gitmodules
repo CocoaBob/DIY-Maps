@@ -25,3 +25,6 @@
 [submodule "Submodules/CBZipFile"]
 	path = Submodules/CBZipFile
 	url = git@github.com:CocoaBob/CBZipFile.git
+[submodule "Submodules/ZipKit"]
+	path = Submodules/ZipKit
+	url = https://github.com/kolpanic/ZipKit.git
