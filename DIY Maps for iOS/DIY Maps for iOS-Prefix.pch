@@ -11,10 +11,11 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import <GoogleMaps/GoogleMaps.h>
+    #import "CBActivityView.h"
     #import "DMConfigs.h"
     #import "DMConstants.h"
     #import "DMFileManager.h"
-    #import "CBActivityView.h"
 
     // define some LLVM3 macros if the code is compiled with a different compiler (ie LLVMGCC42)
     #ifndef __has_feature

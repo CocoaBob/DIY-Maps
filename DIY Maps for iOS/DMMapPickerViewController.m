@@ -62,7 +62,7 @@ static DMMapPickerViewController *__sharedInstance = nil;
         
         self.navigationItem.title = NSLocalizedString(@"Maps", nil);
         
-        CBColorMaskedButton *doneButton = [[CBColorMaskedButton alloc] initWithFrame:CGRectMake(0, 0, 36, 24)];
+        CBColorMaskedButton *doneButton = [[CBColorMaskedButton alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
         [doneButton setImage:[UIImage imageNamed:@"img-done"] forState:UIControlStateNormal];
         [doneButton addTarget:self action:@selector(dismissViewController) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:doneButton];
@@ -287,7 +287,7 @@ static DMMapPickerViewController *__sharedInstance = nil;
     NSString *fileName = ([DMFileManager shared].sortedFileNames)[indexPath.row];
     NSString *filePath = [[DMFileManager docPath] stringByAppendingPathComponent:fileName];
     [DMMapViewController loadMapFile:filePath];
-    DefaultsSet(Object, kLastOpenedMapVisibleRect, NSStringFromCGRect([[[DMMapViewController shared] mapView] visibleMapRect]));
+    DefaultsSet(Object, kLastOpenedMapVisibleRect, NSStringFromCGRect([[DMMapViewController shared].cbMapView visibleMapRect]));
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

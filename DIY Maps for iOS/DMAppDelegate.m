@@ -25,6 +25,9 @@
 	NSLog(@"Document path: %@",[DMFileManager docPath]);
 	NSLog(@"====================");
     
+    // Google Maps SDK
+    [GMSServices provideAPIKey:kGoogleMapsAPIKey];
+    
     // Import inbox
     [DMFileManager importInbox];
     
@@ -42,7 +45,7 @@
         [DMMapViewController loadMapFile:lastOpenedMapPath];
         CGRect lastVisibleRect = CGRectFromString(DefaultsGet(object, kLastOpenedMapVisibleRect));
         if (!CGRectEqualToRect(lastVisibleRect, CGRectZero)) {
-            [[[DMMapViewController shared] mapView] zoomToRect:lastVisibleRect animated:NO];
+            [[DMMapViewController shared].cbMapView zoomToRect:lastVisibleRect animated:NO];
         }
     }
     

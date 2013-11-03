@@ -29,7 +29,7 @@
     CBMapFile *mapFile = [CBMapFile mapFileWithPath:filePath];
     if (mapFile) {
         DefaultsSet(Object, kLastOpenedMapFilePath, filePath);
-        [[[DMMapViewController shared] mapView] setMapFile:mapFile];
+        [[DMMapViewController shared].cbMapView setMapFile:mapFile];
         [DMMapViewController shared].navigationItem.title = [[filePath lastPathComponent] stringByDeletingPathExtension];
     }
 }
@@ -62,34 +62,52 @@ static DMMapViewController *__sharedInstance = nil;
             self.extendedLayoutIncludesOpaqueBars = YES;
         if ([self respondsToSelector:@selector(automaticallyAdjustsScrollViewInsets)])
             self.automaticallyAdjustsScrollViewInsets = NO;
-
-        // Map View
-        CBMapView *mapView = [[CBMapView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
-        self.view = mapView;
         
-        [[self mapView] addObserver:self forKeyPath:@"visibleMapRect" options:0 context:NULL];
+        // Google Maps View
+        GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:48.8567
+                                                                longitude:2.3508
+                                                                     zoom:15];
+        self.gmsMapView = [GMSMapView mapWithFrame:self.view.bounds camera:camera];
+        self.gmsMapView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        self.gmsMapView.hidden = YES;
+        [self.view addSubview:self.gmsMapView];
+
+        // CB Map View
+        self.cbMapView = [[CBMapView alloc] initWithFrame:self.view.bounds];
+        self.cbMapView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        self.cbMapView.hidden = NO;
+        [self.view addSubview:self.cbMapView];
+        
+        [self.cbMapView addObserver:self forKeyPath:@"visibleMapRect" options:0 context:NULL];
         
         self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mapTapped:)];
         self.tapGestureRecognizer.numberOfTapsRequired = 1;
         self.tapGestureRecognizer.numberOfTouchesRequired = 1;
-        [self.tapGestureRecognizer requireGestureRecognizerToFail:mapView.doubleTapAndPanGestureRecognizer];
+        [self.tapGestureRecognizer requireGestureRecognizerToFail:self.cbMapView.doubleTapAndPanGestureRecognizer];
         [self.view addGestureRecognizer:self.tapGestureRecognizer];
         
-        CBColorMaskedButton *listButton = [[CBColorMaskedButton alloc] initWithFrame:CGRectMake(0, 0, 36, 24)];
+        CBColorMaskedButton *listButton = [[CBColorMaskedButton alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
         [listButton setImage:[UIImage imageNamed:@"img-list"] forState:UIControlStateNormal];
         [listButton addTarget:self action:@selector(showMapPickerView:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:listButton];
+        
+        CBColorMaskedButton *mapButton = [[CBColorMaskedButton alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
+        [mapButton setImage:[UIImage imageNamed:@"img-eye"] forState:UIControlStateNormal];
+        [mapButton addTarget:self action:@selector(toggleGoogleMaps:) forControlEvents:UIControlEventTouchUpInside];
+        UILongPressGestureRecognizer *mapButtonLongPressGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(activeCalibrateMode:)];
+        [mapButton addGestureRecognizer:mapButtonLongPressGR];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:mapButton];
     }
     return self;
 }
 
 - (void)dealloc {
-    [[self mapView] removeObserver:self forKeyPath:@"visibleMapRect"];
+    [self.cbMapView removeObserver:self forKeyPath:@"visibleMapRect"];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"visibleMapRect"]) {
-        DefaultsSet(Object, kLastOpenedMapVisibleRect, NSStringFromCGRect([[self mapView] visibleMapRect]));
+        DefaultsSet(Object, kLastOpenedMapVisibleRect, NSStringFromCGRect([self.cbMapView visibleMapRect]));
     }
 }
 
@@ -102,12 +120,6 @@ static DMMapViewController *__sharedInstance = nil;
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-}
-
-#pragma Properties
-
-- (CBMapView *)mapView {
-    return (CBMapView *)self.view;
 }
 
 #pragma mark Rotation
@@ -123,7 +135,7 @@ static DMMapViewController *__sharedInstance = nil;
 #pragma mark -
 
 - (void)toggleUI {
-    BOOL statusBarWasHidden = ([self mapView].mapFile == nil)?YES:[[UIApplication sharedApplication] isStatusBarHidden];// Always display toolbar no file is open
+    BOOL statusBarWasHidden = (self.cbMapView.mapFile == nil)?YES:[[UIApplication sharedApplication] isStatusBarHidden];// Always display toolbar no file is open
     [[UIApplication sharedApplication] setStatusBarHidden:!statusBarWasHidden withAnimation:UIStatusBarAnimationFade];
     [self.navigationController setNavigationBarHidden:!statusBarWasHidden animated:YES];
 }
@@ -142,6 +154,49 @@ static DMMapViewController *__sharedInstance = nil;
     [self presentViewController:self.mapPickerViewNavigationController
                        animated:YES
                      completion:nil];
+}
+
+- (IBAction)toggleGoogleMaps:(id)sender {
+    UIView *invisibleMapView = (!self.gmsMapView.isHidden)?self.gmsMapView:self.cbMapView;
+    UIView *visibleMapView = (invisibleMapView == self.gmsMapView)?self.cbMapView:self.gmsMapView;
+    
+    visibleMapView.hidden = invisibleMapView.hidden = NO;
+    [self.view bringSubviewToFront:visibleMapView];
+    
+    if (self.gmsMapView.alpha == 0.5) {
+        self.gmsMapView.alpha = 1;
+        self.cbMapView.alpha = 0.5;
+    }
+    else {
+        visibleMapView.alpha = 0;
+        invisibleMapView.alpha = 1;
+    }
+    
+    [UIView animateWithDuration:0.25
+                     animations:^{
+                         visibleMapView.alpha = 1;
+                     }
+                     completion:^(BOOL finished) {
+                         visibleMapView.hidden = NO;
+                         invisibleMapView.hidden = YES;
+                     }];
+}
+
+- (IBAction)activeCalibrateMode:(id)sender {
+    if (self.cbMapView.isHidden) {
+        self.cbMapView.hidden = NO;
+        self.cbMapView.alpha = 0;
+    }
+    if (self.gmsMapView.isHidden) {
+        self.gmsMapView.hidden = NO;
+        self.gmsMapView.alpha = 0;
+    }
+    [self.view bringSubviewToFront:self.gmsMapView];
+    [UIView animateWithDuration:0.25
+                     animations:^{
+                         self.cbMapView.alpha = 1;
+                         self.gmsMapView.alpha = 0.5;
+                     }];
 }
 
 @end

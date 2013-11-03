@@ -90,7 +90,7 @@
 	<key>CFBundleIcons~ipad</key>
 	<dict/>
 	<key>CFBundleIdentifier</key>
-	<string>CocoaBob.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>CocoaBob.DIYMaps.iOS</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

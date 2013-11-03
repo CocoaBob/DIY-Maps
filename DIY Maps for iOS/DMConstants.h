@@ -20,3 +20,5 @@
 [[NSUserDefaults standardUserDefaults] set##Type:value forKey:key];\
 [[NSUserDefaults standardUserDefaults] synchronize];\
 } while (0)
+
+static NSString *const kGoogleMapsAPIKey = @"AIzaSyBNOm4mAMrtKbYQpXHsnIhSy7pCsl77hXk";
