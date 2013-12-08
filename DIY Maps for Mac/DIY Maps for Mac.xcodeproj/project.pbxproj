@@ -14,6 +14,13 @@
 		4505E33917C7FC99005C56C6 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4505E2ED17C7FC98005C56C6 /* DDXMLElement.m */; };
 		4505E33A17C7FC99005C56C6 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4505E2EF17C7FC98005C56C6 /* DDXMLNode.m */; };
 		4505E36817C7FD18005C56C6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4505E36717C7FD18005C56C6 /* libz.dylib */; };
+		454DA25F1855243500E125EC /* DMMMapDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 454DA25D1855243500E125EC /* DMMMapDocument.m */; };
+		454DA2601855243500E125EC /* DMMMapDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 454DA25E1855243500E125EC /* DMMMapDocument.xib */; };
+		454DA2671855275200E125EC /* CBMapFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 454DA2641855275200E125EC /* CBMapFile.m */; };
+		454DA26F18552A0C00E125EC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 454DA26A18552A0C00E125EC /* .gitignore */; };
+		454DA27018552A0C00E125EC /* CBZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 454DA26C18552A0C00E125EC /* CBZipFile.m */; };
+		454DA27118552A0C00E125EC /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 454DA26D18552A0C00E125EC /* LICENSE */; };
+		454DA27218552A0C00E125EC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 454DA26E18552A0C00E125EC /* README.md */; };
 		455639FD17C028840094876F /* AddTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 455639F817C028840094876F /* AddTemplate.pdf */; };
 		455639FE17C028840094876F /* DeleteTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 455639F917C028840094876F /* DeleteTemplate.pdf */; };
 		455639FF17C028840094876F /* PauseTemplate.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 455639FA17C028840094876F /* PauseTemplate.pdf */; };
@@ -25,6 +32,9 @@
 		456D017217E48DE5000C26E3 /* DMMTaskOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 456D016D17E482CF000C26E3 /* DMMTaskOperation.m */; };
 		456D017517E4A417000C26E3 /* DMMImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 456D017417E4A417000C26E3 /* DMMImageOperation.m */; };
 		456D017F17E51888000C26E3 /* DMMSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 456D017E17E51888000C26E3 /* DMMSlider.m */; };
+		457BDEAA18552A9F00FCC269 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 457BDE8718552A9F00FCC269 /* ioapi.c */; };
+		457BDEB918552A9F00FCC269 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 457BDE9A18552A9F00FCC269 /* unzip.c */; };
+		457BDEBA18552A9F00FCC269 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 457BDE9C18552A9F00FCC269 /* zip.c */; };
 		45B3741217C51E1F0098BBDC /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45B3741117C51E1F0098BBDC /* libxml2.dylib */; };
 		45CA605717E3C1B800E6F835 /* DMProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA605617E3C1B800E6F835 /* DMProfile.m */; };
 		45CA606017E3C41100E6F835 /* DMTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA605D17E3C41100E6F835 /* DMTask.m */; };
@@ -111,7 +121,17 @@
 		4505E2EF17C7FC98005C56C6 /* DDXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLNode.m; sourceTree = "<group>"; };
 		4505E2F117C7FC98005C56C6 /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLPrivate.h; sourceTree = "<group>"; };
 		4505E36717C7FD18005C56C6 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		45184ECA17E3A4A800AC69C0 /* DMPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPConstants.h; sourceTree = "<group>"; };
+		45184ECA17E3A4A800AC69C0 /* DMMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMConstants.h; sourceTree = "<group>"; };
+		454DA25C1855243500E125EC /* DMMMapDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMMapDocument.h; sourceTree = "<group>"; };
+		454DA25D1855243500E125EC /* DMMMapDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMMapDocument.m; sourceTree = "<group>"; };
+		454DA25E1855243500E125EC /* DMMMapDocument.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMMMapDocument.xib; sourceTree = "<group>"; };
+		454DA2631855275200E125EC /* CBMapFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBMapFile.h; sourceTree = "<group>"; };
+		454DA2641855275200E125EC /* CBMapFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBMapFile.m; sourceTree = "<group>"; };
+		454DA26A18552A0C00E125EC /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		454DA26B18552A0C00E125EC /* CBZipFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBZipFile.h; sourceTree = "<group>"; };
+		454DA26C18552A0C00E125EC /* CBZipFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBZipFile.m; sourceTree = "<group>"; };
+		454DA26D18552A0C00E125EC /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		454DA26E18552A0C00E125EC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		455639F817C028840094876F /* AddTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = AddTemplate.pdf; path = Resources/AddTemplate.pdf; sourceTree = "<group>"; };
 		455639F917C028840094876F /* DeleteTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = DeleteTemplate.pdf; path = Resources/DeleteTemplate.pdf; sourceTree = "<group>"; };
 		455639FA17C028840094876F /* PauseTemplate.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = PauseTemplate.pdf; path = Resources/PauseTemplate.pdf; sourceTree = "<group>"; };
@@ -127,6 +147,13 @@
 		456D017417E4A417000C26E3 /* DMMImageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMImageOperation.m; sourceTree = "<group>"; };
 		456D017D17E51888000C26E3 /* DMMSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMSlider.h; sourceTree = "<group>"; };
 		456D017E17E51888000C26E3 /* DMMSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMSlider.m; sourceTree = "<group>"; };
+		457BDE8618552A9F00FCC269 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		457BDE8718552A9F00FCC269 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		457BDE8818552A9F00FCC269 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		457BDE9A18552A9F00FCC269 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		457BDE9B18552A9F00FCC269 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		457BDE9C18552A9F00FCC269 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		457BDE9D18552A9F00FCC269 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
 		45B3741117C51E1F0098BBDC /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		45CA605517E3C1B800E6F835 /* DMProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMProfile.h; sourceTree = "<group>"; };
 		45CA605617E3C1B800E6F835 /* DMProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMProfile.m; sourceTree = "<group>"; };
@@ -176,13 +203,14 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				45184ECA17E3A4A800AC69C0 /* DMPConstants.h */,
+				45184ECA17E3A4A800AC69C0 /* DMMConstants.h */,
 				E0DEF6860FB2198C003218A8 /* DMMAppDelegate.h */,
 				E0DEF6870FB2198C003218A8 /* DMMAppDelegate.m */,
-				45CA607817E3C83200E6F835 /* Services */,
-				45E3195B17E7A29900422402 /* PreviewWindowController */,
-				45577E5117C178B6008151DB /* SingleTaskWindowController */,
-				45577E5017C178AB008151DB /* TaskListWindowController */,
+				45CA607817E3C83200E6F835 /* DMMServices */,
+				454DA2611855245B00E125EC /* DMMMapDocument */,
+				45E3195B17E7A29900422402 /* DMMPreviewWindowController */,
+				45577E5117C178B6008151DB /* DMMSingleTaskWindowController */,
+				45577E5017C178AB008151DB /* DMMTaskListWindowController */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -235,9 +263,12 @@
 		4505E2DE17C7FC98005C56C6 /* Submodules */ = {
 			isa = PBXGroup;
 			children = (
-				45CA607E17E463D700E6F835 /* ZipKit.xcodeproj */,
+				454DA2621855275200E125EC /* CBMapKit */,
+				454DA26918552A0C00E125EC /* CBZipFile */,
 				4505E2E217C7FC98005C56C6 /* KissXML */,
+				457BDE6C18552A9F00FCC269 /* minizip */,
 				5B6398A117E73B7100AE2EA6 /* SMDoubleSlider */,
+				45CA607E17E463D700E6F835 /* ZipKit.xcodeproj */,
 			);
 			name = Submodules;
 			path = ../Submodules;
@@ -287,7 +318,38 @@
 			path = Private;
 			sourceTree = "<group>";
 		};
-		45577E5017C178AB008151DB /* TaskListWindowController */ = {
+		454DA2611855245B00E125EC /* DMMMapDocument */ = {
+			isa = PBXGroup;
+			children = (
+				454DA25C1855243500E125EC /* DMMMapDocument.h */,
+				454DA25D1855243500E125EC /* DMMMapDocument.m */,
+				454DA25E1855243500E125EC /* DMMMapDocument.xib */,
+			);
+			name = DMMMapDocument;
+			sourceTree = "<group>";
+		};
+		454DA2621855275200E125EC /* CBMapKit */ = {
+			isa = PBXGroup;
+			children = (
+				454DA2631855275200E125EC /* CBMapFile.h */,
+				454DA2641855275200E125EC /* CBMapFile.m */,
+			);
+			path = CBMapKit;
+			sourceTree = "<group>";
+		};
+		454DA26918552A0C00E125EC /* CBZipFile */ = {
+			isa = PBXGroup;
+			children = (
+				454DA26A18552A0C00E125EC /* .gitignore */,
+				454DA26B18552A0C00E125EC /* CBZipFile.h */,
+				454DA26C18552A0C00E125EC /* CBZipFile.m */,
+				454DA26D18552A0C00E125EC /* LICENSE */,
+				454DA26E18552A0C00E125EC /* README.md */,
+			);
+			path = CBZipFile;
+			sourceTree = "<group>";
+		};
+		45577E5017C178AB008151DB /* DMMTaskListWindowController */ = {
 			isa = PBXGroup;
 			children = (
 				45577E4A17C1762C008151DB /* DMMTaskListRowView.h */,
@@ -298,10 +360,10 @@
 				5BD3A15F17BE5C4A00AE0C2F /* DMMTaskListWindowController.m */,
 				5BD3A16017BE5C4A00AE0C2F /* DMMTaskListWindowController.xib */,
 			);
-			name = TaskListWindowController;
+			name = DMMTaskListWindowController;
 			sourceTree = "<group>";
 		};
-		45577E5117C178B6008151DB /* SingleTaskWindowController */ = {
+		45577E5117C178B6008151DB /* DMMSingleTaskWindowController */ = {
 			isa = PBXGroup;
 			children = (
 				456D017D17E51888000C26E3 /* DMMSlider.h */,
@@ -310,7 +372,21 @@
 				5BD3A15A17BE5C3700AE0C2F /* DMMSingleTaskWindowController.m */,
 				5BD3A15B17BE5C3700AE0C2F /* DMMSingleTaskWindowController.xib */,
 			);
-			name = SingleTaskWindowController;
+			name = DMMSingleTaskWindowController;
+			sourceTree = "<group>";
+		};
+		457BDE6C18552A9F00FCC269 /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				457BDE8618552A9F00FCC269 /* crypt.h */,
+				457BDE8718552A9F00FCC269 /* ioapi.c */,
+				457BDE8818552A9F00FCC269 /* ioapi.h */,
+				457BDE9A18552A9F00FCC269 /* unzip.c */,
+				457BDE9B18552A9F00FCC269 /* unzip.h */,
+				457BDE9C18552A9F00FCC269 /* zip.c */,
+				457BDE9D18552A9F00FCC269 /* zip.h */,
+			);
+			path = minizip;
 			sourceTree = "<group>";
 		};
 		45CA605317E3C05C00E6F835 /* Supporting Files */ = {
@@ -339,7 +415,7 @@
 			path = "../DIY Maps Shared";
 			sourceTree = "<group>";
 		};
-		45CA607817E3C83200E6F835 /* Services */ = {
+		45CA607817E3C83200E6F835 /* DMMServices */ = {
 			isa = PBXGroup;
 			children = (
 				456D017317E4A417000C26E3 /* DMMImageOperation.h */,
@@ -349,7 +425,7 @@
 				45CA607917E3C83800E6F835 /* DMMTaskManager.h */,
 				45CA607A17E3C83800E6F835 /* DMMTaskManager.m */,
 			);
-			name = Services;
+			name = DMMServices;
 			sourceTree = "<group>";
 		};
 		45CA607F17E463D700E6F835 /* Products */ = {
@@ -362,14 +438,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		45E3195B17E7A29900422402 /* PreviewWindowController */ = {
+		45E3195B17E7A29900422402 /* DMMPreviewWindowController */ = {
 			isa = PBXGroup;
 			children = (
 				45E3195C17E7A34800422402 /* DMMPreviewWindowController.h */,
 				45E3195D17E7A34800422402 /* DMMPreviewWindowController.m */,
 				45E3195E17E7A34800422402 /* DMMPreviewWindowController.xib */,
 			);
-			name = PreviewWindowController;
+			name = DMMPreviewWindowController;
 			sourceTree = "<group>";
 		};
 		5B6398A117E73B7100AE2EA6 /* SMDoubleSlider */ = {
@@ -473,9 +549,13 @@
 				45E3195817E7907400422402 /* PreviewTemplate.pdf in Resources */,
 				5BD3A15D17BE5C3700AE0C2F /* DMMSingleTaskWindowController.xib in Resources */,
 				5B6398A917E73B7100AE2EA6 /* SMDoubleSliderIB3Framework-Info.plist in Resources */,
+				454DA2601855243500E125EC /* DMMMapDocument.xib in Resources */,
 				45563A0017C028840094876F /* PlayTemplate.pdf in Resources */,
+				454DA27218552A0C00E125EC /* README.md in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				45E3196017E7A34800422402 /* DMMPreviewWindowController.xib in Resources */,
+				454DA26F18552A0C00E125EC /* .gitignore in Resources */,
+				454DA27118552A0C00E125EC /* LICENSE in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				455639FD17C028840094876F /* AddTemplate.pdf in Resources */,
 				45563A0117C028840094876F /* StopTemplate.pdf in Resources */,
@@ -509,16 +589,20 @@
 			files = (
 				4505E33917C7FC99005C56C6 /* DDXMLElement.m in Sources */,
 				5BD3A15C17BE5C3700AE0C2F /* DMMSingleTaskWindowController.m in Sources */,
+				457BDEB918552A9F00FCC269 /* unzip.c in Sources */,
 				45577E4C17C1762C008151DB /* DMMTaskListRowView.m in Sources */,
 				456D017F17E51888000C26E3 /* DMMSlider.m in Sources */,
 				4505E33617C7FC99005C56C6 /* DDXMLElementAdditions.m in Sources */,
 				5B6398A817E73B7100AE2EA6 /* SMDoubleSliderCell.m in Sources */,
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
+				454DA2671855275200E125EC /* CBMapFile.m in Sources */,
 				4505E33A17C7FC99005C56C6 /* DDXMLNode.m in Sources */,
 				45CA607417E3C73400E6F835 /* DMImageProcessor.m in Sources */,
 				45CA606017E3C41100E6F835 /* DMTask.m in Sources */,
+				454DA25F1855243500E125EC /* DMMMapDocument.m in Sources */,
 				45CA605717E3C1B800E6F835 /* DMProfile.m in Sources */,
 				5B6398A717E73B7100AE2EA6 /* SMDoubleSlider.m in Sources */,
+				454DA27018552A0C00E125EC /* CBZipFile.m in Sources */,
 				5BD3A16117BE5C4A00AE0C2F /* DMMTaskListWindowController.m in Sources */,
 				4505E33717C7FC99005C56C6 /* NSString+DDXML.m in Sources */,
 				E0DEF6880FB2198C003218A8 /* DMMAppDelegate.m in Sources */,
@@ -528,6 +612,8 @@
 				4505E33817C7FC99005C56C6 /* DDXMLDocument.m in Sources */,
 				45577E4F17C17662008151DB /* DMMTaskListCellView.m in Sources */,
 				456D017217E48DE5000C26E3 /* DMMTaskOperation.m in Sources */,
+				457BDEBA18552A9F00FCC269 /* zip.c in Sources */,
+				457BDEAA18552A9F00FCC269 /* ioapi.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,7 +666,10 @@
 				INFOPLIST_FILE = "DIY Maps for Mac-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_LDFLAGS = "-lxml2";
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "DIY Maps";
 				SDKROOT = macosx;
 			};
@@ -603,7 +692,10 @@
 				INFOPLIST_FILE = "DIY Maps for Mac-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				OTHER_LDFLAGS = "-lxml2";
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "DIY Maps";
 				SDKROOT = macosx;
 			};

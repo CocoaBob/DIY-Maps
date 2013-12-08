@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Bob. All rights reserved.
 //
 
+#include "TargetConditionals.h"
+
 @interface CBMapFile : NSObject
 
 @property (nonatomic, strong) NSString *mapFormat;
@@ -14,7 +16,7 @@
 
 + (CBMapFile *)mapFileWithPath:(NSString *)filePath;
 
-- (UIImage *)tileImageForScale:(CGFloat)mapScale indexX:(NSInteger)indexX indexY:(NSInteger)indexY;
-- (UIImage *)previewImage;
+- (id)tileImageForScale:(CGFloat)mapScale indexX:(NSInteger)indexX indexY:(NSInteger)indexY;
+- (id)previewImage;
 
 @end

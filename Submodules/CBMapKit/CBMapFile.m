@@ -76,28 +76,31 @@
     }
 }
 
-- (UIImage *)tileImageForScale:(CGFloat)mapScale indexX:(NSInteger)indexX indexY:(NSInteger)indexY {
-    UIImage *returnValue = nil;
+- (id)tileImageForScale:(CGFloat)mapScale indexX:(NSInteger)indexX indexY:(NSInteger)indexY {
     if ([self openZipFile]) {
         if (![self.zipFile hasHashTable]) {
             [self.zipFile buildHashTable];
         }
         NSString *mapScaleString = [NSString stringWithFormat:@"%f",mapScale];
-        NSString *mapaIndexX = [NSString stringWithFormat:@"%d",indexX];
-        NSString *mapaIndexY = [NSString stringWithFormat:@"%d",indexY];
+        NSString *mapaIndexX = [NSString stringWithFormat:@"%ld",(long)indexX];
+        NSString *mapaIndexY = [NSString stringWithFormat:@"%ld",(long)indexY];
         NSString *imageFileName = [NSString stringWithFormat:@"%@-%@-%@-%@.%@",@"map",mapScaleString,mapaIndexX,mapaIndexY,self.mapFormat];
         NSString *tileImagePath = [self.zipFileRootFolderPath stringByAppendingPathComponent:imageFileName];
         NSData *imageData = [self.zipFile readWithFileName:tileImagePath
                                              caseSensitive:YES
                                                  maxLength:NSUIntegerMax];
         if (imageData) {
-            returnValue = [UIImage imageWithData:imageData];
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+            return [UIImage imageWithData:imageData];
+#elif TARGET_OS_MAC
+            return [[NSImage alloc] initWithData:imageData];
+#endif
         }
     }
-    return returnValue;
+    return nil;
 }
 
-- (UIImage *)previewImage {
+- (id)previewImage {
     return [self tileImageForScale:pow(2, self.minScale) indexX:0 indexY:0];
 }
 

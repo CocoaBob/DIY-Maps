@@ -20,5 +20,6 @@
 + (instancetype)shared;
 
 - (IBAction)openDocument:(id)sender;
+- (void)centralOpenDocuments:(NSArray *)paths;
 
 @end

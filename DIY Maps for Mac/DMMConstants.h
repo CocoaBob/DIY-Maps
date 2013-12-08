@@ -1,5 +1,5 @@
 //
-//  DMPConstants.h
+//  DMMConstants.h
 //  DIY Maps for Mac
 //
 //  Created by CocoaBob on 13/09/13.

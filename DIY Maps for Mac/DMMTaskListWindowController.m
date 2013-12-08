@@ -244,8 +244,8 @@
 	BOOL success = NO;
 	if ([[pboard types] containsObject:NSFilenamesPboardType]) {
 		NSArray *files = [pboard propertyListForType:NSFilenamesPboardType];
-		if (files.count > 0)	 {
-            [[DMMTaskManager shared] addNewTasksWithPaths:files];
+		if (files.count > 0) {
+            [[DMMAppDelegate shared] centralOpenDocuments:files];
 			success = YES;
 		}
 	}
