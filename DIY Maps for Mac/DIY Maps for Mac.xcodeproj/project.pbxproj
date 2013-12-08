@@ -396,6 +396,7 @@
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				4562FF1217E635A400BDB9D4 /* Copy Frameworks */,
+				454DA208185518F200E125EC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -484,6 +485,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		454DA208185518F200E125EC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "install_name_tool -change \\\n\"/Library/Frameworks/ZipKit.framework/Versions/A/ZipKit\" \\\n\"@rpath/ZipKit.framework/Versions/A/ZipKit\" \\\n\"$CONFIGURATION_BUILD_DIR/$EXECUTABLE_PATH\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8D11072C0486CEB800E47090 /* Sources */ = {
