@@ -11,7 +11,7 @@
 @class DMMapFile;
 @class CBDoubleTapAndPanGestureRecognizer;
 
-@interface DMMapView : UIView
+@interface DMMapView : UIScrollView
 
 @property (nonatomic, strong) DMMapFile *mapFile;
 

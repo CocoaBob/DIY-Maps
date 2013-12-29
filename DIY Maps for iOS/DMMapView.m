@@ -70,43 +70,6 @@
 
 #pragma mark -
 
-@interface CBMapScrollView : UIScrollView
-@end
-
-@implementation CBMapScrollView
-
-- (id)initWithFrame:(CGRect)frame {
-    if ((self = [super initWithFrame:frame])) {
-		self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-		self.backgroundColor = [UIColor clearColor];
-		self.clipsToBounds = YES;
-		self.showsVerticalScrollIndicator = NO;
-		self.showsHorizontalScrollIndicator = NO;
-		self.scrollEnabled = YES;
-		self.pagingEnabled = NO;
-		self.scrollsToTop = NO;
-		self.bounces = YES;
-		self.alwaysBounceVertical = YES;
-		self.alwaysBounceHorizontal = YES;
-		self.bouncesZoom = YES;
-		self.opaque = YES;
-		self.decelerationRate = 0.3f;
-    }
-    return self;
-}
-
-- (void)layoutSubviews {
-    UIView *zoomingView = [self.delegate viewForZoomingInScrollView:self];
-    CGPoint newCenter;
-    newCenter.x = MAX(CGRectGetWidth(zoomingView.frame), CGRectGetWidth(self.bounds)) / 2.0f;
-    newCenter.y = MAX(CGRectGetHeight(zoomingView.frame), CGRectGetHeight(self.bounds)) / 2.0f;
-    zoomingView.center = newCenter;
-}
-
-@end
-
-#pragma mark -
-
 @interface DMMapView () <UIScrollViewDelegate>
 
 - (void)loadMapData;
@@ -117,15 +80,27 @@
 
 @implementation DMMapView {
     CBMapContentView *mapContentView;
-    CBMapScrollView *scrollView;
 }
 
 - (void)initialization {
     
-    // Map Scroll View
-    scrollView = [[CBMapScrollView alloc] initWithFrame:self.bounds];
-    scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    scrollView.delegate = self;
+    // Scroll View
+    self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.backgroundColor = [UIColor clearColor];
+    self.clipsToBounds = YES;
+    self.showsVerticalScrollIndicator = NO;
+    self.showsHorizontalScrollIndicator = NO;
+    self.scrollEnabled = YES;
+    self.pagingEnabled = NO;
+    self.scrollsToTop = NO;
+    self.bounces = YES;
+    self.alwaysBounceVertical = YES;
+    self.alwaysBounceHorizontal = YES;
+    self.bouncesZoom = YES;
+    self.opaque = YES;
+    self.decelerationRate = 0.3f;
+    self.delegate = self;
+    
     self.zoomEnabled = YES;
     self.scrollEnabled = YES;
     
@@ -133,9 +108,7 @@
     mapContentView = [[CBMapContentView alloc] initWithFrame:self.bounds];
     mapContentView.autoresizingMask = UIViewAutoresizingNone;
     mapContentView.backgroundColor = [UIColor clearColor];
-    [scrollView addSubview:mapContentView];
-    
-    [self addSubview:scrollView];
+    [self addSubview:mapContentView];
     
     // Map Gesture Recognizers
     self.doubleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTapGesture:)];
@@ -163,7 +136,13 @@
     self.mapFile = nil;
 }
 
-#pragma mark KVO
+- (void)layoutSubviews {
+    UIView *zoomingView = [self.delegate viewForZoomingInScrollView:self];
+    CGPoint newCenter;
+    newCenter.x = MAX(CGRectGetWidth(zoomingView.frame), CGRectGetWidth(self.bounds)) / 2.0f;
+    newCenter.y = MAX(CGRectGetHeight(zoomingView.frame), CGRectGetHeight(self.bounds)) / 2.0f;
+    zoomingView.center = newCenter;
+}
 
 #pragma mark Properties
 
@@ -173,8 +152,8 @@
         CGPoint visibleContentCenterBeforeRotation = CGPointZero;
         
         // Before new frame, remember the rotation center
-        if (mapContentView.frame.size.width > scrollView.frame.size.width &&
-            mapContentView.frame.size.height > scrollView.frame.size.height) {
+        if (mapContentView.frame.size.width > self.frame.size.width &&
+            mapContentView.frame.size.height > self.frame.size.height) {
             CGRect visibleRect = [self visibleMapRect];
             visibleContentCenterBeforeRotation = CGPointMake(CGRectGetMidX(visibleRect), CGRectGetMidY(visibleRect));
         }
@@ -184,28 +163,19 @@
         [super setFrame:frame];
 
         // After new frame
-        BOOL keepMinZoomLevel = scrollView.zoomScale == scrollView.minimumZoomScale;
+        BOOL keepMinZoomLevel = self.zoomScale == self.minimumZoomScale;
         [self updateMinMaxZoomScale];
         // Restore the rotation center
-        if (mapContentView.frame.size.width > scrollView.frame.size.width &&
-            mapContentView.frame.size.height > scrollView.frame.size.height) {
-            [scrollView zoomToRect:[self visibleMapRectWithCenter:visibleContentCenterBeforeRotation zoomScale:scrollView.zoomScale] animated:NO];
+        if (mapContentView.frame.size.width > self.frame.size.width &&
+            mapContentView.frame.size.height > self.frame.size.height) {
+            [self zoomToRect:[self visibleMapRectWithCenter:visibleContentCenterBeforeRotation zoomScale:self.zoomScale] animated:NO];
         }
         else {
             // If it was min scale, or the new min scale is larger, set to the min scale
-            if (keepMinZoomLevel || scrollView.minimumZoomScale > scrollView.zoomScale)
-                [scrollView setZoomScale:scrollView.minimumZoomScale animated:NO];
+            if (keepMinZoomLevel || self.minimumZoomScale > self.zoomScale)
+                [self setZoomScale:self.minimumZoomScale animated:NO];
         }
     }
-}
-
-- (void)setScrollEnabled:(BOOL)newValue {
-    _scrollEnabled = newValue;
-    scrollView.scrollEnabled = newValue;
-}
-
-- (void)setZoomEnabled:(BOOL)newValue {
-    _zoomEnabled = newValue;
 }
 
 - (void)setMapFile:(DMMapFile *)newValue {
@@ -213,12 +183,6 @@
         _mapFile = newValue;
     }
     [self loadMapData];
-}
-
-#pragma mark Map Rect/Coordinate/Region
-
-- (void)zoomToRect:(CGRect)mapRect animated:(BOOL)animate {
-    [scrollView zoomToRect:mapRect animated:animate];
 }
 
 #pragma mark UIScrollViewDelegate
@@ -245,8 +209,8 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)aScrollView {
-    if (!scrollView.decelerating && !scrollView.dragging) {
-        CGPoint contentOffset = [scrollView contentOffset];
+    if (!self.decelerating && !self.dragging) {
+        CGPoint contentOffset = [self contentOffset];
         BOOL needResetContentOffset = NO;
         if (contentOffset.x < 0) {
             contentOffset.x = 0;
@@ -257,7 +221,7 @@
             needResetContentOffset = YES;
         }
         if (needResetContentOffset) {
-            [scrollView setContentOffset:contentOffset animated:NO];
+            [self setContentOffset:contentOffset animated:NO];
         }
     }
 }
@@ -266,20 +230,20 @@
 
 - (void)handleDoubleTapGesture:(id)sender {
 	CGPoint tapLocation = [(UIGestureRecognizer *)sender locationInView:mapContentView];
-    if (scrollView.zoomScale == scrollView.maximumZoomScale) {
-        CGFloat newZoomScale = scrollView.maximumZoomScale / 2;
-        [scrollView zoomToRect:[self visibleMapRectWithCenter:[mapContentView convertPoint:CGPointMake(self.frame.size.width / 2.0f, self.frame.size.height / 2.0f) fromView:self] zoomScale:newZoomScale] animated:YES];
+    if (self.zoomScale == self.maximumZoomScale) {
+        CGFloat newZoomScale = self.maximumZoomScale / 2;
+        [self zoomToRect:[self visibleMapRectWithCenter:[mapContentView convertPoint:CGPointMake(self.frame.size.width / 2.0f, self.frame.size.height / 2.0f) fromView:self] zoomScale:newZoomScale] animated:YES];
     }
     else {
-        CGFloat newZoomScale = pow(2, floor(log2(scrollView.zoomScale))) * 2.0f;
-        [scrollView zoomToRect:[self visibleMapRectWithCenter:tapLocation zoomScale:newZoomScale] animated:YES];
+        CGFloat newZoomScale = pow(2, floor(log2(self.zoomScale))) * 2.0f;
+        [self zoomToRect:[self visibleMapRectWithCenter:tapLocation zoomScale:newZoomScale] animated:YES];
     }
 }
 
 - (void)handleDoubleTapAndPanGesture:(id)sender {
     CBDoubleTapAndPanGestureRecognizer *gesture = sender;
     if (gesture.state == UIGestureRecognizerStateChanged) {
-        scrollView.zoomScale *= gesture.scale;
+        self.zoomScale *= gesture.scale;
     }
 }
 
@@ -289,8 +253,8 @@
     if (self.mapFile) {
         // Update scroll view
         CGSize mapSize = CGSizeMake([self.mapFile mapWidth], [self.mapFile mapHeight]);
-        scrollView.zoomScale = 1;
-        scrollView.contentSize = mapSize;
+        self.zoomScale = 1;
+        self.contentSize = mapSize;
         
     	mapContentView.mapFile = self.mapFile;
         mapContentView.frame = CGRectMake(0, 0, mapSize.width, mapSize.height);
@@ -300,7 +264,7 @@
         mapContentView.tiledLayer.shouldRasterize = NO;
         
         [self updateMinMaxZoomScale];
-        scrollView.zoomScale = scrollView.minimumZoomScale;
+        self.zoomScale = self.minimumZoomScale;
 
         [mapContentView setNeedsDisplay];
     }
@@ -308,15 +272,15 @@
 
 - (void)updateMinMaxZoomScale {
     CGSize mapSize = CGSizeMake([self.mapFile mapWidth], [self.mapFile mapHeight]);
-    scrollView.maximumZoomScale = pow(2, self.mapFile.maxScale);// * ([[UIScreen mainScreen] scale]==2?1:2);
-    CGFloat bestFitScreenZoomScale = MIN(CGRectGetWidth(scrollView.frame)/mapSize.width, CGRectGetHeight(scrollView.frame)/mapSize.height);
-    scrollView.minimumZoomScale = MIN(bestFitScreenZoomScale, scrollView.maximumZoomScale);
+    self.maximumZoomScale = pow(2, self.mapFile.maxScale);// * ([[UIScreen mainScreen] scale]==2?1:2);
+    CGFloat bestFitScreenZoomScale = MIN(CGRectGetWidth(self.frame)/mapSize.width, CGRectGetHeight(self.frame)/mapSize.height);
+    self.minimumZoomScale = MIN(bestFitScreenZoomScale, self.maximumZoomScale);
 }
 
 - (CGRect)visibleMapRectWithCenter:(CGPoint)centerPoint zoomScale:(CGFloat)zoomScale {
     CGSize destSize;
-    destSize.width = CGRectGetWidth(scrollView.bounds) / zoomScale;
-    destSize.height = CGRectGetHeight(scrollView.bounds) / zoomScale;
+    destSize.width = CGRectGetWidth(self.bounds) / zoomScale;
+    destSize.height = CGRectGetHeight(self.bounds) / zoomScale;
     
     CGRect destRect;
     destRect.origin.x = centerPoint.x - destSize.width / 2.0f;
@@ -327,7 +291,7 @@
 }
 
 - (CGRect)visibleMapRect {
-    return [mapContentView convertRect:scrollView.bounds fromView:scrollView];
+    return [mapContentView convertRect:self.bounds fromView:self];
 }
 
 #pragma mark Embeded Images
