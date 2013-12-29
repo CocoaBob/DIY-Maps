@@ -8,13 +8,13 @@
 
 #include "TargetConditionals.h"
 
-@interface CBMapFile : NSObject
+@interface DMMapFile : NSObject
 
 @property (nonatomic, strong) NSString *mapFormat;
 @property (nonatomic, assign) CGFloat mapWidth,mapHeight,minScale,maxScale,tileSize;
 @property (nonatomic, assign) CGFloat latitudeTopLeft,longitudeTopLeft,latitudeBottomRight,longitudeBottomRight;
 
-+ (CBMapFile *)mapFileWithPath:(NSString *)filePath;
++ (DMMapFile *)mapFileWithPath:(NSString *)filePath;
 
 - (id)tileImageForScale:(CGFloat)mapScale indexX:(NSInteger)indexX indexY:(NSInteger)indexY;
 - (id)previewImage;

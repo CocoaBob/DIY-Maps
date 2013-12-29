@@ -6,10 +6,10 @@
 //
 //
 
-@class CBMapFile;
+@class DMMapFile;
 
 @interface DMMMapDocument : NSDocument
 
-@property (nonatomic, strong) CBMapFile *mapFile;
+@property (nonatomic, strong) DMMapFile *mapFile;
 
 @end

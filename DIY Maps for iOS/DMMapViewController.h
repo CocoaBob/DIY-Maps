@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 Bob. All rights reserved.
 //
 
-@class CBMapView;
+@class DMMapView;
 
 @interface DMMapViewController : UIViewController
 
 @property (nonatomic, strong) UIPopoverController *mapPickerPopoverController;
 
-@property (nonatomic, strong) CBMapView *cbMapView;
+@property (nonatomic, strong) DMMapView *cbMapView;
 @property (nonatomic, strong) GMSMapView *gmsMapView;
 
 + (instancetype)shared;

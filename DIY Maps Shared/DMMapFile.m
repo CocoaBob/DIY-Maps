@@ -6,24 +6,24 @@
 //  Copyright (c) 2012 Bob. All rights reserved.
 //
 
-#import "CBMapFile.h"
+#import "DMMapFile.h"
 
 #import "CBZipFile.h"
 #import "DMProfile.h"
 
-@interface CBMapFile()
+@interface DMMapFile()
 
 @property (nonatomic, strong) CBZipFile *zipFile;
 @property (nonatomic, strong) NSString *zipFileRootFolderPath;
 
 @end
 
-@implementation CBMapFile
+@implementation DMMapFile
 
-+ (CBMapFile *)mapFileWithPath:(NSString *)filePath {
++ (DMMapFile *)mapFileWithPath:(NSString *)filePath {
     CBZipFile *aZipFile = [[CBZipFile alloc] initWithFileAtPath:filePath];
     if (aZipFile) {
-        CBMapFile *aMapFile = [CBMapFile new];
+        DMMapFile *aMapFile = [DMMapFile new];
         aMapFile.zipFile = aZipFile;
         return aMapFile;
     }

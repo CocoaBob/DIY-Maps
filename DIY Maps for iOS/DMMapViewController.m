@@ -10,7 +10,8 @@
 
 #import "CBColorMaskedButton.h"
 #import "DMMapPickerViewController.h"
-#import "CBMapKit.h"
+#import "DMMapView.h"
+#import "DMMapFile.h"
 
 #import "CBDoubleTapAndPanGestureRecognizer.h"
 
@@ -26,7 +27,7 @@
 @implementation DMMapViewController
 
 + (void)loadMapFile:(NSString *)filePath {
-    CBMapFile *mapFile = [CBMapFile mapFileWithPath:filePath];
+    DMMapFile *mapFile = [DMMapFile mapFileWithPath:filePath];
     if (mapFile) {
         DefaultsSet(Object, kLastOpenedMapFilePath, filePath);
         [[DMMapViewController shared].cbMapView setMapFile:mapFile];
@@ -73,7 +74,7 @@ static DMMapViewController *__sharedInstance = nil;
         [self.view addSubview:self.gmsMapView];
 
         // CB Map View
-        self.cbMapView = [[CBMapView alloc] initWithFrame:self.view.bounds];
+        self.cbMapView = [[DMMapView alloc] initWithFrame:self.view.bounds];
         self.cbMapView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         self.cbMapView.hidden = NO;
         [self.view addSubview:self.cbMapView];

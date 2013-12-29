@@ -11,7 +11,7 @@
 #import "DMMapPickerViewController.h"
 #import "DMMapViewController.h"
 #import "CBStyleKit.h"
-#import "CBMapKit.h"
+#import "DMMapView.h"
 
 @implementation DMAppDelegate
 

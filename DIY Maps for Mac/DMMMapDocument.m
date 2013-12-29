@@ -7,7 +7,7 @@
 //
 
 #import "DMMMapDocument.h"
-#import "CBMapFile.h"
+#import "DMMapFile.h"
 
 @implementation DMMMapDocument
 
@@ -17,7 +17,7 @@
 
 - (BOOL)readFromURL:(NSURL *)absoluteURL ofType:(NSString *)typeName error:(NSError **)outError {
     
-    self.mapFile = [CBMapFile mapFileWithPath:[absoluteURL path]];
+    self.mapFile = [DMMapFile mapFileWithPath:[absoluteURL path]];
     
     return YES;
 }

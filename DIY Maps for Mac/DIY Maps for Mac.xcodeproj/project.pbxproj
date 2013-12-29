@@ -14,9 +14,9 @@
 		4505E33917C7FC99005C56C6 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4505E2ED17C7FC98005C56C6 /* DDXMLElement.m */; };
 		4505E33A17C7FC99005C56C6 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4505E2EF17C7FC98005C56C6 /* DDXMLNode.m */; };
 		4505E36817C7FD18005C56C6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4505E36717C7FD18005C56C6 /* libz.dylib */; };
+		4527B9451870688E003A17E9 /* DMMapFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 4527B9441870688E003A17E9 /* DMMapFile.m */; };
 		454DA25F1855243500E125EC /* DMMMapDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 454DA25D1855243500E125EC /* DMMMapDocument.m */; };
 		454DA2601855243500E125EC /* DMMMapDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 454DA25E1855243500E125EC /* DMMMapDocument.xib */; };
-		454DA2671855275200E125EC /* CBMapFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 454DA2641855275200E125EC /* CBMapFile.m */; };
 		454DA26F18552A0C00E125EC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 454DA26A18552A0C00E125EC /* .gitignore */; };
 		454DA27018552A0C00E125EC /* CBZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 454DA26C18552A0C00E125EC /* CBZipFile.m */; };
 		454DA27118552A0C00E125EC /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 454DA26D18552A0C00E125EC /* LICENSE */; };
@@ -122,11 +122,11 @@
 		4505E2F117C7FC98005C56C6 /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLPrivate.h; sourceTree = "<group>"; };
 		4505E36717C7FD18005C56C6 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		45184ECA17E3A4A800AC69C0 /* DMMConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMConstants.h; sourceTree = "<group>"; };
+		4527B9431870688E003A17E9 /* DMMapFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMapFile.h; sourceTree = "<group>"; };
+		4527B9441870688E003A17E9 /* DMMapFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMapFile.m; sourceTree = "<group>"; };
 		454DA25C1855243500E125EC /* DMMMapDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMMapDocument.h; sourceTree = "<group>"; };
 		454DA25D1855243500E125EC /* DMMMapDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMMapDocument.m; sourceTree = "<group>"; };
 		454DA25E1855243500E125EC /* DMMMapDocument.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMMMapDocument.xib; sourceTree = "<group>"; };
-		454DA2631855275200E125EC /* CBMapFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBMapFile.h; sourceTree = "<group>"; };
-		454DA2641855275200E125EC /* CBMapFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBMapFile.m; sourceTree = "<group>"; };
 		454DA26A18552A0C00E125EC /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		454DA26B18552A0C00E125EC /* CBZipFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBZipFile.h; sourceTree = "<group>"; };
 		454DA26C18552A0C00E125EC /* CBZipFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBZipFile.m; sourceTree = "<group>"; };
@@ -263,7 +263,6 @@
 		4505E2DE17C7FC98005C56C6 /* Submodules */ = {
 			isa = PBXGroup;
 			children = (
-				454DA2621855275200E125EC /* CBMapKit */,
 				454DA26918552A0C00E125EC /* CBZipFile */,
 				4505E2E217C7FC98005C56C6 /* KissXML */,
 				457BDE6C18552A9F00FCC269 /* minizip */,
@@ -326,15 +325,6 @@
 				454DA25E1855243500E125EC /* DMMMapDocument.xib */,
 			);
 			name = DMMMapDocument;
-			sourceTree = "<group>";
-		};
-		454DA2621855275200E125EC /* CBMapKit */ = {
-			isa = PBXGroup;
-			children = (
-				454DA2631855275200E125EC /* CBMapFile.h */,
-				454DA2641855275200E125EC /* CBMapFile.m */,
-			);
-			path = CBMapKit;
 			sourceTree = "<group>";
 		};
 		454DA26918552A0C00E125EC /* CBZipFile */ = {
@@ -406,6 +396,8 @@
 			children = (
 				45CA607217E3C73400E6F835 /* DMImageProcessor.h */,
 				45CA607317E3C73400E6F835 /* DMImageProcessor.m */,
+				4527B9431870688E003A17E9 /* DMMapFile.h */,
+				4527B9441870688E003A17E9 /* DMMapFile.m */,
 				45CA605517E3C1B800E6F835 /* DMProfile.h */,
 				45CA605617E3C1B800E6F835 /* DMProfile.m */,
 				45CA605C17E3C41100E6F835 /* DMTask.h */,
@@ -594,8 +586,8 @@
 				456D017F17E51888000C26E3 /* DMMSlider.m in Sources */,
 				4505E33617C7FC99005C56C6 /* DDXMLElementAdditions.m in Sources */,
 				5B6398A817E73B7100AE2EA6 /* SMDoubleSliderCell.m in Sources */,
+				4527B9451870688E003A17E9 /* DMMapFile.m in Sources */,
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
-				454DA2671855275200E125EC /* CBMapFile.m in Sources */,
 				4505E33A17C7FC99005C56C6 /* DDXMLNode.m in Sources */,
 				45CA607417E3C73400E6F835 /* DMImageProcessor.m in Sources */,
 				45CA606017E3C41100E6F835 /* DMTask.m in Sources */,

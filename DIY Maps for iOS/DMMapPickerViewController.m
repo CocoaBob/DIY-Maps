@@ -15,7 +15,8 @@
 
 #import "BVReorderTableView.h"
 #import "CBColorMaskedButton.h"
-#import "CBMapKit.h"
+#import "DMMapView.h"
+#import "DMMapFile.h"
 #import "UINavigationBar+CBDropShadow.h"
 #import "ZKRevealingTableViewCell.h"
 
@@ -387,7 +388,7 @@ static DMMapPickerViewController *__sharedInstance = nil;
 
 - (UIImage *)thumbnailWithFileName:(NSString *)fileName {
     UIImage *returnThumbnailImage = nil;
-    CBMapFile *mapFile = [CBMapFile mapFileWithPath:[[DMFileManager docPath] stringByAppendingPathComponent:fileName]];
+    DMMapFile *mapFile = [DMMapFile mapFileWithPath:[[DMFileManager docPath] stringByAppendingPathComponent:fileName]];
     if (mapFile) {
         UIImage *previewImage = [mapFile previewImage];
         if (previewImage) {
