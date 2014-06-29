@@ -17,7 +17,7 @@
 
 #pragma mark -
 
-@interface DMMapViewController() <UIGestureRecognizerDelegate>
+@interface DMMapViewController() <UIGestureRecognizerDelegate, DMMapViewDelegate>
 
 @property (nonatomic, strong) UINavigationController *mapPickerViewNavigationController;
 @property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
@@ -84,7 +84,7 @@ static DMMapViewController *__sharedInstance = nil;
         self.cbMapView.hidden = NO;
         [self.view addSubview:self.cbMapView];
         
-        [self.cbMapView addObserver:self forKeyPath:@"visibleMapRect" options:0 context:NULL];
+        [self.cbMapView setMapDelegate:self];
         
         self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mapTapped:)];
         self.tapGestureRecognizer.numberOfTapsRequired = 1;
@@ -107,16 +107,6 @@ static DMMapViewController *__sharedInstance = nil;
     return self;
 }
 
-- (void)dealloc {
-    [self.cbMapView removeObserver:self forKeyPath:@"visibleMapRect"];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"visibleMapRect"]) {
-        DefaultsSet(Object, kLastOpenedMapVisibleRect, NSStringFromCGRect([self.cbMapView visibleMapRect]));
-    }
-}
-
 #pragma mark UIViewController
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -128,7 +118,7 @@ static DMMapViewController *__sharedInstance = nil;
     [super viewWillDisappear:animated];
 }
 
-#pragma mark Rotation
+#pragma mark - Rotation
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
@@ -138,15 +128,41 @@ static DMMapViewController *__sharedInstance = nil;
     return UIInterfaceOrientationMaskAll;
 }
 
-#pragma mark -
+#pragma mark - UI Control
+
+- (void)toggleFullScreen:(BOOL)isFullScreen {
+    BOOL wasFullScreen = (self.cbMapView.mapFile == nil)?YES:[[UIApplication sharedApplication] isStatusBarHidden];
+    if (isFullScreen != wasFullScreen) {
+        [[UIApplication sharedApplication] setStatusBarHidden:isFullScreen withAnimation:UIStatusBarAnimationFade];
+        [self.navigationController setNavigationBarHidden:isFullScreen animated:YES];
+    }
+}
 
 - (void)toggleUI {
     BOOL statusBarWasHidden = (self.cbMapView.mapFile == nil)?YES:[[UIApplication sharedApplication] isStatusBarHidden];// Always display toolbar no file is open
-    [[UIApplication sharedApplication] setStatusBarHidden:!statusBarWasHidden withAnimation:UIStatusBarAnimationFade];
-    [self.navigationController setNavigationBarHidden:!statusBarWasHidden animated:YES];
+    [self toggleFullScreen:!statusBarWasHidden];
 }
 
-#pragma mark Actions
+#pragma mark - DMMapViewDelegate
+
+- (void)mapView:(DMMapView *)mapView willMove:(CGRect)oldVisibleMapRect {
+    [self toggleFullScreen:YES];
+}
+
+- (void)mapView:(DMMapView *)mapView didMove:(CGRect)newVisibleMapRect {
+    DefaultsSet(Object, kLastOpenedMapVisibleRect, NSStringFromCGRect([self.cbMapView visibleMapRect]));
+}
+
+- (void)mapView:(DMMapView *)mapView willZoom:(CGFloat)oldZoomScale {
+    [self toggleFullScreen:YES];
+}
+
+- (void)mapView:(DMMapView *)mapView didZoom:(CGFloat)newZoomScale {
+    [self toggleFullScreen:YES];
+    DefaultsSet(Object, kLastOpenedMapVisibleRect, NSStringFromCGRect([self.cbMapView visibleMapRect]));
+}
+
+#pragma mark - Actions
 
 - (IBAction)mapTapped:(id)sender {
     [self toggleUI];

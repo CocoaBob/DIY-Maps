@@ -8,10 +8,23 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+@class DMMapView;
+
+@protocol DMMapViewDelegate <NSObject>
+
+- (void)mapView:(DMMapView *)mapView willMove:(CGRect)oldVisibleMapRect;
+- (void)mapView:(DMMapView *)mapView didMove:(CGRect)newVisibleMapRect;
+- (void)mapView:(DMMapView *)mapView willZoom:(CGFloat)oldZoomScale;
+- (void)mapView:(DMMapView *)mapView didZoom:(CGFloat)newZoomScale;
+
+@end
+
 @class DMMapFile;
 @class CBDoubleTapAndPanGestureRecognizer;
 
 @interface DMMapView : UIScrollView
+
+@property (nonatomic, weak) id<DMMapViewDelegate> mapDelegate;
 
 @property (nonatomic, strong) DMMapFile *mapFile;
 

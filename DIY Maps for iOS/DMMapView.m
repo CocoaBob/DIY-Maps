@@ -101,6 +101,8 @@
     self.decelerationRate = 0.3f;
     self.delegate = self;
     
+    [self addObserver:self forKeyPath:@"zoomScale" options:0 context:NULL];
+    
     self.zoomEnabled = YES;
     self.scrollEnabled = YES;
     
@@ -134,6 +136,15 @@
 
 - (void)dealloc {
     self.mapFile = nil;
+    [self removeObserver:self forKeyPath:@"zoomScale"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"zoomScale"]) {
+        if ([self.mapDelegate respondsToSelector:@selector(mapView:didZoom:)]) {
+            [self.mapDelegate mapView:self didZoom:self.zoomScale];
+        }
+    }
 }
 
 - (void)layoutSubviews {
@@ -191,21 +202,36 @@
     return self.zoomEnabled?mapContentView:nil;
 }
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if ([self.mapDelegate respondsToSelector:@selector(mapView:willMove:)]) {
+        [self.mapDelegate mapView:self willMove:[self visibleMapRect]];
+    }
+}
+
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if (!decelerate) {
-        [self willChangeValueForKey:@"visibleMapRect"];
-        [self didChangeValueForKey:@"visibleMapRect"];
+        if ([self.mapDelegate respondsToSelector:@selector(mapView:didMove:)]) {
+            [self.mapDelegate mapView:self didMove:[self visibleMapRect]];
+        }
     }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)aScrollView {
-    [self willChangeValueForKey:@"visibleMapRect"];
-    [self didChangeValueForKey:@"visibleMapRect"];
+    if ([self.mapDelegate respondsToSelector:@selector(mapView:didMove:)]) {
+        [self.mapDelegate mapView:self didMove:[self visibleMapRect]];
+    }
 }
 
-- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale {
-    [self willChangeValueForKey:@"visibleMapRect"];
-    [self didChangeValueForKey:@"visibleMapRect"];
+- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view {
+    if ([self.mapDelegate respondsToSelector:@selector(mapView:willZoom:)]) {
+        [self.mapDelegate mapView:self willZoom:self.zoomScale];
+    }
+}
+
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale {
+    if ([self.mapDelegate respondsToSelector:@selector(mapView:didZoom:)]) {
+        [self.mapDelegate mapView:self didZoom:self.zoomScale];
+    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)aScrollView {
