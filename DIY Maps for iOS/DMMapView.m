@@ -179,7 +179,8 @@
         // Restore the rotation center
         if (mapContentView.frame.size.width > self.frame.size.width &&
             mapContentView.frame.size.height > self.frame.size.height) {
-            [self zoomToRect:[self visibleMapRectWithCenter:visibleContentCenterBeforeRotation zoomScale:self.zoomScale] animated:NO];
+            [self zoomToRect:[self visibleMapRectWithCenter:visibleContentCenterBeforeRotation zoomScale:self.zoomScale]
+                    animated:NO];
         }
         else {
             // If it was min scale, or the new min scale is larger, set to the min scale
@@ -255,14 +256,19 @@
 #pragma mark Action
 
 - (void)handleDoubleTapGesture:(id)sender {
-	CGPoint tapLocation = [(UIGestureRecognizer *)sender locationInView:mapContentView];
     if (self.zoomScale == self.maximumZoomScale) {
         CGFloat newZoomScale = self.maximumZoomScale / 2;
-        [self zoomToRect:[self visibleMapRectWithCenter:[mapContentView convertPoint:CGPointMake(self.frame.size.width / 2.0f, self.frame.size.height / 2.0f) fromView:self] zoomScale:newZoomScale] animated:YES];
+        CGPoint centerPoint = [mapContentView convertPoint:CGPointMake(CGRectGetMidX([self bounds]),CGRectGetMidY([self bounds]))
+                                                  fromView:self];
+        CGRect newRect = [self visibleMapRectWithCenter:centerPoint
+                                              zoomScale:newZoomScale];
+        [self zoomToRect:newRect animated:YES];
     }
     else {
+        CGPoint tapLocation = [(UIGestureRecognizer *)sender locationInView:mapContentView];
         CGFloat newZoomScale = pow(2, floor(log2(self.zoomScale))) * 2.0f;
-        [self zoomToRect:[self visibleMapRectWithCenter:tapLocation zoomScale:newZoomScale] animated:YES];
+        [self zoomToRect:[self visibleMapRectWithCenter:tapLocation zoomScale:newZoomScale]
+                animated:YES];
     }
 }
 

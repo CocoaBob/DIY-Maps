@@ -34,7 +34,6 @@
 @property (nonatomic, strong) UITapGestureRecognizer *doubleTapGestureRecognizer;
 @property (nonatomic, strong) CBDoubleTapAndPanGestureRecognizer *doubleTapAndPanGestureRecognizer;
 
-- (void)zoomToRect:(CGRect)mapRect animated:(BOOL)animate;
 - (CGRect)visibleMapRect;
 
 @end
