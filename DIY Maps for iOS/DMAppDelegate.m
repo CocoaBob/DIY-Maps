@@ -34,11 +34,6 @@
     // Theme
     [CBStyleKit setStyleIOS7];
     
-    // Display the UI
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[DMMapViewController shared]];
-    [self.window makeKeyAndVisible];
-    
     // Open the last opened map
     NSString *lastOpenedMapPath = DefaultsGet(object, kLastOpenedMapFilePath);
     if (lastOpenedMapPath) {
@@ -48,6 +43,11 @@
             [[DMMapViewController shared].cbMapView zoomToRect:lastVisibleRect animated:NO];
         }
     }
+    
+    // Display the UI
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[DMMapViewController shared]];
+    [self.window makeKeyAndVisible];
     
     return YES;
 }

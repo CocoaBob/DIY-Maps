@@ -84,8 +84,6 @@ static DMMapViewController *__sharedInstance = nil;
         self.cbMapView.hidden = NO;
         [self.view addSubview:self.cbMapView];
         
-        [self.cbMapView setMapDelegate:self];
-        
         self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mapTapped:)];
         self.tapGestureRecognizer.numberOfTapsRequired = 1;
         self.tapGestureRecognizer.numberOfTouchesRequired = 1;
@@ -112,10 +110,12 @@ static DMMapViewController *__sharedInstance = nil;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setTranslucent:YES];
+    self.cbMapView.mapDelegate = self;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    self.cbMapView.mapDelegate = nil;
 }
 
 #pragma mark - Rotation
