@@ -10,33 +10,151 @@
 	<string>DIY Maps</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>F4A90CB1-F5E8-4CB4-ACB3-A3E1B2F9F6BC</key>
+		<key>0145ED403843D35A6DC92B71A0E30320516A537C</key>
+		<string>https://github.com/nicklockwood/Base64.git</string>
+		<key>36E553E24002060C8EE4B1918E9D6340B4C36207</key>
+		<string>github.com:CocoaBob/CBDoubleTapAndPanGestureRecognizer.git</string>
+		<key>70A8537565E8EBD1B9D364933832E742DD9D1D11</key>
+		<string>https://github.com/robbiehanson/KissXML.git</string>
+		<key>8355B1E87DB5CD2404F04560B006C8F9FCC63EF7</key>
+		<string>https://github.com/bvogelzang/BVReorderTableView.git</string>
+		<key>8DA5B175D3FDB92A3B3CCBD4109A734F1316A3DD</key>
+		<string>https://github.com/nmoinvaz/minizip.git</string>
+		<key>940F78D5F98A404F0CE03A452F2871238905218C</key>
+		<string>https://github.com/kolpanic/ZipKit.git</string>
+		<key>9C64E8446FE8AB0678DE2178BF564F7DE6F080B7</key>
+		<string>https://github.com/alexzielenski/ZKRevealingTableViewCell.git</string>
+		<key>C1B532F77CA06ABEC4F65D166D8289BF5DDC2E27</key>
 		<string>ssh://github.com/CocoaBob/DIY-Maps.git</string>
+		<key>C898586DA8BB589BE31281E7471813970245A912</key>
+		<string>https://github.com/jjk/SMDoubleSlider.git</string>
+		<key>DDE4341E8E231F913BA60968730900F7337DC737</key>
+		<string>github.com:CocoaBob/CBZipFile.git</string>
+		<key>F73223046C8E5C3811CC17CF11D424D8F73BA066</key>
+		<string>https://github.com/hwaxxer/MHWDirectoryWatcher.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>DIY Maps.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>AB9A6134-84C9-4B1F-BA16-BC49016B310C</key>
+		<key>0145ED403843D35A6DC92B71A0E30320516A537C</key>
+		<string>../Submodules/Base64</string>
+		<key>36E553E24002060C8EE4B1918E9D6340B4C36207</key>
+		<string>../Submodules/CBDoubleTapAndPanGestureRecognizer</string>
+		<key>70A8537565E8EBD1B9D364933832E742DD9D1D11</key>
 		<string>../Submodules/KissXML</string>
-		<key>F4A90CB1-F5E8-4CB4-ACB3-A3E1B2F9F6BC</key>
+		<key>8355B1E87DB5CD2404F04560B006C8F9FCC63EF7</key>
+		<string>../Submodules/BVReorderTableView</string>
+		<key>8DA5B175D3FDB92A3B3CCBD4109A734F1316A3DD</key>
+		<string>../Submodules/minizip</string>
+		<key>940F78D5F98A404F0CE03A452F2871238905218C</key>
+		<string>../Submodules/ZipKit</string>
+		<key>9C64E8446FE8AB0678DE2178BF564F7DE6F080B7</key>
+		<string>../Submodules/ZKRevealingTableViewCell</string>
+		<key>C1B532F77CA06ABEC4F65D166D8289BF5DDC2E27</key>
 		<string>..</string>
+		<key>C898586DA8BB589BE31281E7471813970245A912</key>
+		<string>../Submodules/SMDoubleSlider</string>
+		<key>DDE4341E8E231F913BA60968730900F7337DC737</key>
+		<string>../Submodules/CBZipFile</string>
+		<key>F73223046C8E5C3811CC17CF11D424D8F73BA066</key>
+		<string>../Submodules/MHWDirectoryWatcher</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://github.com/CocoaBob/DIY-Maps.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>F4A90CB1-F5E8-4CB4-ACB3-A3E1B2F9F6BC</string>
+	<string>C1B532F77CA06ABEC4F65D166D8289BF5DDC2E27</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>F4A90CB1-F5E8-4CB4-ACB3-A3E1B2F9F6BC</string>
+			<string>0145ED403843D35A6DC92B71A0E30320516A537C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Base64</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8355B1E87DB5CD2404F04560B006C8F9FCC63EF7</string>
+			<key>IDESourceControlWCCName</key>
+			<string>BVReorderTableView</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>36E553E24002060C8EE4B1918E9D6340B4C36207</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CBDoubleTapAndPanGestureRecognizer</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DDE4341E8E231F913BA60968730900F7337DC737</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CBZipFile</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C1B532F77CA06ABEC4F65D166D8289BF5DDC2E27</string>
 			<key>IDESourceControlWCCName</key>
 			<string>DIY-Maps</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>70A8537565E8EBD1B9D364933832E742DD9D1D11</string>
+			<key>IDESourceControlWCCName</key>
+			<string>KissXML</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F73223046C8E5C3811CC17CF11D424D8F73BA066</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MHWDirectoryWatcher</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8DA5B175D3FDB92A3B3CCBD4109A734F1316A3DD</string>
+			<key>IDESourceControlWCCName</key>
+			<string>minizip</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C898586DA8BB589BE31281E7471813970245A912</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SMDoubleSlider</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>940F78D5F98A404F0CE03A452F2871238905218C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ZipKit</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9C64E8446FE8AB0678DE2178BF564F7DE6F080B7</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ZKRevealingTableViewCell</string>
 		</dict>
 	</array>
 </dict>
