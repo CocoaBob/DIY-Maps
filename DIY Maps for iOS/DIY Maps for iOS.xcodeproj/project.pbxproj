@@ -47,6 +47,13 @@
 		45CA605B17E3C1BB00E6F835 /* DMProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA605A17E3C1BB00E6F835 /* DMProfile.m */; };
 		45CA606617E3C41800E6F835 /* DMTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA606317E3C41800E6F835 /* DMTask.m */; };
 		45CA607717E3C73800E6F835 /* DMImageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA607617E3C73800E6F835 /* DMImageProcessor.m */; };
+		45D8C33A199E76C900FFFE1B /* NSDictionary+SBRXCallbackURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D8C32D199E76C900FFFE1B /* NSDictionary+SBRXCallbackURL.m */; };
+		45D8C33B199E76C900FFFE1B /* NSError+SBRXCallbackURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D8C32F199E76C900FFFE1B /* NSError+SBRXCallbackURL.m */; };
+		45D8C33C199E76C900FFFE1B /* NSString+SBRXCallbackURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D8C331199E76C900FFFE1B /* NSString+SBRXCallbackURL.m */; };
+		45D8C33D199E76C900FFFE1B /* NSURL+SBRXCallbackURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D8C333199E76C900FFFE1B /* NSURL+SBRXCallbackURL.m */; };
+		45D8C33E199E76C900FFFE1B /* SBRCallbackAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D8C335199E76C900FFFE1B /* SBRCallbackAction.m */; };
+		45D8C33F199E76C900FFFE1B /* SBRCallbackActionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D8C337199E76C900FFFE1B /* SBRCallbackActionHandler.m */; };
+		45D8C340199E76C900FFFE1B /* SBRCallbackParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D8C339199E76C900FFFE1B /* SBRCallbackParser.m */; };
 		45F9814817E4684500842EB1 /* libtouchzipkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45CA609A17E4680F00E6F835 /* libtouchzipkit.a */; };
 		5B0A3FD61805473300A4907B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B0A3FD51805473300A4907B /* Images.xcassets */; };
 		5B4CB9101797F63A00F0CC19 /* UINavigationBar+CBDropShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CB90F1797F63A00F0CC19 /* UINavigationBar+CBDropShadow.m */; };
@@ -164,6 +171,20 @@
 		45CA607517E3C73800E6F835 /* DMImageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMImageProcessor.h; sourceTree = "<group>"; };
 		45CA607617E3C73800E6F835 /* DMImageProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMImageProcessor.m; sourceTree = "<group>"; };
 		45CA608F17E4680F00E6F835 /* ZipKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZipKit.xcodeproj; path = ZipKit/ZipKit.xcodeproj; sourceTree = "<group>"; };
+		45D8C32C199E76C900FFFE1B /* NSDictionary+SBRXCallbackURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SBRXCallbackURL.h"; sourceTree = "<group>"; };
+		45D8C32D199E76C900FFFE1B /* NSDictionary+SBRXCallbackURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SBRXCallbackURL.m"; sourceTree = "<group>"; };
+		45D8C32E199E76C900FFFE1B /* NSError+SBRXCallbackURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+SBRXCallbackURL.h"; sourceTree = "<group>"; };
+		45D8C32F199E76C900FFFE1B /* NSError+SBRXCallbackURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+SBRXCallbackURL.m"; sourceTree = "<group>"; };
+		45D8C330199E76C900FFFE1B /* NSString+SBRXCallbackURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBRXCallbackURL.h"; sourceTree = "<group>"; };
+		45D8C331199E76C900FFFE1B /* NSString+SBRXCallbackURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBRXCallbackURL.m"; sourceTree = "<group>"; };
+		45D8C332199E76C900FFFE1B /* NSURL+SBRXCallbackURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+SBRXCallbackURL.h"; sourceTree = "<group>"; };
+		45D8C333199E76C900FFFE1B /* NSURL+SBRXCallbackURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+SBRXCallbackURL.m"; sourceTree = "<group>"; };
+		45D8C334199E76C900FFFE1B /* SBRCallbackAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRCallbackAction.h; sourceTree = "<group>"; };
+		45D8C335199E76C900FFFE1B /* SBRCallbackAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRCallbackAction.m; sourceTree = "<group>"; };
+		45D8C336199E76C900FFFE1B /* SBRCallbackActionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRCallbackActionHandler.h; sourceTree = "<group>"; };
+		45D8C337199E76C900FFFE1B /* SBRCallbackActionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRCallbackActionHandler.m; sourceTree = "<group>"; };
+		45D8C338199E76C900FFFE1B /* SBRCallbackParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBRCallbackParser.h; sourceTree = "<group>"; };
+		45D8C339199E76C900FFFE1B /* SBRCallbackParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBRCallbackParser.m; sourceTree = "<group>"; };
 		5B0A3FD51805473300A4907B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "DIY Maps for iOS/Images.xcassets"; sourceTree = SOURCE_ROOT; };
 		5B121CDE17B25EC8007EB6EB /* DMConfigs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMConfigs.h; sourceTree = "<group>"; };
 		5B4CB90E1797F63A00F0CC19 /* UINavigationBar+CBDropShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+CBDropShadow.h"; sourceTree = "<group>"; };
@@ -296,6 +317,7 @@
 				45184EDC17E3B37800AC69C0 /* KissXML */,
 				45CA600417E3BA1300E6F835 /* MHWDirectoryWatcher */,
 				45CA604517E3BB2B00E6F835 /* minizip */,
+				45D8C32B199E76C900FFFE1B /* SBRXCallbackURLKit */,
 				45CA608F17E4680F00E6F835 /* ZipKit.xcodeproj */,
 				45CA602617E3BA3000E6F835 /* ZKRevealingTableViewCell */,
 			);
@@ -402,6 +424,28 @@
 				45CA609A17E4680F00E6F835 /* libtouchzipkit.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		45D8C32B199E76C900FFFE1B /* SBRXCallbackURLKit */ = {
+			isa = PBXGroup;
+			children = (
+				45D8C32C199E76C900FFFE1B /* NSDictionary+SBRXCallbackURL.h */,
+				45D8C32D199E76C900FFFE1B /* NSDictionary+SBRXCallbackURL.m */,
+				45D8C32E199E76C900FFFE1B /* NSError+SBRXCallbackURL.h */,
+				45D8C32F199E76C900FFFE1B /* NSError+SBRXCallbackURL.m */,
+				45D8C330199E76C900FFFE1B /* NSString+SBRXCallbackURL.h */,
+				45D8C331199E76C900FFFE1B /* NSString+SBRXCallbackURL.m */,
+				45D8C332199E76C900FFFE1B /* NSURL+SBRXCallbackURL.h */,
+				45D8C333199E76C900FFFE1B /* NSURL+SBRXCallbackURL.m */,
+				45D8C334199E76C900FFFE1B /* SBRCallbackAction.h */,
+				45D8C335199E76C900FFFE1B /* SBRCallbackAction.m */,
+				45D8C336199E76C900FFFE1B /* SBRCallbackActionHandler.h */,
+				45D8C337199E76C900FFFE1B /* SBRCallbackActionHandler.m */,
+				45D8C338199E76C900FFFE1B /* SBRCallbackParser.h */,
+				45D8C339199E76C900FFFE1B /* SBRCallbackParser.m */,
+			);
+			name = SBRXCallbackURLKit;
+			path = SBRXCallbackURLKit/SBRXCallbackURLKit;
 			sourceTree = "<group>";
 		};
 		5B0BAFE31796928A00FCA9A6 /* Services */ = {
@@ -646,20 +690,27 @@
 				45CA601917E3BA1300E6F835 /* MHWDirectoryWatcher.m in Sources */,
 				5BFC1B651795826200BB407D /* BVReorderTableView.m in Sources */,
 				5BFC1D851795976700BB407D /* DMFileManager.m in Sources */,
+				45D8C33C199E76C900FFFE1B /* NSString+SBRXCallbackURL.m in Sources */,
 				45A3E9A61795F3FD00289F1A /* DMMapPickerViews.m in Sources */,
 				5B4CB9101797F63A00F0CC19 /* UINavigationBar+CBDropShadow.m in Sources */,
 				45184F0317E3B37800AC69C0 /* DDXMLNode.m in Sources */,
+				45D8C33B199E76C900FFFE1B /* NSError+SBRXCallbackURL.m in Sources */,
 				5B4CB9141797F65100F0CC19 /* CBColorMaskedButton.m in Sources */,
 				45CA605B17E3C1BB00E6F835 /* DMProfile.m in Sources */,
+				45D8C33E199E76C900FFFE1B /* SBRCallbackAction.m in Sources */,
 				45CA5FD217E3B9E800E6F835 /* Base64.m in Sources */,
 				45CA604D17E3BB3200E6F835 /* ioapi.c in Sources */,
 				45CA603A17E3BA4D00E6F835 /* ZKRevealingTableViewCell.m in Sources */,
 				5B8D527617B153A600A21035 /* CBStyledControls.m in Sources */,
+				45D8C33A199E76C900FFFE1B /* NSDictionary+SBRXCallbackURL.m in Sources */,
+				45D8C33D199E76C900FFFE1B /* NSURL+SBRXCallbackURL.m in Sources */,
 				5B8D527717B153A600A21035 /* CBStyleKit.m in Sources */,
 				4527B93B187066B3003A17E9 /* DMMapView.m in Sources */,
 				45CA607717E3C73800E6F835 /* DMImageProcessor.m in Sources */,
+				45D8C33F199E76C900FFFE1B /* SBRCallbackActionHandler.m in Sources */,
 				45184F0117E3B37800AC69C0 /* DDXMLDocument.m in Sources */,
 				45184F0017E3B37800AC69C0 /* NSString+DDXML.m in Sources */,
+				45D8C340199E76C900FFFE1B /* SBRCallbackParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

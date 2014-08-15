@@ -13,6 +13,9 @@
 #import "CBStyleKit.h"
 #import "DMMapView.h"
 
+#import "NSURL+SBRXCallbackURL.h"
+#import "SBRCallbackParser.h"
+
 @implementation DMAppDelegate
 
 + (DMAppDelegate *)shared {
@@ -24,6 +27,19 @@
 	NSLog(@"%@ Version %@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"],[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]);
 	NSLog(@"Document path: %@",[DMFileManager docPath]);
 	NSLog(@"====================");
+    
+    // x-callback-url
+    SBRCallbackParser *parser = [SBRCallbackParser sharedParser];
+    [parser setURLScheme:@"diymapsapp"];
+    [parser addHandlerForActionName:@"pickmap"
+                       handlerBlock:^BOOL(NSDictionary *parameters,
+                                          NSString *source,
+                                          SBRCallbackActionHandlerCompletionBlock completion) {
+                           [[DMAppDelegate shared] handleURLWithAction:@"pickmap"
+                                                                params:parameters];
+                           completion(nil, nil, NO);
+                           return YES;
+                       }];
     
     // Google Maps SDK
     [GMSServices provideAPIKey:kGoogleMapsAPIKey];
@@ -54,7 +70,24 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString*)sourceApplication annotation:(id)annotation {
     [DMFileManager importInbox];
+    
+    if (![[SBRCallbackParser sharedParser] handleURL:url]) {
+        [[DMAppDelegate shared] handleURLWithAction:url.host
+                                             params:url.sbr_queryParameters];
+    }
     return YES;
+}
+
+- (void)handleURLWithAction:(NSString *)action params:(NSDictionary *)params {
+    if ([@"pickmap" isEqualToString:action]) {
+        if ([DMMapViewController shared].presentedViewController) {
+            [[DMMapViewController shared] dismissViewControllerAnimated:NO completion:nil];
+        }
+        NSString *fileName = params[@"filename"];
+        NSString *filePath = [[DMFileManager docPath] stringByAppendingPathComponent:fileName];
+        [DMMapViewController loadMapFile:filePath];
+        DefaultsSet(Object, kLastOpenedMapVisibleRect, NSStringFromCGRect([[DMMapViewController shared].cbMapView visibleMapRect]));
+    }
 }
 
 @end
