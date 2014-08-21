@@ -63,20 +63,6 @@ static DMMapViewController *__sharedInstance = nil;
             self.extendedLayoutIncludesOpaqueBars = YES;
         if ([self respondsToSelector:@selector(automaticallyAdjustsScrollViewInsets)])
             self.automaticallyAdjustsScrollViewInsets = NO;
-        
-        // Google Maps View
-        GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:48.8567
-                                                                longitude:2.3508
-                                                                     zoom:15];
-        self.gmsMapView = [GMSMapView mapWithFrame:self.view.bounds camera:camera];
-        self.gmsMapView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        self.gmsMapView.hidden = YES;
-        self.gmsMapView.accessibilityElementsHidden = NO;
-        self.gmsMapView.settings.compassButton = YES;
-        self.gmsMapView.settings.myLocationButton = YES;
-        self.gmsMapView.settings.indoorPicker = YES;
-        self.gmsMapView.settings.consumesGesturesInView = NO;
-        [self.view addSubview:self.gmsMapView];
 
         // CB Map View
         self.cbMapView = [[DMMapView alloc] initWithFrame:self.view.bounds];
@@ -94,13 +80,6 @@ static DMMapViewController *__sharedInstance = nil;
         [listButton setImage:[UIImage imageNamed:@"img-list"] forState:UIControlStateNormal];
         [listButton addTarget:self action:@selector(showMapPickerView:) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:listButton];
-        
-        CBColorMaskedButton *mapButton = [[CBColorMaskedButton alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
-        [mapButton setImage:[UIImage imageNamed:@"img-layer"] forState:UIControlStateNormal];
-        [mapButton addTarget:self action:@selector(toggleGoogleMaps:) forControlEvents:UIControlEventTouchUpInside];
-        UILongPressGestureRecognizer *mapButtonLongPressGR = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(toggleCalibrateMode:)];
-        [mapButton addGestureRecognizer:mapButtonLongPressGR];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:mapButton];
     }
     return self;
 }
@@ -176,64 +155,6 @@ static DMMapViewController *__sharedInstance = nil;
     [self presentViewController:self.mapPickerViewNavigationController
                        animated:YES
                      completion:nil];
-}
-
-#define FRONT_VIEW_ALPHA 0.5
-
-- (IBAction)toggleGoogleMaps:(id)sender {
-    UIView *frontView,*rearView;
-    NSArray *allSubViews = [self.view subviews];
-    if ([allSubViews indexOfObject:self.gmsMapView] < [allSubViews indexOfObject:self.cbMapView]) {
-        frontView = self.cbMapView;
-        rearView = self.gmsMapView;
-    }
-    else {
-        frontView = self.gmsMapView;
-        rearView = self.cbMapView;
-    }
-    [self.view bringSubviewToFront:rearView];
-    
-    BOOL isCalibrateMode = (frontView.alpha == FRONT_VIEW_ALPHA) || (rearView.alpha == FRONT_VIEW_ALPHA);
-    if (isCalibrateMode) {
-        rearView.alpha = FRONT_VIEW_ALPHA;
-        frontView.alpha = 1;
-    }
-    else {
-        rearView.hidden = NO;
-        frontView.hidden = YES;
-    }
-}
-
-- (IBAction)toggleCalibrateMode:(id)sender {
-    UILongPressGestureRecognizer *gesture = sender;
-    if (gesture.state == UIGestureRecognizerStateBegan) {
-        UIView *frontView,*rearView;
-        NSArray *allSubViews = [self.view subviews];
-        if ([allSubViews indexOfObject:self.gmsMapView] < [allSubViews indexOfObject:self.cbMapView]) {
-            frontView = self.cbMapView;
-            rearView = self.gmsMapView;
-        }
-        else {
-            frontView = self.gmsMapView;
-            rearView = self.cbMapView;
-        }
-        
-        BOOL isCalibrateMode = (frontView.alpha == FRONT_VIEW_ALPHA) || (rearView.alpha == FRONT_VIEW_ALPHA);
-        if (isCalibrateMode) {
-            frontView.alpha = 1;
-            rearView.alpha = 1;
-            
-            frontView.hidden = NO;
-            rearView.hidden = YES;
-        }
-        else {
-            frontView.alpha = FRONT_VIEW_ALPHA;
-            rearView.alpha = 1;
-            
-            frontView.hidden = NO;
-            rearView.hidden = NO;
-        }
-    }
 }
 
 @end

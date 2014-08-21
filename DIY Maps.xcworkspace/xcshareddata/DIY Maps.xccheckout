@@ -24,6 +24,8 @@
 		<string>https://github.com/kolpanic/ZipKit.git</string>
 		<key>9C64E8446FE8AB0678DE2178BF564F7DE6F080B7</key>
 		<string>https://github.com/alexzielenski/ZKRevealingTableViewCell.git</string>
+		<key>B923183A8D62DC4F5A92F4D802DB74A645DECF7F</key>
+		<string>https://github.com/sebreh/SBRXCallbackURLKit.git</string>
 		<key>C1B532F77CA06ABEC4F65D166D8289BF5DDC2E27</key>
 		<string>ssh://github.com/CocoaBob/DIY-Maps.git</string>
 		<key>C898586DA8BB589BE31281E7471813970245A912</key>
@@ -51,6 +53,8 @@
 		<string>../Submodules/ZipKit</string>
 		<key>9C64E8446FE8AB0678DE2178BF564F7DE6F080B7</key>
 		<string>../Submodules/ZKRevealingTableViewCell</string>
+		<key>B923183A8D62DC4F5A92F4D802DB74A645DECF7F</key>
+		<string>../Submodules/SBRXCallbackURLKit/</string>
 		<key>C1B532F77CA06ABEC4F65D166D8289BF5DDC2E27</key>
 		<string>..</string>
 		<key>C898586DA8BB589BE31281E7471813970245A912</key>
@@ -131,6 +135,14 @@
 			<string>8DA5B175D3FDB92A3B3CCBD4109A734F1316A3DD</string>
 			<key>IDESourceControlWCCName</key>
 			<string>minizip</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B923183A8D62DC4F5A92F4D802DB74A645DECF7F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SBRXCallbackURLKit</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>

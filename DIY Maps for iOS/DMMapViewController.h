@@ -13,7 +13,6 @@
 @property (nonatomic, strong) UIPopoverController *mapPickerPopoverController;
 
 @property (nonatomic, strong) DMMapView *cbMapView;
-@property (nonatomic, strong) GMSMapView *gmsMapView;
 
 + (instancetype)shared;
 + (void)loadMapFile:(NSString *)filePath;

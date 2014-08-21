@@ -41,9 +41,6 @@
                            return YES;
                        }];
     
-    // Google Maps SDK
-    [GMSServices provideAPIKey:kGoogleMapsAPIKey];
-    
     // Import inbox
     [DMFileManager importInbox];
     
