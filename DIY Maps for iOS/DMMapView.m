@@ -12,11 +12,23 @@
 #import "CBDoubleTapAndPanGestureRecognizer.h"
 #import "DMMapFile.h"
 
-@interface CBMapContentView : UIView {
-    CATiledLayer *__weak tiledLayer;
+@interface CBTiledLayer : CATiledLayer
+
+@end
+
+@implementation CBTiledLayer
+
++ (CFTimeInterval)fadeDuration {
+    return 0.25f;
 }
 
-@property (weak, nonatomic, readonly) CATiledLayer *tiledLayer;
+@end
+
+@interface CBMapContentView : UIView {
+    CBTiledLayer *__weak tiledLayer;
+}
+
+@property (weak, nonatomic, readonly) CBTiledLayer *tiledLayer;
 @property (nonatomic, strong) DMMapFile *mapFile;
 
 @end
@@ -24,16 +36,11 @@
 @implementation CBMapContentView
 
 + (Class)layerClass {
-    return [CATiledLayer class];  
+    return [CBTiledLayer class];
 }
-
-+ (CFTimeInterval)fadeDuration {
-    return 0.25f;
-}
-
 
 - (CATiledLayer *)tiledLayer {
-    return (CATiledLayer *)self.layer;
+    return (CBTiledLayer *)self.layer;
 }
 
 - (void)didMoveToWindow {
@@ -41,8 +48,6 @@
 }
 
 - (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx {
-    [super drawLayer:layer inContext:ctx];
-    
     CGRect rect = CGRectIntegral(CGContextGetClipBoundingBox(ctx));
     CGFloat scale = CGContextGetCTM(ctx).a;
     
@@ -58,11 +63,13 @@
     
     UIImage *tileImage = [self.mapFile tileImageForScale:adjustedScale indexX:col indexY:row];
     if(tileImage) {
+        UIGraphicsPushContext(ctx);
         CGContextSetInterpolationQuality(ctx, kCGInterpolationNone);
         CGContextTranslateCTM(ctx, 0.0, rect.size.height);
         CGContextScaleCTM(ctx, 1.0, -1.0);
         rect = CGContextGetClipBoundingBox(ctx);
         CGContextDrawImage(ctx, rect, [tileImage CGImage]);
+        UIGraphicsPopContext();
     }
 }
 
@@ -79,7 +86,7 @@
 @end
 
 @implementation DMMapView {
-    CBMapContentView *mapContentView;
+    CBMapContentView *_mapContentView;
 }
 
 - (void)initialization {
@@ -107,10 +114,10 @@
     self.scrollEnabled = YES;
     
     // Map Content View
-    mapContentView = [[CBMapContentView alloc] initWithFrame:self.bounds];
-    mapContentView.autoresizingMask = UIViewAutoresizingNone;
-    mapContentView.backgroundColor = [UIColor clearColor];
-    [self addSubview:mapContentView];
+    _mapContentView = [[CBMapContentView alloc] initWithFrame:self.bounds];
+    _mapContentView.autoresizingMask = UIViewAutoresizingNone;
+    _mapContentView.backgroundColor = [UIColor clearColor];
+    [self addSubview:_mapContentView];
     
     // Map Gesture Recognizers
     self.doubleTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTapGesture:)];
@@ -163,8 +170,8 @@
         CGPoint visibleContentCenterBeforeRotation = CGPointZero;
         
         // Before new frame, remember the rotation center
-        if (mapContentView.frame.size.width > self.frame.size.width &&
-            mapContentView.frame.size.height > self.frame.size.height) {
+        if (_mapContentView.frame.size.width > self.frame.size.width &&
+            _mapContentView.frame.size.height > self.frame.size.height) {
             CGRect visibleRect = [self visibleMapRect];
             visibleContentCenterBeforeRotation = CGPointMake(CGRectGetMidX(visibleRect), CGRectGetMidY(visibleRect));
         }
@@ -177,8 +184,8 @@
         BOOL keepMinZoomLevel = self.zoomScale == self.minimumZoomScale;
         [self updateMinMaxZoomScale];
         // Restore the rotation center
-        if (mapContentView.frame.size.width > self.frame.size.width &&
-            mapContentView.frame.size.height > self.frame.size.height) {
+        if (_mapContentView.frame.size.width > self.frame.size.width &&
+            _mapContentView.frame.size.height > self.frame.size.height) {
             [self zoomToRect:[self visibleMapRectWithCenter:visibleContentCenterBeforeRotation zoomScale:self.zoomScale]
                     animated:NO];
         }
@@ -200,7 +207,7 @@
 #pragma mark UIScrollViewDelegate
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
-    return self.zoomEnabled?mapContentView:nil;
+    return self.zoomEnabled?_mapContentView:nil;
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
@@ -258,14 +265,14 @@
 - (void)handleDoubleTapGesture:(id)sender {
     if (self.zoomScale == self.maximumZoomScale) {
         CGFloat newZoomScale = self.maximumZoomScale / 2;
-        CGPoint centerPoint = [mapContentView convertPoint:CGPointMake(CGRectGetMidX([self bounds]),CGRectGetMidY([self bounds]))
+        CGPoint centerPoint = [_mapContentView convertPoint:CGPointMake(CGRectGetMidX([self bounds]),CGRectGetMidY([self bounds]))
                                                   fromView:self];
         CGRect newRect = [self visibleMapRectWithCenter:centerPoint
                                               zoomScale:newZoomScale];
         [self zoomToRect:newRect animated:YES];
     }
     else {
-        CGPoint tapLocation = [(UIGestureRecognizer *)sender locationInView:mapContentView];
+        CGPoint tapLocation = [(UIGestureRecognizer *)sender locationInView:_mapContentView];
         CGFloat newZoomScale = pow(2, floor(log2(self.zoomScale))) * 2.0f;
         [self zoomToRect:[self visibleMapRectWithCenter:tapLocation zoomScale:newZoomScale]
                 animated:YES];
@@ -288,17 +295,18 @@
         self.zoomScale = 1;
         self.contentSize = mapSize;
         
-    	mapContentView.mapFile = self.mapFile;
-        mapContentView.frame = CGRectMake(0, 0, mapSize.width, mapSize.height);
-        mapContentView.tiledLayer.tileSize = CGSizeMake(self.mapFile.tileSize, self.mapFile.tileSize);
-        mapContentView.tiledLayer.levelsOfDetail = self.mapFile.maxScale - self.mapFile.minScale + 1;
-        mapContentView.tiledLayer.levelsOfDetailBias = self.mapFile.maxScale - 0;
-        mapContentView.tiledLayer.shouldRasterize = NO;
+    	_mapContentView.mapFile = self.mapFile;
+        _mapContentView.frame = CGRectMake(0, 0, mapSize.width, mapSize.height);
+        _mapContentView.tiledLayer.contents = nil;
+        _mapContentView.tiledLayer.tileSize = CGSizeMake(self.mapFile.tileSize, self.mapFile.tileSize);
+        _mapContentView.tiledLayer.levelsOfDetail = self.mapFile.maxScale - self.mapFile.minScale + 1;
+        _mapContentView.tiledLayer.levelsOfDetailBias = self.mapFile.maxScale - 0;
+        _mapContentView.tiledLayer.shouldRasterize = NO;
         
         [self updateMinMaxZoomScale];
         self.zoomScale = self.minimumZoomScale;
 
-        [mapContentView setNeedsDisplay];
+        [_mapContentView setNeedsDisplay];
     }
 }
 
@@ -323,7 +331,7 @@
 }
 
 - (CGRect)visibleMapRect {
-    return [mapContentView convertRect:self.bounds fromView:self];
+    return [_mapContentView convertRect:self.bounds fromView:self];
 }
 
 #pragma mark Embeded Images
