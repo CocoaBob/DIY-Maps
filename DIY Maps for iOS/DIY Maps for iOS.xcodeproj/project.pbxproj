@@ -45,6 +45,7 @@
 		45CA605B17E3C1BB00E6F835 /* DMProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA605A17E3C1BB00E6F835 /* DMProfile.m */; };
 		45CA606617E3C41800E6F835 /* DMTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA606317E3C41800E6F835 /* DMTask.m */; };
 		45CA607717E3C73800E6F835 /* DMImageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA607617E3C73800E6F835 /* DMImageProcessor.m */; };
+		45D824AD19E0060C007E06EC /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45D824AC19E0060C007E06EC /* Launch Screen.xib */; };
 		45D8C33A199E76C900FFFE1B /* NSDictionary+SBRXCallbackURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D8C32D199E76C900FFFE1B /* NSDictionary+SBRXCallbackURL.m */; };
 		45D8C33B199E76C900FFFE1B /* NSError+SBRXCallbackURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D8C32F199E76C900FFFE1B /* NSError+SBRXCallbackURL.m */; };
 		45D8C33C199E76C900FFFE1B /* NSString+SBRXCallbackURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 45D8C331199E76C900FFFE1B /* NSString+SBRXCallbackURL.m */; };
@@ -167,6 +168,7 @@
 		45CA607517E3C73800E6F835 /* DMImageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMImageProcessor.h; sourceTree = "<group>"; };
 		45CA607617E3C73800E6F835 /* DMImageProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMImageProcessor.m; sourceTree = "<group>"; };
 		45CA608F17E4680F00E6F835 /* ZipKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZipKit.xcodeproj; path = ZipKit/ZipKit.xcodeproj; sourceTree = "<group>"; };
+		45D824AC19E0060C007E06EC /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = SOURCE_ROOT; };
 		45D8C32C199E76C900FFFE1B /* NSDictionary+SBRXCallbackURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SBRXCallbackURL.h"; sourceTree = "<group>"; };
 		45D8C32D199E76C900FFFE1B /* NSDictionary+SBRXCallbackURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SBRXCallbackURL.m"; sourceTree = "<group>"; };
 		45D8C32E199E76C900FFFE1B /* NSError+SBRXCallbackURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+SBRXCallbackURL.h"; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 			isa = PBXGroup;
 			children = (
 				5B0A3FD51805473300A4907B /* Images.xcassets */,
+				45D824AC19E0060C007E06EC /* Launch Screen.xib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -600,13 +603,17 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Bob;
+				TargetAttributes = {
+					5B6E2E6D164D274E00A91687 = {
+						DevelopmentTeam = L8Q8UK4Z39;
+					};
+				};
 			};
 			buildConfigurationList = 5B6E2E68164D274E00A91687 /* Build configuration list for PBXProject "DIY Maps for iOS" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				English,
 			);
 			mainGroup = 5B6E2E63164D274E00A91687;
@@ -655,6 +662,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B0A3FD61805473300A4907B /* Images.xcassets in Resources */,
+				45D824AD19E0060C007E06EC /* Launch Screen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -736,7 +744,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -755,7 +763,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -767,8 +775,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/../Submodules",
 					"/Volumes/Documents/Git/DIY-Maps/Submodules",
@@ -786,6 +795,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "DIY Maps";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -794,8 +804,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/../Submodules",
 					"/Volumes/Documents/Git/DIY-Maps/Submodules",
@@ -813,6 +824,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "DIY Maps";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

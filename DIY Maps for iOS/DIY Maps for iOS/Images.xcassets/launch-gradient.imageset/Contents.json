@@ -1,17 +1,13 @@
 {
   "images" : [
     {
-      "idiom" : "universal"
-    },
-    {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "img-eye.png"
+      "filename" : "launch-gradient.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "img-eye@2x.png"
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
