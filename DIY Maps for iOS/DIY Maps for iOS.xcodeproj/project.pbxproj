@@ -32,7 +32,6 @@
 		45CA606617E3C41800E6F835 /* DMTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA606317E3C41800E6F835 /* DMTask.m */; };
 		45CA607717E3C73800E6F835 /* DMImageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA607617E3C73800E6F835 /* DMImageProcessor.m */; };
 		45D824AD19E0060C007E06EC /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45D824AC19E0060C007E06EC /* Launch Screen.xib */; };
-		45F9814817E4684500842EB1 /* libtouchzipkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45CA609A17E4680F00E6F835 /* libtouchzipkit.a */; };
 		5B0A3FD61805473300A4907B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B0A3FD51805473300A4907B /* Images.xcassets */; };
 		5B4CB9101797F63A00F0CC19 /* UINavigationBar+CBDropShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CB90F1797F63A00F0CC19 /* UINavigationBar+CBDropShadow.m */; };
 		5B4CB9141797F65100F0CC19 /* CBColorMaskedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CB9131797F65100F0CC19 /* CBColorMaskedButton.m */; };
@@ -47,37 +46,6 @@
 		5BFC1D851795976700BB407D /* DMFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC1D841795976700BB407D /* DMFileManager.m */; };
 		CD9A8ECF2C4FDF9C4A5C9C15 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDF19FC59861679A532E7255 /* Pods.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		456D015817E46853000C26E3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 45CA608F17E4680F00E6F835 /* ZipKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = CB6F0A9717484BDE00F91524;
-			remoteInfo = touchzipkit;
-		};
-		45CA609517E4680F00E6F835 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 45CA608F17E4680F00E6F835 /* ZipKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CB6F09CE174838FC00F91524;
-			remoteInfo = ZipKit;
-		};
-		45CA609717E4680F00E6F835 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 45CA608F17E4680F00E6F835 /* ZipKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CB6F0A4617483E5000F91524;
-			remoteInfo = zipkit;
-		};
-		45CA609917E4680F00E6F835 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 45CA608F17E4680F00E6F835 /* ZipKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CB6F0A9817484BDE00F91524;
-			remoteInfo = touchzipkit;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3AF9A75C3A73261A1089DAC1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -117,7 +85,6 @@
 		45CA606317E3C41800E6F835 /* DMTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTask.m; sourceTree = "<group>"; };
 		45CA607517E3C73800E6F835 /* DMImageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMImageProcessor.h; sourceTree = "<group>"; };
 		45CA607617E3C73800E6F835 /* DMImageProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMImageProcessor.m; sourceTree = "<group>"; };
-		45CA608F17E4680F00E6F835 /* ZipKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZipKit.xcodeproj; path = ZipKit/ZipKit.xcodeproj; sourceTree = "<group>"; };
 		45D824AC19E0060C007E06EC /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = SOURCE_ROOT; };
 		5B0A3FD51805473300A4907B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "DIY Maps for iOS/Images.xcassets"; sourceTree = SOURCE_ROOT; };
 		5B121CDE17B25EC8007EB6EB /* DMConfigs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMConfigs.h; sourceTree = "<group>"; };
@@ -165,7 +132,6 @@
 				4544279D1826B40D00EA95BD /* libc++.dylib in Frameworks */,
 				4544279F1826B41800EA95BD /* libicucore.dylib in Frameworks */,
 				454427A11826B41D00EA95BD /* libobjc.dylib in Frameworks */,
-				45F9814817E4684500842EB1 /* libtouchzipkit.a in Frameworks */,
 				45C5D05B17E3B3B10026477C /* libxml2.dylib in Frameworks */,
 				5B6E2EF9164D5B6300A91687 /* libz.dylib in Frameworks */,
 				CD9A8ECF2C4FDF9C4A5C9C15 /* Pods.framework in Frameworks */,
@@ -193,7 +159,6 @@
 				5B4CB9111797F64500F0CC19 /* CBColorMaskedButton */,
 				5B4CB90D1797F63A00F0CC19 /* CBDropShadow */,
 				5B8D527117B153A600A21035 /* CBStyleKit */,
-				45CA608F17E4680F00E6F835 /* ZipKit.xcodeproj */,
 			);
 			name = Submodules;
 			path = ../Submodules;
@@ -224,16 +189,6 @@
 			);
 			name = "DIY Maps Shared";
 			path = "../DIY Maps Shared";
-			sourceTree = "<group>";
-		};
-		45CA609017E4680F00E6F835 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				45CA609617E4680F00E6F835 /* ZipKit.framework */,
-				45CA609817E4680F00E6F835 /* libzipkit.a */,
-				45CA609A17E4680F00E6F835 /* libtouchzipkit.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		5B0BAFE31796928A00FCA9A6 /* Services */ = {
@@ -393,7 +348,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				456D015917E46853000C26E3 /* PBXTargetDependency */,
 			);
 			name = "DIY Maps for iOS";
 			productName = DIYMaps;
@@ -424,42 +378,12 @@
 			mainGroup = 5B6E2E63164D274E00A91687;
 			productRefGroup = 5B6E2E6F164D274E00A91687 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 45CA609017E4680F00E6F835 /* Products */;
-					ProjectRef = 45CA608F17E4680F00E6F835 /* ZipKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				5B6E2E6D164D274E00A91687 /* DIY Maps for iOS */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		45CA609617E4680F00E6F835 /* ZipKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ZipKit.framework;
-			remoteRef = 45CA609517E4680F00E6F835 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		45CA609817E4680F00E6F835 /* libzipkit.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libzipkit.a;
-			remoteRef = 45CA609717E4680F00E6F835 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		45CA609A17E4680F00E6F835 /* libtouchzipkit.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libtouchzipkit.a;
-			remoteRef = 45CA609917E4680F00E6F835 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		5B6E2E6C164D274E00A91687 /* Resources */ = {
@@ -547,14 +471,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		456D015917E46853000C26E3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = touchzipkit;
-			targetProxy = 456D015817E46853000C26E3 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		5B6E2E90164D274E00A91687 /* Debug */ = {
