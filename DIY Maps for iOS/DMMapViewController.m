@@ -112,8 +112,8 @@ static DMMapViewController *__sharedInstance = nil;
 - (void)toggleFullScreen:(BOOL)isFullScreen {
     BOOL wasFullScreen = (self.cbMapView.mapFile == nil)?YES:[[UIApplication sharedApplication] isStatusBarHidden];
     if (isFullScreen != wasFullScreen) {
-        [[UIApplication sharedApplication] setStatusBarHidden:isFullScreen withAnimation:UIStatusBarAnimationFade];
         [self.navigationController setNavigationBarHidden:isFullScreen animated:YES];
+        [[UIApplication sharedApplication] setStatusBarHidden:isFullScreen withAnimation:UIStatusBarAnimationFade];
     }
 }
 

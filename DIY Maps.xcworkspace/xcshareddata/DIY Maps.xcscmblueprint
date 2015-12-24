@@ -1,0 +1,100 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "C1B532F77CA06ABEC4F65D166D8289BF5DDC2E27",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "DDE4341E8E231F913BA60968730900F7337DC737" : 0,
+    "9C64E8446FE8AB0678DE2178BF564F7DE6F080B7" : 0,
+    "8DA5B175D3FDB92A3B3CCBD4109A734F1316A3DD" : 0,
+    "940F78D5F98A404F0CE03A452F2871238905218C" : 0,
+    "70A8537565E8EBD1B9D364933832E742DD9D1D11" : 0,
+    "B923183A8D62DC4F5A92F4D802DB74A645DECF7F" : 0,
+    "36E553E24002060C8EE4B1918E9D6340B4C36207" : 0,
+    "F73223046C8E5C3811CC17CF11D424D8F73BA066" : 0,
+    "8355B1E87DB5CD2404F04560B006C8F9FCC63EF7" : 0,
+    "C898586DA8BB589BE31281E7471813970245A912" : 0,
+    "C1B532F77CA06ABEC4F65D166D8289BF5DDC2E27" : 0,
+    "0145ED403843D35A6DC92B71A0E30320516A537C" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "7DE4C05F-E85D-47B7-8B10-0400DD6B000F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "DDE4341E8E231F913BA60968730900F7337DC737" : "DIY-Maps\/Submodules\/CBZipFile",
+    "9C64E8446FE8AB0678DE2178BF564F7DE6F080B7" : "DIY-Maps\/Submodules\/ZKRevealingTableViewCell",
+    "8DA5B175D3FDB92A3B3CCBD4109A734F1316A3DD" : "DIY-Maps\/Submodules\/minizip",
+    "940F78D5F98A404F0CE03A452F2871238905218C" : "DIY-Maps\/Submodules\/ZipKit",
+    "70A8537565E8EBD1B9D364933832E742DD9D1D11" : "DIY-Maps\/Submodules\/KissXML",
+    "B923183A8D62DC4F5A92F4D802DB74A645DECF7F" : "DIY-Maps\/Submodules\/SBRXCallbackURLKit",
+    "36E553E24002060C8EE4B1918E9D6340B4C36207" : "DIY-Maps\/Submodules\/CBDoubleTapAndPanGestureRecognizer",
+    "F73223046C8E5C3811CC17CF11D424D8F73BA066" : "DIY-Maps\/Submodules\/MHWDirectoryWatcher",
+    "8355B1E87DB5CD2404F04560B006C8F9FCC63EF7" : "DIY-Maps\/Submodules\/BVReorderTableView",
+    "C898586DA8BB589BE31281E7471813970245A912" : "DIY-Maps\/Submodules\/SMDoubleSlider",
+    "C1B532F77CA06ABEC4F65D166D8289BF5DDC2E27" : "DIY-Maps",
+    "0145ED403843D35A6DC92B71A0E30320516A537C" : "DIY-Maps\/Submodules\/Base64"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "DIY Maps",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "DIY Maps.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/nicklockwood\/Base64.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0145ED403843D35A6DC92B71A0E30320516A537C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:CocoaBob\/CBDoubleTapAndPanGestureRecognizer.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "36E553E24002060C8EE4B1918E9D6340B4C36207"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/robbiehanson\/KissXML.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "70A8537565E8EBD1B9D364933832E742DD9D1D11"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/bvogelzang\/BVReorderTableView.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8355B1E87DB5CD2404F04560B006C8F9FCC63EF7"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/nmoinvaz\/minizip.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8DA5B175D3FDB92A3B3CCBD4109A734F1316A3DD"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/kolpanic\/ZipKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "940F78D5F98A404F0CE03A452F2871238905218C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/alexzielenski\/ZKRevealingTableViewCell.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9C64E8446FE8AB0678DE2178BF564F7DE6F080B7"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sebreh\/SBRXCallbackURLKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B923183A8D62DC4F5A92F4D802DB74A645DECF7F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/github.com\/CocoaBob\/DIY-Maps.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C1B532F77CA06ABEC4F65D166D8289BF5DDC2E27"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jjk\/SMDoubleSlider.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C898586DA8BB589BE31281E7471813970245A912"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:CocoaBob\/CBZipFile.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DDE4341E8E231F913BA60968730900F7337DC737"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/hwaxxer\/MHWDirectoryWatcher.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F73223046C8E5C3811CC17CF11D424D8F73BA066"
+    }
+  ]
+}

@@ -11,6 +11,17 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+
+#import <Base64nl/Base64.h>
+#import <CBDoubleTapAndPanGestureRecognizer/CBDoubleTapAndPanGestureRecognizer.h>
+#import <CBZipFile/CBZipFile.h>
+#import <Fingertips/MBFingerTipWindow.h>
+#import <KissXML/DDXML.h>
+#import <MHWDirectoryWatcher/MHWDirectoryWatcher.h>
+#import <SBRXCallbackURLKit/SBRCallbackAction.h>
+#import <ZipKit/ZipKit.h>
+#import <ZKRevealingTableViewCell/ZKRevealingTableViewCell.h>
+
     #import "CBActivityView.h"
     #import "DMConfigs.h"
     #import "DMConstants.h"
