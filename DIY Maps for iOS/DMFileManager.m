@@ -23,9 +23,34 @@
 + (NSString *)docPath {
     static NSString *documentPath = nil;
     if (!documentPath) {
-        documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+        NSFileManager *fileMgr = [NSFileManager defaultManager];
+        NSURL *docFolderPathURL = [[fileMgr URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+        documentPath = [docFolderPathURL path];
+        
+        NSError *error;
+        BOOL isDir = NO;
+        if (![fileMgr fileExistsAtPath:documentPath isDirectory:&isDir] || !isDir) { // If not exist or was a file, create a new one
+            if (![fileMgr removeItemAtPath:documentPath error:&error]) {
+                NSLog(@"%@",error);
+            }
+            if (![fileMgr createDirectoryAtPath:documentPath withIntermediateDirectories:YES attributes:nil error:&error]) {
+                NSLog(@"%@",error);
+            }
+        }
+        
+        [self excludeFromBackup:documentPath];
     }
     return documentPath;
+}
+
++ (BOOL)excludeFromBackup:(NSString *)path {
+    NSError *error;
+    if([[NSURL fileURLWithPath:path] setResourceValue:@(YES) forKey: NSURLIsExcludedFromBackupKey error: &error]){
+        return YES;
+    } else {
+        NSLog(@"%@",error);
+        return NO;
+    }
 }
 
 #pragma mark - Object Lifecycle

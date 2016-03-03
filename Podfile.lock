@@ -3,7 +3,11 @@ PODS:
   - CBDoubleTapAndPanGestureRecognizer (1.2.0)
   - CBZipFile (1.1.0)
   - Fingertips (0.4.0)
-  - KissXML (5.0)
+  - KissXML (5.0.3):
+    - KissXML/Standard (= 5.0.3)
+  - KissXML/Core (5.0.3)
+  - KissXML/Standard (5.0.3):
+    - KissXML/Core
   - MHWDirectoryWatcher (0.0.6)
   - SBRXCallbackURLKit (1.0.0)
   - ZipKit (1.0.3)
@@ -34,7 +38,7 @@ SPEC CHECKSUMS:
   CBDoubleTapAndPanGestureRecognizer: e30773020bc4d929f87a8bf87287c34dfc926bd3
   CBZipFile: cb05bd5955b4f36642669a983cf2328ded0f03b4
   Fingertips: 09678a650eecad2c1733dfdd5cb4004600ce2899
-  KissXML: ce643413d618ad69886d0d43c3792b7dedfe476e
+  KissXML: d19dd6dc65e0dc721ba92b3077b8ebdd240f1c1e
   MHWDirectoryWatcher: 8b4de8c26ee9eef5ef46f5a2f85419237b58ef0a
   SBRXCallbackURLKit: 5f425252f073f48b0cd0eb64ee820920a3999de5
   ZipKit: 594735e7ad2fd3ee7349759681a0423a1b296572
