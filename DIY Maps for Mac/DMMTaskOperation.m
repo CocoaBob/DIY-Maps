@@ -15,8 +15,8 @@
 #import "DMMAppDelegate.h"
 #import "DMMPreviewWindowController.h"
 
-#import <ZipKit/ZKFileArchive.h>
-#import <ZipKit/ZKDefs.h>
+#import "ZKFileArchive.h"
+#import "ZKDefs.h"
 
 @interface DMMTaskOperation ()
 
