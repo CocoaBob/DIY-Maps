@@ -1,0 +1,6 @@
+framework module Pods_DIY_Maps_for_iOS {
+  umbrella header "Pods-DIY Maps for iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

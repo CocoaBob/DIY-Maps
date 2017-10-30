@@ -1,0 +1,6 @@
+framework module CBZipFile {
+  umbrella header "CBZipFile-umbrella.h"
+
+  export *
+  module * { export * }
+}

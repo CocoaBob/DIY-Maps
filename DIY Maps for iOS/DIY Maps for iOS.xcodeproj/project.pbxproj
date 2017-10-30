@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		450BEB2C1820661C00EEFD5B /* CBActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 450BEB2B1820661C00EEFD5B /* CBActivityView.m */; };
+		4510C8081FA7A951006655D5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4510C8061FA7A951006655D5 /* Images.xcassets */; };
+		4510C8091FA7A951006655D5 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4510C8071FA7A951006655D5 /* Launch Screen.xib */; };
+		4510C80F1FA7A978006655D5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4510C80C1FA7A978006655D5 /* main.m */; };
 		4527B93B187066B3003A17E9 /* DMMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4527B93A187066B3003A17E9 /* DMMapView.m */; };
 		4527B940187066EA003A17E9 /* DMMapFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 4527B93F187066EA003A17E9 /* DMMapFile.m */; };
 		4544278D1826B3CC00EA95BD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4544278C1826B3CC00EA95BD /* AVFoundation.framework */; };
@@ -25,14 +28,11 @@
 		4578F10016596CC3004DA0B2 /* DMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4578F0FB16596CC3004DA0B2 /* DMAppDelegate.m */; };
 		4578F10116596CC3004DA0B2 /* DMMapPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4578F0FD16596CC3004DA0B2 /* DMMapPickerViewController.m */; };
 		4578F10216596CC3004DA0B2 /* DMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4578F0FF16596CC3004DA0B2 /* DMMapViewController.m */; };
-		4578F10D16596CD1004DA0B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4578F10816596CD1004DA0B2 /* main.m */; };
 		45A3E9A61795F3FD00289F1A /* DMMapPickerViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A3E9A51795F3FD00289F1A /* DMMapPickerViews.m */; };
 		45C5D05B17E3B3B10026477C /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C5D05A17E3B3B10026477C /* libxml2.dylib */; };
 		45CA605B17E3C1BB00E6F835 /* DMProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA605A17E3C1BB00E6F835 /* DMProfile.m */; };
 		45CA606617E3C41800E6F835 /* DMTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA606317E3C41800E6F835 /* DMTask.m */; };
 		45CA607717E3C73800E6F835 /* DMImageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CA607617E3C73800E6F835 /* DMImageProcessor.m */; };
-		45D824AD19E0060C007E06EC /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45D824AC19E0060C007E06EC /* Launch Screen.xib */; };
-		5B0A3FD61805473300A4907B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B0A3FD51805473300A4907B /* Images.xcassets */; };
 		5B4CB9101797F63A00F0CC19 /* UINavigationBar+CBDropShadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CB90F1797F63A00F0CC19 /* UINavigationBar+CBDropShadow.m */; };
 		5B4CB9141797F65100F0CC19 /* CBColorMaskedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CB9131797F65100F0CC19 /* CBColorMaskedButton.m */; };
 		5B6E2E73164D274E00A91687 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B6E2E72164D274E00A91687 /* UIKit.framework */; };
@@ -44,7 +44,6 @@
 		5B8D527717B153A600A21035 /* CBStyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8D527517B153A600A21035 /* CBStyleKit.m */; };
 		5BFC1B651795826200BB407D /* BVReorderTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC1B641795826200BB407D /* BVReorderTableView.m */; };
 		5BFC1D851795976700BB407D /* DMFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BFC1D841795976700BB407D /* DMFileManager.m */; };
-		CD9A8ECF2C4FDF9C4A5C9C15 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDF19FC59861679A532E7255 /* Pods.framework */; };
 		F07BE6380BE1558FBD42EF88 /* Pods_DIY_Maps_for_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B456E823FA0BA0073861F68 /* Pods_DIY_Maps_for_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +52,11 @@
 		3AF9A75C3A73261A1089DAC1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		450BEB2A1820661C00EEFD5B /* CBActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBActivityView.h; sourceTree = "<group>"; };
 		450BEB2B1820661C00EEFD5B /* CBActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBActivityView.m; sourceTree = "<group>"; };
+		4510C8061FA7A951006655D5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4510C8071FA7A951006655D5 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
+		4510C80B1FA7A978006655D5 /* DIY Maps for iOS-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DIY Maps for iOS-Info.plist"; sourceTree = "<group>"; };
+		4510C80C1FA7A978006655D5 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4510C80D1FA7A978006655D5 /* DIY Maps for iOS-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DIY Maps for iOS-Prefix.pch"; sourceTree = "<group>"; };
 		4527B939187066B3003A17E9 /* DMMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMapView.h; sourceTree = "<group>"; };
 		4527B93A187066B3003A17E9 /* DMMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMapView.m; sourceTree = "<group>"; };
 		4527B93E187066EA003A17E9 /* DMMapFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMapFile.h; sourceTree = "<group>"; };
@@ -75,9 +79,6 @@
 		4578F0FD16596CC3004DA0B2 /* DMMapPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMapPickerViewController.m; sourceTree = "<group>"; };
 		4578F0FE16596CC3004DA0B2 /* DMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMapViewController.h; sourceTree = "<group>"; };
 		4578F0FF16596CC3004DA0B2 /* DMMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMapViewController.m; sourceTree = "<group>"; };
-		4578F10616596CD1004DA0B2 /* DIY Maps for iOS-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DIY Maps for iOS-Info.plist"; sourceTree = SOURCE_ROOT; };
-		4578F10716596CD1004DA0B2 /* DIY Maps for iOS-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DIY Maps for iOS-Prefix.pch"; sourceTree = SOURCE_ROOT; };
-		4578F10816596CD1004DA0B2 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
 		45A3E9A41795F3FD00289F1A /* DMMapPickerViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMMapPickerViews.h; sourceTree = "<group>"; };
 		45A3E9A51795F3FD00289F1A /* DMMapPickerViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMMapPickerViews.m; sourceTree = "<group>"; };
 		45C5D05A17E3B3B10026477C /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -87,9 +88,7 @@
 		45CA606317E3C41800E6F835 /* DMTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMTask.m; sourceTree = "<group>"; };
 		45CA607517E3C73800E6F835 /* DMImageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMImageProcessor.h; sourceTree = "<group>"; };
 		45CA607617E3C73800E6F835 /* DMImageProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMImageProcessor.m; sourceTree = "<group>"; };
-		45D824AC19E0060C007E06EC /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = SOURCE_ROOT; };
 		4B456E823FA0BA0073861F68 /* Pods_DIY_Maps_for_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DIY_Maps_for_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B0A3FD51805473300A4907B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "DIY Maps for iOS/Images.xcassets"; sourceTree = SOURCE_ROOT; };
 		5B121CDE17B25EC8007EB6EB /* DMConfigs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMConfigs.h; sourceTree = "<group>"; };
 		5B4CB90E1797F63A00F0CC19 /* UINavigationBar+CBDropShadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+CBDropShadow.h"; sourceTree = "<group>"; };
 		5B4CB90F1797F63A00F0CC19 /* UINavigationBar+CBDropShadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+CBDropShadow.m"; sourceTree = "<group>"; };
@@ -112,7 +111,6 @@
 		5BFC1D841795976700BB407D /* DMFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMFileManager.m; sourceTree = "<group>"; };
 		BF5FEAB97F4DEADCFAA9B052 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D8EE1AB19F6BBB38E05257ED /* Pods-DIY Maps for iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DIY Maps for iOS.release.xcconfig"; path = "../Pods/Target Support Files/Pods-DIY Maps for iOS/Pods-DIY Maps for iOS.release.xcconfig"; sourceTree = "<group>"; };
-		DDF19FC59861679A532E7255 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +136,6 @@
 				454427A11826B41D00EA95BD /* libobjc.dylib in Frameworks */,
 				45C5D05B17E3B3B10026477C /* libxml2.dylib in Frameworks */,
 				5B6E2EF9164D5B6300A91687 /* libz.dylib in Frameworks */,
-				CD9A8ECF2C4FDF9C4A5C9C15 /* Pods.framework in Frameworks */,
 				F07BE6380BE1558FBD42EF88 /* Pods_DIY_Maps_for_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,6 +143,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4510C8051FA7A932006655D5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4510C8061FA7A951006655D5 /* Images.xcassets */,
+				4510C8071FA7A951006655D5 /* Launch Screen.xib */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4510C80A1FA7A978006655D5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4510C80B1FA7A978006655D5 /* DIY Maps for iOS-Info.plist */,
+				4510C80C1FA7A978006655D5 /* main.m */,
+				4510C80D1FA7A978006655D5 /* DIY Maps for iOS-Prefix.pch */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		4527B94618706990003A17E9 /* DMMapViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,15 +221,6 @@
 			name = Services;
 			sourceTree = "<group>";
 		};
-		5B4CB8DC1797D67400F0CC19 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				5B0A3FD51805473300A4907B /* Images.xcassets */,
-				45D824AC19E0060C007E06EC /* Launch Screen.xib */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		5B4CB90D1797F63A00F0CC19 /* CBDropShadow */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,8 +245,8 @@
 				45CA605817E3C1BB00E6F835 /* DIY Maps Shared */,
 				459A176217948FC6009CDE06 /* Submodules */,
 				5B6E2E95164D27AA00A91687 /* Classes */,
-				5B4CB8DC1797D67400F0CC19 /* Resources */,
-				5B6E2E79164D274E00A91687 /* Supporting Files */,
+				4510C8051FA7A932006655D5 /* Resources */,
+				4510C80A1FA7A978006655D5 /* Supporting Files */,
 				5B6E2E71164D274E00A91687 /* Frameworks */,
 				5B6E2E6F164D274E00A91687 /* Products */,
 				9A608B8E8ED343EC2632BBC7 /* Pods */,
@@ -275,21 +282,9 @@
 				5B6E2E72164D274E00A91687 /* UIKit.framework */,
 				5B6E2E74164D274E00A91687 /* Foundation.framework */,
 				5B6E2E76164D274E00A91687 /* CoreGraphics.framework */,
-				DDF19FC59861679A532E7255 /* Pods.framework */,
 				4B456E823FA0BA0073861F68 /* Pods_DIY_Maps_for_iOS.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		5B6E2E79164D274E00A91687 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				4578F10816596CD1004DA0B2 /* main.m */,
-				4578F10616596CD1004DA0B2 /* DIY Maps for iOS-Info.plist */,
-				4578F10716596CD1004DA0B2 /* DIY Maps for iOS-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			path = DIYMaps;
 			sourceTree = "<group>";
 		};
 		5B6E2E95164D27AA00A91687 /* Classes */ = {
@@ -398,8 +393,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B0A3FD61805473300A4907B /* Images.xcassets in Resources */,
-				45D824AD19E0060C007E06EC /* Launch Screen.xib in Resources */,
+				4510C8081FA7A951006655D5 /* Images.xcassets in Resources */,
+				4510C8091FA7A951006655D5 /* Launch Screen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,9 +422,28 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/../Pods/Target Support Files/Pods-DIY Maps for iOS/Pods-DIY Maps for iOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Base64nl/Base64nl.framework",
+				"${BUILT_PRODUCTS_DIR}/CBDoubleTapAndPanGestureRecognizer/CBDoubleTapAndPanGestureRecognizer.framework",
+				"${BUILT_PRODUCTS_DIR}/CBZipFile/CBZipFile.framework",
+				"${BUILT_PRODUCTS_DIR}/Fingertips/Fingertips.framework",
+				"${BUILT_PRODUCTS_DIR}/KissXML/KissXML.framework",
+				"${BUILT_PRODUCTS_DIR}/MHWDirectoryWatcher/MHWDirectoryWatcher.framework",
+				"${BUILT_PRODUCTS_DIR}/SBRXCallbackURLKit/SBRXCallbackURLKit.framework",
+				"${BUILT_PRODUCTS_DIR}/ZKRevealingTableViewCell/ZKRevealingTableViewCell.framework",
+				"${BUILT_PRODUCTS_DIR}/ZipKit/ZipKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Base64nl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CBDoubleTapAndPanGestureRecognizer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CBZipFile.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fingertips.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KissXML.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MHWDirectoryWatcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SBRXCallbackURLKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZKRevealingTableViewCell.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZipKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -442,13 +456,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DIY Maps for iOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -463,7 +480,6 @@
 				4578F10116596CC3004DA0B2 /* DMMapPickerViewController.m in Sources */,
 				450BEB2C1820661C00EEFD5B /* CBActivityView.m in Sources */,
 				4578F10216596CC3004DA0B2 /* DMMapViewController.m in Sources */,
-				4578F10D16596CD1004DA0B2 /* main.m in Sources */,
 				45CA606617E3C41800E6F835 /* DMTask.m in Sources */,
 				5BFC1B651795826200BB407D /* BVReorderTableView.m in Sources */,
 				5BFC1D851795976700BB407D /* DMFileManager.m in Sources */,
@@ -471,6 +487,7 @@
 				5B4CB9101797F63A00F0CC19 /* UINavigationBar+CBDropShadow.m in Sources */,
 				5B4CB9141797F65100F0CC19 /* CBColorMaskedButton.m in Sources */,
 				45CA605B17E3C1BB00E6F835 /* DMProfile.m in Sources */,
+				4510C80F1FA7A978006655D5 /* main.m in Sources */,
 				5B8D527617B153A600A21035 /* CBStyledControls.m in Sources */,
 				5B8D527717B153A600A21035 /* CBStyleKit.m in Sources */,
 				4527B93B187066B3003A17E9 /* DMMapView.m in Sources */,
@@ -566,13 +583,13 @@
 					"$(SRCROOT)/../Submodules",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DIY Maps for iOS-Prefix.pch";
+				GCC_PREFIX_HEADER = "Supporting Files/DIY Maps for iOS-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/include/libxml2,
 					"$(SRCROOT)/../Submodules/**",
 				);
-				INFOPLIST_FILE = "DIY Maps for iOS-Info.plist";
+				INFOPLIST_FILE = "Supporting Files/DIY Maps for iOS-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = CocoaBob.DIYMaps.iOS;
 				PRODUCT_NAME = "DIY Maps";
 				PROVISIONING_PROFILE = "";
@@ -594,13 +611,13 @@
 					"$(SRCROOT)/../Submodules",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DIY Maps for iOS-Prefix.pch";
+				GCC_PREFIX_HEADER = "Supporting Files/DIY Maps for iOS-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/include/libxml2,
 					"$(SRCROOT)/../Submodules/**",
 				);
-				INFOPLIST_FILE = "DIY Maps for iOS-Info.plist";
+				INFOPLIST_FILE = "Supporting Files/DIY Maps for iOS-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = CocoaBob.DIYMaps.iOS;
 				PRODUCT_NAME = "DIY Maps";
 				PROVISIONING_PROFILE = "";

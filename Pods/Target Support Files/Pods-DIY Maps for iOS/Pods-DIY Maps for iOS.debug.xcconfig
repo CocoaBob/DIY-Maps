@@ -1,0 +1,11 @@
+CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/Base64nl" "$PODS_CONFIGURATION_BUILD_DIR/CBDoubleTapAndPanGestureRecognizer" "$PODS_CONFIGURATION_BUILD_DIR/CBZipFile" "$PODS_CONFIGURATION_BUILD_DIR/Fingertips" "$PODS_CONFIGURATION_BUILD_DIR/KissXML" "$PODS_CONFIGURATION_BUILD_DIR/MHWDirectoryWatcher" "$PODS_CONFIGURATION_BUILD_DIR/SBRXCallbackURLKit" "$PODS_CONFIGURATION_BUILD_DIR/ZKRevealingTableViewCell" "$PODS_CONFIGURATION_BUILD_DIR/ZipKit"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1 $(inherited) NOUNCRYPT
+HEADER_SEARCH_PATHS = $(SDKROOT)/usr/include/libxml2
+LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+OTHER_CFLAGS = $(inherited) -DDDXML_LIBXML_MODULE_ENABLED=0 $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/Base64nl/Base64nl.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/CBDoubleTapAndPanGestureRecognizer/CBDoubleTapAndPanGestureRecognizer.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/CBZipFile/CBZipFile.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Fingertips/Fingertips.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/KissXML/KissXML.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/MHWDirectoryWatcher/MHWDirectoryWatcher.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/SBRXCallbackURLKit/SBRXCallbackURLKit.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/ZKRevealingTableViewCell/ZKRevealingTableViewCell.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/ZipKit/ZipKit.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "Base64nl" -framework "CBDoubleTapAndPanGestureRecognizer" -framework "CBZipFile" -framework "Fingertips" -framework "KissXML" -framework "MHWDirectoryWatcher" -framework "SBRXCallbackURLKit" -framework "ZKRevealingTableViewCell" -framework "ZipKit"
+PODS_BUILD_DIR = $BUILD_DIR
+PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_PODFILE_DIR_PATH = ${SRCROOT}/..
+PODS_ROOT = ${SRCROOT}/../Pods

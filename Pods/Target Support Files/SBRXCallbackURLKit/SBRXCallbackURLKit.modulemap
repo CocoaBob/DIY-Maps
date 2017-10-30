@@ -1,0 +1,6 @@
+framework module SBRXCallbackURLKit {
+  umbrella header "SBRXCallbackURLKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
